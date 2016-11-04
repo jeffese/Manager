@@ -1,0 +1,16 @@
+menuentry 'NetInstall' {
+    load_video
+    set gfxpayload=keep
+    insmod gzio
+    insmod part_msdos
+    insmod ext2
+    set root='hd0,msdos1'
+    if [ x$feature_platform_search_hint = xy ]; then
+      search --no-floppy --fs-uuid --set=root --hint='hd0,msdos1'  ac9e46e0-6de5-4e6f-baf2-cca39dffe49b
+    else
+      search --no-floppy --fs-uuid --set=root ac9e46e0-6de5-4e6f-baf2-cca39dffe49b
+    fi
+    linux16 /vmlinuz-7 inst.vnc inst.vncpassword=12345678 inst.headless ip=ip::gateway:netmask::interface:none nameserver=8.8.8.8 inst.repo=http://mirror.centos.org/centos/7/os/x86_64/ inst.lang=en_US inst.keymap=us
+    initrd16 /initrd-7.img
+}
+/usr/share/usb_modeswitch/05c6:1000

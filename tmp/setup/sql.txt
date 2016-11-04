@@ -1,0 +1,1887 @@
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+CREATE TABLE `assets` (
+  `AssetID` int(11) unsigned NOT NULL auto_increment,
+  `AssetName` varchar(50) DEFAULT NULL,
+  `dept` int(11) DEFAULT NULL,
+  `Category` int(11) DEFAULT NULL,
+  `AssetType` int(11) DEFAULT NULL,
+  `department` int(11) DEFAULT NULL,
+  `occupant` int(11) DEFAULT NULL,
+  `designation` tinytext,
+  `colour` varchar(10) DEFAULT NULL,
+  `colorvalue` varchar(50) DEFAULT NULL,
+  `picturefile` tinytext,
+  `description` mediumtext,
+  `usage` mediumtext,
+  `Status` int(11) DEFAULT NULL,
+  `InUse` bit(1) NOT NULL,
+  `NextSchedMaint` datetime DEFAULT NULL,
+  `Capacity` smallint(6) DEFAULT NULL,
+  `Adults` smallint(6) DEFAULT NULL,
+  `Children` smallint(6) DEFAULT NULL,
+  `Brand` varchar(15) DEFAULT NULL,
+  `Model` varchar(15) DEFAULT NULL,
+  `serialno` varchar(20) DEFAULT NULL,
+  `modelno` varchar(20) DEFAULT NULL,
+  `partno` varchar(20) DEFAULT NULL,
+  `BarcodeNumber` varchar(30) DEFAULT NULL,
+  `licenceno` varchar(20) DEFAULT NULL,
+  `purchfrom` int(11) DEFAULT NULL,
+  `PurchCost` decimal(19,4) DEFAULT NULL,
+  `CurPurchCost` decimal(19,4) DEFAULT NULL,
+  `AuctionValue` decimal(19,4) DEFAULT NULL,
+  `dateofpurch` datetime DEFAULT NULL,
+  `DateSold` datetime DEFAULT NULL,
+  `insurers` int(11) DEFAULT NULL,
+  `servcomp` int(11) DEFAULT NULL,
+  `insuranceno` varchar(20) DEFAULT NULL,
+  `DepreciationMethod` varchar(50) DEFAULT NULL,
+  `DepreciableLife` float DEFAULT NULL,
+  `DepreciationValue` decimal(19,4) DEFAULT NULL,
+  `DepreciationRate` float DEFAULT NULL,
+  `SalvageValue` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY  (`AssetID`),
+  KEY `dept` (`dept`),
+  KEY `Category` (`Category`),
+  KEY `AssetType` (`AssetType`),
+  KEY `InUse` (`InUse`),
+  KEY `Status` (`Status`),
+  KEY `insurers` (`insurers`),
+  KEY `servcomp` (`servcomp`),
+  KEY `purchfrom` (`purchfrom`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `bills` (
+  `BillID` int(11) unsigned NOT NULL auto_increment,
+  `EmployeeID` int(11) NOT NULL,
+  `AssetID` int(11) DEFAULT NULL,
+  `ProjectID` int(11) DEFAULT NULL,
+  `InvoiceID` int(11) DEFAULT NULL,
+  `deptid` int(11) DEFAULT NULL,
+  `BillTitle` varchar(50) DEFAULT NULL,
+  `VendorType` varchar(20) NOT NULL,
+  `VendorID` int(11) DEFAULT NULL,
+  `CustomerName` varchar(50) DEFAULT NULL,
+  `BillType` int(11) NOT NULL,
+  `Status` varchar(20) DEFAULT NULL,
+  `BillDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ReceivedDate` datetime DEFAULT NULL,
+  `BillValue` decimal(19,4) DEFAULT NULL,
+  `RecAccountBalance` decimal(19,4) NOT NULL,
+  `amtwords` tinytext,
+  `Notes` mediumtext,
+  `posted` bit(1) NOT NULL,
+  PRIMARY KEY  (`BillID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `VendorID` (`VendorID`),
+  KEY `BillType` (`BillType`),
+  KEY `BillDate` (`BillDate`),
+  KEY `posted` (`posted`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `brands` (
+  `brandID` int(11) unsigned NOT NULL auto_increment,
+  `brand` varchar(50) DEFAULT NULL,
+  `BrandName` varchar(50) DEFAULT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  PRIMARY KEY  (`brandID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `brands` (`brandID`, `brand`, `BrandName`, `description`) VALUES
+(1, 'N/A', 'N/A', NULL);
+
+CREATE TABLE `cardtypes` (
+  `cardid` int(11) unsigned NOT NULL auto_increment,
+  `card` varchar(50) DEFAULT NULL,
+  `inuse` bit(1) NOT NULL,
+  `AccountID` int(11) DEFAULT NULL,
+  `firm` varchar(50) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `tel` varchar(50) DEFAULT NULL,
+  `website` varchar(50) DEFAULT NULL,
+  `Notes` mediumtext,
+  PRIMARY KEY  (`cardid`),
+  KEY `AccountID` (`AccountID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `cardtypes` (`cardid`, `card`, `inuse`, `AccountID`, `firm`, `address`, `tel`, `website`, `Notes`) VALUES
+(1, 'N/A', b'1', NULL, NULL, NULL, NULL, NULL, NULL);
+
+CREATE TABLE `classifications` (
+  `catID` int(11) unsigned NOT NULL auto_increment,
+  `category_id` varchar(50) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `category_name` tinytext,
+  `catname` tinytext,
+  `catype` tinyint(3) unsigned NOT NULL,
+  `pix` tinytext,
+  `description` tinytext,
+  `code` VARCHAR( 20 ) NOT NULL DEFAULT '',
+  PRIMARY KEY  (`catID`),
+  KEY `category_id` (`category_id`),
+  KEY `parent_id` (`parent_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `classifications` (`catID`, `category_id`, `parent_id`, `category_name`, `catname`, `catype`, `pix`, `description`, `code`) VALUES
+(1, '1', 1, 'Departments', 'Departments', 1, NULL, 'Container for all Departments', ''),
+(2, '2', 2, 'Products', 'Products', 2, NULL, 'Container for all Product Classifications & Categories', ''),
+(3, '3', 3, 'Services', 'Services', 3, NULL, 'Container for all Service Categories', ''),
+(4, '4', 4, 'Assets', 'Assets', 4, NULL, 'Container for all Asset Categories', ''),
+(5, '5', 5, 'Staff', 'Staff', 5, NULL, 'Container for all Staff Categories', '');
+
+CREATE TABLE `currencies` (
+  `cur_id` int(11) unsigned NOT NULL auto_increment,
+  `currencyname` varchar(20) NOT NULL,
+  `symbol` varchar(5) NOT NULL,
+  `unitname` varchar(20) NOT NULL,
+  `unitsymbol` varchar(5) NOT NULL,
+  `fromrate` smallint(6) NOT NULL,
+  `torate` smallint(6) DEFAULT NULL,
+  `fullname` varchar(30) DEFAULT NULL,
+  PRIMARY KEY  (`cur_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `currencies` (`cur_id`, `currencyname`, `symbol`, `unitname`, `unitsymbol`, `fromrate`, `torate`, `fullname`) VALUES
+(1, 'Naira', 'N', 'Kobo', 'k', 1, 150, 'Nigerian Naira'),
+(2, 'Dollars', '$', 'Cents', '¢', 1, 1, 'US Dollar'),
+(3, 'Pounds', '£', 'Pennies', 'p', 1, 250, 'British Pound'),
+(4, 'Euros', '€', 'euro-cents', '¢', 1, 225, 'Euro'),
+(5, 'Yen', '¥', 'Sen', 's', 1, 100, 'Japanese Yen');
+
+CREATE TABLE `deliveries` (
+  `DeliveryID` int(11) unsigned NOT NULL auto_increment,
+  `ShipperID` int(11) DEFAULT NULL,
+  `EmployeeID` int(11) DEFAULT NULL,
+  `ShippedVia` varchar(50) DEFAULT NULL,
+  `ShipperTrackingCode` varchar(50) DEFAULT NULL,
+  `ShipDate` datetime DEFAULT NULL,
+  `ShipperPhoneNumber` varchar(30) DEFAULT NULL,
+  `ShippedFrom` varchar(50) DEFAULT NULL,
+  `DestinationAddress` tinytext,
+  `DestinationCity` varchar(50) DEFAULT NULL,
+  `DestinationState` varchar(50) DEFAULT NULL,
+  `DestinationPostalCode` varchar(20) DEFAULT NULL,
+  `DestinationCountry` int(11) DEFAULT NULL,
+  `ArrivalDateTime` datetime DEFAULT NULL,
+  `CurrentLocation` tinytext,
+  `PackageDimensions` varchar(50) DEFAULT NULL,
+  `PackageWeight` varchar(50) DEFAULT NULL,
+  `PickUpLocation` tinytext,
+  `PickUpDateTime` datetime DEFAULT NULL,
+  `ReceivedBy` varchar(50) DEFAULT NULL,
+  `FreightCharge` decimal(19,4) DEFAULT NULL,
+  `delivered` bit(1) NOT NULL,
+  `Notes` mediumtext,
+  PRIMARY KEY  (`DeliveryID`),
+  KEY `ShipperID` (`ShipperID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `DestinationCountry` (`DestinationCountry`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `depreciation` (
+  `DepreciationID` int(11) unsigned NOT NULL auto_increment,
+  `EquipID` int(11) DEFAULT NULL,
+  `DepreciationDate` datetime DEFAULT NULL,
+  `DepreciationAmount` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY  (`DepreciationID`),
+  KEY `EquipID` (`EquipID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `deptstock` (
+  `ID` int(11) unsigned NOT NULL default 0,
+  `ProductID` int(11) DEFAULT NULL,
+  `serials` mediumtext,
+  `OutletID` int(11) DEFAULT NULL,
+  `shelf` int(11) DEFAULT NULL,
+  `ShopStock` float DEFAULT NULL,
+  `actlstock` float DEFAULT NULL,
+  `stkcntdate` datetime DEFAULT NULL,
+  `deptlevel` float DEFAULT NULL,
+  `Notes` tinytext,
+  PRIMARY KEY  (`ProductID`,`OutletID`),
+  KEY `ProductID` (`ProductID`),
+  KEY `OutletID` (`OutletID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `deptstockded` (
+  `DeductID` int(11) unsigned NOT NULL auto_increment,
+  `DeptID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `Quantity` float NOT NULL,
+  `Description` varchar(50) DEFAULT NULL,
+  PRIMARY KEY  (`DeductID`),
+  KEY `DeptID` (`DeptID`),
+  KEY `ProductID` (`ProductID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `documentfiles` (
+  `DocID` int(11) unsigned NOT NULL auto_increment,
+  `OwnerID` int(11) DEFAULT NULL,
+  `DocFileName` tinytext,
+  `Description` tinytext,
+  `DocFileType` tinyint(3) unsigned DEFAULT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `SecCode` varchar(20) DEFAULT NULL,
+  `FileCat` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY  (`DocID`),
+  KEY `OwnerID` (`OwnerID`),
+  KEY `fileCat` (`fileCat`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `employeetax` (
+  `TaxValID` int(11) unsigned NOT NULL auto_increment,
+  `ExpenseID` int(11) DEFAULT NULL,
+  `Taxval` decimal(19,4) DEFAULT NULL,
+  `TaxDef` varchar(20) DEFAULT NULL,
+  `DefVal` float DEFAULT NULL,
+  `TaxDefVal` float DEFAULT NULL,
+  PRIMARY KEY  (`TaxValID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `events` (
+  `EventID` int(11) unsigned NOT NULL auto_increment,
+  `EventName` varchar(50) DEFAULT NULL,
+  `EventTypeID` int(11) DEFAULT NULL,
+  `Status` varchar(20) DEFAULT NULL,
+  `StartDate` datetime DEFAULT NULL,
+  `EndDate` datetime DEFAULT NULL,
+  `Confirmed` bit(1) NOT NULL,
+  `AvailableSpaces` smallint(6) DEFAULT NULL,
+  `EventDescription` tinytext,
+  `Notes` mediumtext,
+  `EmployeeID` int(11) DEFAULT NULL,
+  PRIMARY KEY  (`EventID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `expenses` (
+  `ExpenseID` int(11) unsigned NOT NULL auto_increment,
+  `AccountID` int(11) NOT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `AssetID` int(11) DEFAULT NULL,
+  `ProjectID` int(11) DEFAULT NULL,
+  `InvoiceID` int(11) DEFAULT NULL,
+  `deptid` int(11) DEFAULT NULL,
+  `AuthorizedBy` int(11) DEFAULT NULL,
+  `RecipientType` varchar(20) NOT NULL,
+  `RecipientID` int(11) DEFAULT NULL,
+  `Recipient` varchar(50) NOT NULL,
+  `ExpenseType` int(11) NOT NULL,
+  `ReferType` tinyint(3) unsigned DEFAULT NULL,
+  `ReferID` int(11) DEFAULT NULL,
+  `RefNo` varchar(20) DEFAULT NULL,
+  `PurposeofExpense` tinytext NOT NULL,
+  `ExpenseAmount` decimal(19,4) NOT NULL,
+  `RecAccountBalance` decimal(19,4) DEFAULT NULL,
+  `AccountBalance` decimal(19,4) NOT NULL,
+  `amtwords` tinytext,
+  `ExpenseDate` datetime DEFAULT NULL,
+  `DateSubmitted` datetime DEFAULT NULL,
+  `PaymentMethod` tinytext,
+  `Description` tinytext,
+  `Authorized` bit(1) NOT NULL,
+  `CheckNumber` int(11) DEFAULT NULL,
+  `CreditCardType` int(11) DEFAULT NULL,
+  `CreditCardNumber` varchar(30) DEFAULT NULL,
+  `PaymentMethodID` int(11) DEFAULT NULL,
+  `CheckDate` datetime DEFAULT NULL,
+  `TaxDeduct` bit(1) NOT NULL,
+  `WitholdingTax` smallint(6) DEFAULT NULL,
+  PRIMARY KEY  (`ExpenseID`),
+  KEY `AccountID` (`AccountID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `AuthorizedBy` (`AuthorizedBy`),
+  KEY `RecipientType` (`RecipientType`),
+  KEY `RecipientID` (`RecipientID`),
+  KEY `ExpenseType` (`ExpenseType`),
+  KEY `Authorized` (`Authorized`),
+  KEY `CreditCardType` (`CreditCardType`),
+  KEY `PaymentMethodID` (`PaymentMethodID`),
+  KEY `TaxDeduct` (`TaxDeduct`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `hourclock` (
+  `clockid` int(11) unsigned NOT NULL auto_increment,
+  `employeeid` int(11) DEFAULT NULL,
+  `Day` datetime DEFAULT NULL,
+  `1` datetime DEFAULT NULL,
+  `2` datetime DEFAULT NULL,
+  `3` datetime DEFAULT NULL,
+  `4` datetime DEFAULT NULL,
+  `5` datetime DEFAULT NULL,
+  `6` datetime DEFAULT NULL,
+  `7` datetime DEFAULT NULL,
+  `8` datetime DEFAULT NULL,
+  `9` datetime DEFAULT NULL,
+  `10` datetime DEFAULT NULL,
+  `11` datetime DEFAULT NULL,
+  `12` datetime DEFAULT NULL,
+  PRIMARY KEY  (`clockid`),
+  KEY `employeeid` (`employeeid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `invoicedetails` (
+  `InvoiceDetailID` int(11) unsigned NOT NULL auto_increment,
+  `InvoiceID` int(11) NOT NULL,
+  `DeliveryID` int(11) DEFAULT NULL,
+  `ProductID` int(11) NOT NULL,
+  `ProductName` varchar(50) DEFAULT NULL,
+  `SerialNumber` varchar(50) DEFAULT NULL,
+  `serials` mediumtext,
+  `Quantity` float NOT NULL,
+  `units` smallint(6) NOT NULL,
+  `UnitPrice` decimal(19,4) NOT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `Discnt` float DEFAULT NULL,
+  `SalesPrice` decimal(19,4) DEFAULT NULL,
+  `TaxRate` float DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY  (`InvoiceDetailID`),
+  KEY `InvoiceID` (`InvoiceID`),
+  KEY `DeliveryID` (`DeliveryID`),
+  KEY `ProductID` (`ProductID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `invoices` (
+  `InvoiceID` int(11) unsigned NOT NULL auto_increment,
+  `OutletID` int(11) DEFAULT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `ProjectID` int(11) DEFAULT NULL,
+  `CustomerType` varchar(20) NOT NULL,
+  `CustomerID` int(11) NOT NULL,
+  `CustomerName` varchar(50) DEFAULT NULL,
+  `Status` varchar(20) DEFAULT NULL,
+  `InvoiceDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `TaxRate` float DEFAULT NULL,
+  `Dscnt` int(11) DEFAULT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `ServiceCharge` decimal(19,4) DEFAULT NULL,
+  `ServiceDisc` decimal(19,4) DEFAULT NULL,
+  `TotTax` decimal(19,4) DEFAULT NULL,
+  `TotDisc` decimal(19,4) DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  `Grandvalue` decimal(19,4) DEFAULT NULL,
+  `amtwords` tinytext,
+  `ExchangeFrom` smallint(6) NOT NULL,
+  `ExchangeTo` smallint(6) NOT NULL,
+  `Notes` mediumtext,
+  `Locked` bit(1) NOT NULL,
+  `amtpaid` decimal(19,4) DEFAULT NULL,
+  `amtchng` decimal(19,4) DEFAULT NULL,
+  `RecAccountBalance` decimal(19,4) NOT NULL,
+  `synctext` varchar(50) DEFAULT NULL,
+  `ShipTo` tinytext,
+  PRIMARY KEY  (`InvoiceID`),
+  KEY `OutletID` (`OutletID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `CustomerID` (`CustomerID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `invserials` (
+  `InvoiceDetailID` int(11) NOT NULL,
+  `Serial` tinytext
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `maintenance` (
+  `MaintenanceID` int(11) unsigned NOT NULL auto_increment,
+  `EquipID` int(11) DEFAULT NULL,
+  `MaintenanceDate` datetime DEFAULT NULL,
+  `MaintenanceDescription` tinytext,
+  `VendorID` int(11) DEFAULT NULL,
+  `MaintenancePerformedBy` varchar(50) DEFAULT NULL,
+  `MaintenanceCost` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY  (`MaintenanceID`),
+  KEY `EquipID` (`EquipID`),
+  KEY `VendorID` (`VendorID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `orderdetails` (
+  `OrderDetailID` int(11) unsigned NOT NULL auto_increment,
+  `OrderID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `ProductName` varchar(50) DEFAULT NULL,
+  `SerialNumber` varchar(50) DEFAULT NULL,
+  `serials` mediumtext,
+  `delserials` tinytext,
+  `addserials` tinytext,
+  `Quantity` float DEFAULT NULL,
+  `unitsinpack` float DEFAULT NULL,
+  `UnitPrice` decimal(19,4) DEFAULT NULL,
+  `Dscnt` tinyint(3) unsigned DEFAULT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `SalePrice` decimal(19,4) DEFAULT NULL,
+  `SalesTax` float DEFAULT NULL,
+  `Margin` float DEFAULT NULL,
+  `LineTotal` decimal(19,4) DEFAULT NULL,
+  `calcost` decimal(19,4) DEFAULT NULL,
+  `sugsell` decimal(19,4) DEFAULT NULL,
+  `oldsell` decimal(19,4) DEFAULT NULL,
+  `currentstock` bit(1) NOT NULL,
+  `ExpiryDate` datetime DEFAULT NULL,
+  `Expires` bit(1) NOT NULL,
+  `Cleared` bit(1) NOT NULL,
+  `QtyinStock` float DEFAULT NULL,
+  `Received` float DEFAULT NULL,
+  PRIMARY KEY  (`OrderDetailID`),
+  KEY `OrderID` (`OrderID`),
+  KEY `ProductID` (`ProductID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `orderreturndet` (
+  `OrderRetDetID` int(11) unsigned NOT NULL auto_increment,
+  `OrderDetailID` int(11) NOT NULL,
+  `OrderRetID` int(11) NOT NULL,
+  `Quantity` float DEFAULT NULL,
+  `unitsinpack` float DEFAULT NULL,
+  `SalePrice` decimal(19,4) DEFAULT NULL,
+  `LineTotal` decimal(19,4) DEFAULT NULL,
+  `serials` mediumtext,
+  PRIMARY KEY  (`OrderRetDetID`),
+  KEY `OrderDetailID` (`OrderDetailID`),
+  KEY `OrderRetID` (`OrderRetID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `orderreturns` (
+  `OrderRetID` int(11) unsigned NOT NULL auto_increment,
+  `OrderID` int(11) NOT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `ReturnDate` datetime DEFAULT NULL,
+  `ShipName` varchar(50) DEFAULT NULL,
+  `ShipAddress` tinytext,
+  `ShipDate` datetime DEFAULT NULL,
+  `ShippingMethodID` varchar(50) DEFAULT NULL,
+  `FreightCharge` decimal(19,4) DEFAULT NULL,
+  `Expenses` decimal(19,4) DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  `amtwords` tinytext,
+  `Locked` bit(1) NOT NULL,
+  `notes` tinytext,
+  PRIMARY KEY  (`OrderRetID`),
+  KEY `OrderID` (`OrderID`),
+  KEY `EmployeeID` (`EmployeeID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `orders` (
+  `OrderID` int(11) unsigned NOT NULL auto_increment,
+  `SupplierID` int(11) NOT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `OrderDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `PurchaseOrderNumber` varchar(30) DEFAULT NULL,
+  `RequiredByDate` datetime DEFAULT NULL,
+  `PromisedByDate` datetime DEFAULT NULL,
+  `ShipName` varchar(50) DEFAULT NULL,
+  `ShipAddress` tinytext,
+  `ShipCity` varchar(50) DEFAULT NULL,
+  `ShipState` varchar(50) DEFAULT NULL,
+  `ShipStateOrProvince` varchar(50) DEFAULT NULL,
+  `ShipPostalCode` varchar(20) DEFAULT NULL,
+  `ShipCountry` int(11) DEFAULT NULL,
+  `ShipPhoneNumber` varchar(30) DEFAULT NULL,
+  `ShipDate` datetime DEFAULT NULL,
+  `ShippingMethodID` varchar(50) DEFAULT NULL,
+  `ShopCurrency` int(11) NOT NULL,
+  `Currency` int(11) NOT NULL,
+  `ExchangeFrom` smallint(6) NOT NULL,
+  `ExchangeTo` smallint(6) NOT NULL,
+  `FreightCharge` decimal(19,4) DEFAULT NULL,
+  `SalesTaxRate` float DEFAULT NULL,
+  `Margin` float DEFAULT NULL,
+  `Dscnt` tinyint(3) unsigned DEFAULT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `Expenses` decimal(19,4) DEFAULT NULL,
+  `OrderTotal` decimal(19,4) DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  `OrderWords` tinytext,
+  `amtwords` tinytext,
+  `Locked` bit(1) NOT NULL,
+  `notes` mediumtext,
+  PRIMARY KEY  (`OrderID`),
+  KEY `SupplierID` (`SupplierID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `Currency` (`Currency`),
+  KEY `ShopCurrency` (`ShopCurrency`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `orders` (`OrderID`, `SupplierID`, `EmployeeID`, `OrderDate`, `PurchaseOrderNumber`, `RequiredByDate`, `PromisedByDate`, `ShipName`, `ShipAddress`, `ShipCity`, `ShipState`, `ShipStateOrProvince`, `ShipPostalCode`, `ShipCountry`, `ShipPhoneNumber`, `ShipDate`, `ShippingMethodID`, `ShopCurrency`, `Currency`, `ExchangeFrom`, `ExchangeTo`, `FreightCharge`, `SalesTaxRate`, `Margin`, `Dscnt`, `Discount`, `Expenses`, `OrderTotal`, `TotalValue`, `OrderWords`, `amtwords`, `Locked`, `notes`) VALUES
+(1000, 5, 1, '2011-01-17 02:03:17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 1, 1, 1, 1, '0.0000', 0, 0, 0, '0.0000', '0.0000', '1000063.0000', '1000063.0000', 'One Million, Sixty-Three Naira Zero Kobo', 'One Million, Sixty-Three Naira Zero Kobo', b'1', NULL);
+
+CREATE TABLE `ordserials` (
+  `OrderDetailID` int(11) NOT NULL,
+  `Serial` tinytext
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `outlet` (
+  `ID` int(11) unsigned NOT NULL default '0',
+  `ProductID` int(11) DEFAULT NULL,
+  `serials` mediumtext,
+  `OutletID` int(11) DEFAULT NULL,
+  `Shopshelf` int(11) DEFAULT NULL,
+  `ShopStock` float DEFAULT NULL,
+  `Shopactlstock` float DEFAULT NULL,
+  `Shopstkcntdate` datetime DEFAULT NULL,
+  `Shoplevel` float DEFAULT NULL,
+  `ShopNotes` tinytext,
+  PRIMARY KEY  (`ProductID`,`OutletID`),
+  KEY `OutletID` (`OutletID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `outlets` (
+  `OutletID` int(11) unsigned NOT NULL auto_increment,
+  `OutletName` varchar(50) DEFAULT NULL,
+  `Dept` int(11) DEFAULT NULL,
+  `password` tinytext,
+  `description` tinytext,
+  PRIMARY KEY  (`OutletID`),
+  KEY `Dept` (`Dept`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `outlets` (`OutletID`, `OutletName`, `Dept`, `password`, `description`) VALUES
+(1, 'Shop', 1, NULL, NULL);
+
+CREATE TABLE `outletsrv` (
+  `ID` int(11) NOT NULL,
+  `ServiceID` int(11) DEFAULT NULL,
+  `OutletID` int(11) DEFAULT NULL,
+  `Notes` tinytext
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `outletstaff` (
+  `outstaffid` int(11) unsigned NOT NULL auto_increment,
+  `OutletID` int(11) DEFAULT NULL,
+  `StaffID` int(11) DEFAULT NULL,
+  PRIMARY KEY  (`outstaffid`),
+  KEY `OutletID` (`OutletID`),
+  KEY `StaffID` (`StaffID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `packageitems` (
+  `PackItemID` int(11) unsigned NOT NULL auto_increment,
+  `PackageID` int(11) DEFAULT NULL,
+  `ProductID` int(11) DEFAULT NULL,
+  `ProductName` varchar(50) DEFAULT NULL,
+  `SerialNumber` varchar(50) DEFAULT NULL,
+  `Quantity` float NOT NULL,
+  `UnitPrice` decimal(19,4) NOT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `Discnt` float DEFAULT NULL,
+  `SalesPrice` decimal(19,4) DEFAULT NULL,
+  `TaxRate` float DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY  (`PackItemID`),
+  KEY `PackageID` (`PackageID`),
+  KEY `ProductID` (`ProductID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `packages` (
+  `PackageID` int(11) unsigned NOT NULL auto_increment,
+  `ProductID` int(11) DEFAULT NULL,
+  `PackageName` varchar(50) DEFAULT NULL,
+  `StartDate` datetime DEFAULT NULL,
+  `EndDate` datetime DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  `ServiceCharge` decimal(19,4) DEFAULT NULL,
+  `TotDisc` decimal(19,4) DEFAULT NULL,
+  `ServiceDisc` decimal(19,4) DEFAULT NULL,
+  `TotTax` decimal(19,4) DEFAULT NULL,
+  `Dscnt` int(11) DEFAULT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `Grandvalue` decimal(19,4) DEFAULT NULL,
+  `Monday` bit(1) NOT NULL,
+  `Tuesday` bit(1) NOT NULL,
+  `Wednesday` bit(1) NOT NULL,
+  `Thursday` bit(1) NOT NULL,
+  `Friday` bit(1) NOT NULL,
+  `Saturday` bit(1) NOT NULL,
+  `Sunday` bit(1) NOT NULL,
+  `Notes` mediumtext,
+  `Status` bit(1) NOT NULL,
+  `LimitedTime` bit(1) NOT NULL,
+  PRIMARY KEY  (`PackageID`),
+  KEY `ProductID` (`ProductID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `packageservices` (
+  `PackServiceID` int(11) unsigned NOT NULL auto_increment,
+  `PackageID` int(11) DEFAULT NULL,
+  `servicecode` int(11) NOT NULL,
+  `service` varchar(50) NOT NULL,
+  `Quantity` float NOT NULL,
+  `UnitCharge` decimal(19,4) NOT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `Discnt` float DEFAULT NULL,
+  `ServiceCharge` decimal(19,4) DEFAULT NULL,
+  `TaxRate` float DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY  (`PackServiceID`),
+  KEY `PackageID` (`PackageID`),
+  KEY `servicecode` (`servicecode`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `payfactornames` (
+  `P0` varchar(20) DEFAULT NULL,
+  `K0` bit(1) NOT NULL,
+  `P0Desc` tinytext,
+  `P1` varchar(20) DEFAULT NULL,
+  `K1` bit(1) NOT NULL,
+  `P1Desc` tinytext,
+  `P2` varchar(20) DEFAULT NULL,
+  `K2` bit(1) NOT NULL,
+  `P2Desc` tinytext,
+  `P3` varchar(20) DEFAULT NULL,
+  `K3` bit(1) NOT NULL,
+  `P3Desc` tinytext,
+  `P4` varchar(20) DEFAULT NULL,
+  `K4` bit(1) NOT NULL,
+  `P4Desc` tinytext,
+  `P5` varchar(20) DEFAULT NULL,
+  `K5` bit(1) NOT NULL,
+  `P5Desc` tinytext,
+  `P6` varchar(20) DEFAULT NULL,
+  `K6` bit(1) NOT NULL,
+  `P6Desc` tinytext,
+  `P7` varchar(20) DEFAULT NULL,
+  `K7` bit(1) NOT NULL,
+  `P7Desc` tinytext,
+  `P8` varchar(20) DEFAULT NULL,
+  `K8` bit(1) NOT NULL,
+  `P8Desc` tinytext,
+  `P9` varchar(20) DEFAULT NULL,
+  `K9` bit(1) NOT NULL,
+  `P9Desc` tinytext,
+  `I01` bit(1) NOT NULL,
+  `X01` varchar(20) DEFAULT NULL,
+  `X01Desc` tinytext,
+  `I02` bit(1) NOT NULL,
+  `X02` varchar(20) DEFAULT NULL,
+  `X02Desc` tinytext,
+  `I03` bit(1) NOT NULL,
+  `X03` varchar(20) DEFAULT NULL,
+  `X03Desc` tinytext,
+  `I04` bit(1) NOT NULL,
+  `X04` varchar(20) DEFAULT NULL,
+  `X04Desc` tinytext,
+  `I05` bit(1) NOT NULL,
+  `X05` varchar(20) DEFAULT NULL,
+  `X05Desc` tinytext,
+  `I06` bit(1) NOT NULL,
+  `X06` varchar(20) DEFAULT NULL,
+  `X06Desc` tinytext,
+  `I07` bit(1) NOT NULL,
+  `X07` varchar(20) DEFAULT NULL,
+  `X07Desc` tinytext,
+  `I08` bit(1) NOT NULL,
+  `X08` varchar(20) DEFAULT NULL,
+  `X08Desc` tinytext,
+  `I09` bit(1) NOT NULL,
+  `X09` varchar(20) DEFAULT NULL,
+  `X09Desc` tinytext,
+  `I10` bit(1) NOT NULL,
+  `X10` varchar(20) DEFAULT NULL,
+  `X10Desc` tinytext,
+  `I11` bit(1) NOT NULL,
+  `X11` varchar(20) DEFAULT NULL,
+  `X11Desc` tinytext,
+  `I12` bit(1) NOT NULL,
+  `X12` varchar(20) DEFAULT NULL,
+  `X12Desc` tinytext,
+  `I13` bit(1) NOT NULL,
+  `X13` varchar(20) DEFAULT NULL,
+  `X13Desc` tinytext,
+  `I14` bit(1) NOT NULL,
+  `X14` varchar(20) DEFAULT NULL,
+  `X14Desc` tinytext,
+  `I15` bit(1) NOT NULL,
+  `X15` varchar(20) DEFAULT NULL,
+  `X15Desc` tinytext,
+  `I16` bit(1) NOT NULL,
+  `X16` varchar(20) DEFAULT NULL,
+  `X16Desc` tinytext,
+  `I17` bit(1) NOT NULL,
+  `X17` varchar(20) DEFAULT NULL,
+  `X17Desc` tinytext,
+  `I18` bit(1) NOT NULL,
+  `X18` varchar(20) DEFAULT NULL,
+  `X18Desc` tinytext,
+  `I19` bit(1) NOT NULL,
+  `X19` varchar(20) DEFAULT NULL,
+  `X19Desc` tinytext,
+  `I20` bit(1) NOT NULL,
+  `X20` varchar(20) DEFAULT NULL,
+  `X20Desc` tinytext
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `payfactornames` (`P0`, `K0`, `P0Desc`, `P1`, `K1`, `P1Desc`, `P2`, `K2`, `P2Desc`, `P3`, `K3`, `P3Desc`, `P4`, `K4`, `P4Desc`, `P5`, `K5`, `P5Desc`, `P6`, `K6`, `P6Desc`, `P7`, `K7`, `P7Desc`, `P8`, `K8`, `P8Desc`, `P9`, `K9`, `P9Desc`, `I01`, `X01`, `X01Desc`, `I02`, `X02`, `X02Desc`, `I03`, `X03`, `X03Desc`, `I04`, `X04`, `X04Desc`, `I05`, `X05`, `X05Desc`, `I06`, `X06`, `X06Desc`, `I07`, `X07`, `X07Desc`, `I08`, `X08`, `X08Desc`, `I09`, `X09`, `X09Desc`, `I10`, `X10`, `X10Desc`, `I11`, `X11`, `X11Desc`, `I12`, `X12`, `X12Desc`, `I13`, `X13`, `X13Desc`, `I14`, `X14`, `X14Desc`, `I15`, `X15`, `X15Desc`, `I16`, `X16`, `X16Desc`, `I17`, `X17`, `X17Desc`, `I18`, `X18`, `X18Desc`, `I19`, `X19`, `X19Desc`, `I20`, `X20`, `X20Desc`) VALUES
+('Basic', b'1', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL, b'0', NULL, NULL);
+
+CREATE TABLE `payments` (
+  `PaymentID` int(11) unsigned NOT NULL auto_increment,
+  `OutletID` int(11) DEFAULT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `ProjectID` int(11) DEFAULT NULL,
+  `InvoiceID` int(11) DEFAULT NULL,
+  `PayeeType` varchar(20) NOT NULL,
+  `PayeeID` int(11) DEFAULT NULL,
+  `Payee` varchar(50) NOT NULL,
+  `AccountID` int(11) NOT NULL,
+  `PaymentAmount` decimal(19,4) NOT NULL,
+  `PayAccountBalance` decimal(19,4) DEFAULT NULL,
+  `AccountBalance` decimal(19,4) NOT NULL,
+  `amtwords` tinytext,
+  `PaymentDate` datetime DEFAULT NULL,
+  `PaymentMethod` varchar(50) DEFAULT NULL,
+  `CheckNumber` int(11) DEFAULT NULL,
+  `CreditCardType` int(11) DEFAULT NULL,
+  `CreditCardNumber` varchar(30) DEFAULT NULL,
+  `CardholdersName` varchar(50) DEFAULT NULL,
+  `CreditCardExpDate` datetime DEFAULT NULL,
+  `CreditCardAuthorizationNumber` varchar(30) DEFAULT NULL,
+  `PaymentTerms` varchar(20) DEFAULT NULL,
+  `PaymentMethodID` int(11) DEFAULT NULL,
+  `Notes` tinytext,
+  `Posted` bit(1) NOT NULL,
+  PRIMARY KEY  (`PaymentID`),
+  KEY `OutletID` (`OutletID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `PayeeType` (`PayeeType`),
+  KEY `AccountID` (`AccountID`),
+  KEY `PayeeID` (`PayeeID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `payslip` (
+  `PaySlipID` int(11) unsigned NOT NULL auto_increment,
+  `PayDay` varchar(20) DEFAULT NULL,
+  `StaffID` int(11) DEFAULT NULL,
+  `DateGen` datetime DEFAULT NULL,
+  `periodstart` datetime DEFAULT NULL,
+  `periodend` datetime DEFAULT NULL,
+  `SalaryID` int(11) DEFAULT NULL,
+  `Salary` decimal(19,4) DEFAULT NULL,
+  `Bonuses` decimal(19,4) DEFAULT NULL,
+  `Deductions` decimal(19,4) DEFAULT NULL,
+  `Total` decimal(19,4) DEFAULT NULL,
+  `Details` tinytext,
+  PRIMARY KEY  (`PaySlipID`),
+  KEY `StaffID` (`StaffID`),
+  KEY `SalaryID` (`SalaryID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `paytaxfactors` (
+  `EmployeeID` int(11) DEFAULT NULL,
+  `X01` float DEFAULT NULL,
+  `X02` float DEFAULT NULL,
+  `X03` float DEFAULT NULL,
+  `X04` float DEFAULT NULL,
+  `X05` float DEFAULT NULL,
+  `X06` float DEFAULT NULL,
+  `X07` float DEFAULT NULL,
+  `X08` float DEFAULT NULL,
+  `X09` float DEFAULT NULL,
+  `X10` float DEFAULT NULL,
+  `X11` float DEFAULT NULL,
+  `X12` float DEFAULT NULL,
+  `X13` float DEFAULT NULL,
+  `X14` float DEFAULT NULL,
+  `X15` float DEFAULT NULL,
+  `X16` float DEFAULT NULL,
+  `X17` float DEFAULT NULL,
+  `X18` float DEFAULT NULL,
+  `X19` float DEFAULT NULL,
+  `X20` float DEFAULT NULL,
+  PRIMARY KEY  (`EmployeeID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `paytaxfactors` (`EmployeeID`, `X01`, `X02`, `X03`, `X04`, `X05`, `X06`, `X07`, `X08`, `X09`, `X10`, `X11`, `X12`, `X13`, `X14`, `X15`, `X16`, `X17`, `X18`, `X19`, `X20`) VALUES
+(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+CREATE TABLE `produce` (
+  `ProduceID` int(11) unsigned NOT NULL auto_increment,
+  `ProductionID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `Quantity` float DEFAULT NULL,
+  `prodcost` decimal(19,4) DEFAULT NULL,
+  `LineTotal` decimal(19,4) DEFAULT NULL,
+  `ExpiryDate` datetime DEFAULT NULL,
+  `Expires` bit(1) NOT NULL,
+  PRIMARY KEY  (`ProduceID`),
+  KEY `ProductionID` (`ProductionID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `production` (
+  `ProductionID` int(11) unsigned NOT NULL auto_increment,
+  `Production` varchar(50) DEFAULT NULL,
+  `StartTime` datetime DEFAULT NULL,
+  `EndTime` datetime DEFAULT NULL,
+  `EmployeeID` int(11) DEFAULT NULL,
+  `Notes` mediumtext,
+  PRIMARY KEY  (`ProductionID`),
+  KEY `EmployeeID` (`EmployeeID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `products` (
+  `ProductID` int(11) unsigned NOT NULL auto_increment,
+  `ExoodID` varchar(50) DEFAULT NULL,
+  `ProductName` varchar(20) NOT NULL,
+  `FullName` varchar(50) NOT NULL,
+  `Brand` int(11) NOT NULL,
+  `ProductDescription` tinytext,
+  `category` int(11) NOT NULL,
+  `oldcat` int(11) DEFAULT NULL,
+  `Classification` int(11) NOT NULL,
+  `shelf` int(11) NOT NULL,
+  `colour` varchar(50) DEFAULT NULL,
+  `colorvalue` varchar(50) DEFAULT NULL,
+  `Picture` tinytext,
+  `weight` float DEFAULT NULL,
+  `length` float DEFAULT NULL,
+  `width` float DEFAULT NULL,
+  `breadth` float DEFAULT NULL,
+  `warranty` int(11) DEFAULT NULL,
+  `SupplierID` int(11) NOT NULL,
+  `SerialNumber` varchar(50) DEFAULT NULL,
+  `xbarcodes` tinytext,
+  `unit` int(11) DEFAULT NULL,
+  `unitsinpack` float DEFAULT NULL,
+  `UnitsInStock` float DEFAULT NULL,
+  `actualstock` float DEFAULT NULL,
+  `webstock` int(11) DEFAULT NULL,
+  `UnitsOnOrder` float DEFAULT NULL,
+  `UnitPrice` decimal(19,4) DEFAULT NULL,
+  `WebPrice` decimal(19,4) DEFAULT NULL,
+  `stockcntdate` datetime DEFAULT NULL,
+  `ReorderLevel` float DEFAULT NULL,
+  `IsPackage` bit(1) NOT NULL,
+  `serialized` bit(1) NOT NULL,
+  `Discontinued` bit(1) NOT NULL,
+  `LeadTime` varchar(30) DEFAULT NULL,
+  `serials` mediumtext,
+  `Notes` mediumtext,
+  `pixLoad` bit(1) NOT NULL,
+  `InfoLoad` bit(1) NOT NULL,
+  `StockLoad` bit(1) NOT NULL,
+  `currency` int(11) NOT NULL,
+  `status` smallint(6) NOT NULL,
+  `exoodshop` bit(1) NOT NULL,
+  `exoodsales` bit(1) NOT NULL,
+  PRIMARY KEY  (`ProductID`),
+  KEY `Brand` (`Brand`),
+  KEY `category` (`category`),
+  KEY `Classification` (`Classification`),
+  KEY `shelf` (`shelf`),
+  KEY `warranty` (`warranty`),
+  KEY `SupplierID` (`SupplierID`),
+  KEY `unit` (`unit`),
+  KEY `currency` (`currency`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `projectfiles` (
+  `ProjAttach` int(11) unsigned NOT NULL,
+  `ProjectID` int(11) DEFAULT NULL,
+  `AttachID` int(11) DEFAULT NULL,
+  `AttachType` tinyint(3) unsigned DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `projects` (
+  `ProjectID` int(11) unsigned NOT NULL auto_increment,
+  `ProjectName` varchar(50) DEFAULT NULL,
+  `ProjectDescription` mediumtext,
+  `VendorID` int(11) NOT NULL,
+  `ProjectEstimate` decimal(19,4) DEFAULT NULL,
+  `EmployeeID` int(11) DEFAULT NULL,
+  `ProjectBeginDate` datetime DEFAULT NULL,
+  `ProjectEndDate` datetime DEFAULT NULL,
+  `Closed` bit(1) NOT NULL,
+  PRIMARY KEY  (`ProjectID`),
+  KEY `VendorID` (`VendorID`),
+  KEY `EmployeeID` (`EmployeeID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `recipes` (
+  `RecipeeID` int(11) unsigned NOT NULL auto_increment,
+  `ProductID` int(11) DEFAULT NULL,
+  `ProductionID` int(11) DEFAULT NULL,
+  `Quantity` float NOT NULL,
+  `CostPrice` decimal(19,4) NOT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY  (`RecipeeID`),
+  KEY `ProductID` (`ProductID`),
+  KEY `ProductionID` (`ProductionID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `reports` (
+  `printcode` varchar(50) DEFAULT NULL,
+  `pan` smallint(6) DEFAULT NULL,
+  `lab` smallint(6) DEFAULT NULL,
+  `sub` bit(1) NOT NULL,
+  `level` tinyint(3) unsigned DEFAULT NULL,
+  `qboxtype` tinyint(3) unsigned DEFAULT NULL,
+  `qboxfield` int(11) DEFAULT NULL,
+  `printtype` tinyint(3) unsigned DEFAULT NULL,
+  `fieldid` varchar(20) DEFAULT NULL,
+  `orderkey` varchar(100) DEFAULT NULL,
+  `keycolumn` varchar(20) DEFAULT NULL,
+  `fieldlist` varchar(100) DEFAULT NULL,
+  `keybrace` varchar(2) DEFAULT NULL,
+  `reportfile` varchar(200) DEFAULT NULL,
+  `V0` bit(1) NOT NULL,
+  `head0` varchar(50) DEFAULT NULL,
+  `view0` mediumtext,
+  `V1` bit(1) NOT NULL,
+  `head1` varchar(50) DEFAULT NULL,
+  `view1` mediumtext,
+  `V2` bit(1) NOT NULL,
+  `head2` varchar(50) DEFAULT NULL,
+  `view2` mediumtext,
+  `V3` bit(1) NOT NULL,
+  `head3` varchar(50) DEFAULT NULL,
+  `view3` mediumtext,
+  `V4` bit(1) NOT NULL,
+  `head4` varchar(50) DEFAULT NULL,
+  `view4` mediumtext,
+  `V5` bit(1) NOT NULL,
+  `head5` varchar(50) DEFAULT NULL,
+  `view5` mediumtext,
+  `V6` bit(1) NOT NULL,
+  `head6` varchar(50) DEFAULT NULL,
+  `view6` mediumtext,
+  `V7` bit(1) NOT NULL,
+  `head7` varchar(50) DEFAULT NULL,
+  `view7` mediumtext,
+  `V8` bit(1) NOT NULL,
+  `head8` varchar(50) DEFAULT NULL,
+  `view8` mediumtext,
+  `V9` bit(1) NOT NULL,
+  `head9` varchar(50) DEFAULT NULL,
+  `view9` mediumtext,
+  `Notes` varchar(200) DEFAULT NULL,
+  PRIMARY KEY  (`printcode`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `reqserials` (
+  `transfer_id` int(11) NOT NULL,
+  `Serial` tinytext
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `requisitions` (
+  `RequisitID` int(11) unsigned NOT NULL auto_increment,
+  `Outletout` int(11) DEFAULT NULL,
+  `Outletin` int(11) DEFAULT NULL,
+  `transfertype` tinyint(3) unsigned DEFAULT NULL,
+  `RequestedBy` int(11) NOT NULL,
+  `GivenBy` int(11) DEFAULT NULL,
+  `RequestDate` datetime DEFAULT NULL,
+  `DateGiven` datetime DEFAULT NULL,
+  `Transfered` bit(1) NOT NULL,
+  `ShipTo` tinytext,
+  `Notes` tinytext,
+  PRIMARY KEY  (`RequisitID`),
+  KEY `Outletout` (`Outletout`),
+  KEY `Outletin` (`Outletin`),
+  KEY `transfertype` (`transfertype`),
+  KEY `RequestedBy` (`RequestedBy`),
+  KEY `GivenBy` (`GivenBy`),
+  KEY `Transfered` (`Transfered`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `retserials` (
+  `OrderRetDetID` int(11) NOT NULL,
+  `Serial` tinytext
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `salaryscale` (
+  `SalaryID` int(11) unsigned NOT NULL auto_increment,
+  `SalaryScale` varchar(50) DEFAULT NULL,
+  `period` varchar(20) DEFAULT NULL,
+  `salary` decimal(19,4) DEFAULT NULL,
+  `P0` decimal(19,4) DEFAULT NULL,
+  `P1` decimal(19,4) DEFAULT NULL,
+  `P2` decimal(19,4) DEFAULT NULL,
+  `P3` decimal(19,4) DEFAULT NULL,
+  `P4` decimal(19,4) DEFAULT NULL,
+  `P5` decimal(19,4) DEFAULT NULL,
+  `P6` decimal(19,4) DEFAULT NULL,
+  `P7` decimal(19,4) DEFAULT NULL,
+  `P8` decimal(19,4) DEFAULT NULL,
+  `P9` decimal(19,4) DEFAULT NULL,
+  `scripts` mediumtext,
+  PRIMARY KEY  (`SalaryID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `salaryscale` (`SalaryID`, `SalaryScale`, `period`, `salary`, `P0`, `P1`, `P2`, `P3`, `P4`, `P5`, `P6`, `P7`, `P8`, `P9`, `scripts`) VALUES
+(1, 'Default Salary', 'Monthly', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL);
+
+CREATE TABLE `serviceequip` (
+  `ServeEquipID` int(11) unsigned NOT NULL auto_increment,
+  `ServiceID` int(11) DEFAULT NULL,
+  `EquipID` int(11) DEFAULT NULL,
+  `MachineTime` decimal(19,4) DEFAULT NULL,
+  `ReleasedBy` int(11) DEFAULT NULL,
+  `startdate` datetime DEFAULT NULL,
+  `enddate` datetime DEFAULT NULL,
+  `Notes` tinytext,
+  `Status` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY  (`ServeEquipID`),
+  KEY `EquipID` (`EquipID`),
+  KEY `ServiceID` (`ServiceID`),
+  KEY `ReleasedBy` (`ReleasedBy`),
+  KEY `Status` (`Status`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `serviceinvdetails` (
+  `InvoiceDetailID` int(11) unsigned NOT NULL auto_increment,
+  `InvoiceID` int(11) NOT NULL,
+  `servicecode` int(11) NOT NULL,
+  `service` varchar(50) NOT NULL,
+  `startdate` datetime DEFAULT NULL,
+  `enddate` datetime DEFAULT NULL,
+  `Quantity` float NOT NULL,
+  `UnitCharge` decimal(19,4) NOT NULL,
+  `Discount` decimal(19,4) DEFAULT NULL,
+  `Discnt` float DEFAULT NULL,
+  `ServiceCharge` decimal(19,4) DEFAULT NULL,
+  `TaxRate` float DEFAULT NULL,
+  `TotalValue` decimal(19,4) DEFAULT NULL,
+  `served` bit(1) NOT NULL,
+  `Asset` int(11) DEFAULT NULL,
+  PRIMARY KEY  (`InvoiceDetailID`),
+  KEY `InvoiceID` (`InvoiceID`),
+  KEY `servicecode` (`servicecode`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `services` (
+  `ServiceID` int(11) unsigned NOT NULL auto_increment,
+  `servicecode` varchar(20) NOT NULL,
+  `ExoodID` int(11) DEFAULT NULL,
+  `service` varchar(50) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `Classification` int(11) NOT NULL,
+  `category` int(11) DEFAULT NULL,
+  `department` int(11) DEFAULT NULL,
+  `useasset` bit(1) NOT NULL,
+  `assetcat` int(11) DEFAULT NULL,
+  `quantity` smallint(6) DEFAULT NULL,
+  `charge` decimal(19,4) NOT NULL,
+  `MachineTime` decimal(19,4) DEFAULT NULL,
+  `note` mediumtext,
+  `ExoodBiz` bit(1) NOT NULL,
+  `InfoLoad` bit(1) NOT NULL,
+  `oldcat` varchar(10) DEFAULT NULL,
+  `periodtype` smallint(6) DEFAULT NULL,
+  `timetype` smallint(6) DEFAULT NULL,
+  `starttime` datetime DEFAULT NULL,
+  `endtime` datetime DEFAULT NULL,
+  `periods` smallint(6) DEFAULT NULL,
+  `alertperiod` int(11) DEFAULT NULL,
+  PRIMARY KEY  (`ServiceID`),
+  KEY `Classification` (`Classification`),
+  KEY `Department` (`Department`),
+  KEY `category` (`category`),
+  KEY `periodtype` (`periodtype`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `shelves` (
+  `shelfID` int(11) unsigned NOT NULL auto_increment,
+  `shelf` varchar(50) DEFAULT NULL,
+  `description` tinytext,
+  `category` tinytext,
+  `Classification` int(11) DEFAULT NULL,
+  PRIMARY KEY  (`shelfID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `shelves` (`shelfID`, `shelf`, `description`, `category`, `Classification`) VALUES
+(1, 'N/A', NULL, '1', 2);
+
+CREATE TABLE `shop_transfers` (
+  `transfer_id` int(11) unsigned NOT NULL auto_increment,
+  `RequisitID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `UnitsInStock` float DEFAULT NULL,
+  `Units` float DEFAULT NULL,
+  `ProductName` varchar(50) DEFAULT NULL,
+  `SerialNumber` varchar(50) DEFAULT NULL,
+  `serials` mediumtext,
+  PRIMARY KEY  (`transfer_id`),
+  KEY `RequisitID` (`RequisitID`),
+  KEY `ProductID` (`ProductID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `status` (
+  `CategoryID` int(11) unsigned NOT NULL auto_increment,
+  `Category` varchar(20) DEFAULT NULL,
+  `Description` tinytext,
+  `cattype` varchar(20) DEFAULT NULL,
+  PRIMARY KEY  (`CategoryID`),
+  KEY `cattype` (`cattype`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `status` (`CategoryID`, `Category`, `Description`, `cattype`) VALUES
+(1, 'None', NULL, NULL),
+(2, 'Second(s)', NULL, 'ServiceTimeType'),
+(3, 'Minute(s)', NULL, 'ServiceTimeType'),
+(4, 'Hour(s)', NULL, 'ServiceTimeType'),
+(5, 'Day(s)', NULL, 'ServiceTimeType'),
+(6, 'Month(s)', NULL, 'ServiceTimeType'),
+(7, 'Year(s)', NULL, 'ServiceTimeType'),
+(8, 'None', NULL, 'SrvPeriodType'),
+(9, 'Time Frame', 'Asset is available for deployment', 'SrvPeriodType'),
+(10, 'Time Period', 'Asset is in use', 'SrvPeriodType'),
+(11, 'Store  --> Dept.', NULL, 'TransferType'),
+(12, 'Dept.  --> Store', NULL, 'TransferType'),
+(13, 'Store  --> Outlet', '', 'TransferType'),
+(14, 'Outlet --> Store', '', 'TransferType'),
+(15, 'Outlet --> Outlet', '', 'TransferType'),
+(21, 'Card', '', 'PaymentType'),
+(22, 'Cash', '', 'PaymentType'),
+(23, 'Cheque', '', 'PaymentType'),
+(24, 'Credit', '', 'PaymentType'),
+(25, 'Others', '', 'PaymentType'),
+(26, 'Available', NULL, 'AssetStatus'),
+(27, 'In Use', NULL, 'AssetStatus');
+
+CREATE TABLE `stockdeductions` (
+  `StockDeductID` int(11) unsigned NOT NULL auto_increment,
+  `InvoiceDetailID` int(11) NOT NULL,
+  `OrderDetailID` int(11) NOT NULL,
+  `Units` float DEFAULT NULL,
+  PRIMARY KEY  (`StockDeductID`),
+  KEY `InvoiceDetailID` (`InvoiceDetailID`),
+  KEY `OrderDetailID` (`OrderDetailID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `tasks` (
+  `TaskID` int(11) unsigned NOT NULL auto_increment,
+  `TaskDescription` tinytext,
+  `TaskType` tinyint(3) unsigned DEFAULT NULL,
+  `ServiceID` int(11) DEFAULT NULL,
+  `TaskManager` int(11) DEFAULT NULL,
+  `StartDate` datetime DEFAULT NULL,
+  `EndDate` datetime DEFAULT NULL,
+  `Notes` mediumtext,
+  `Status` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY  (`TaskID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `tasks` (`TaskID`, `TaskDescription`, `TaskType`, `ServiceID`, `TaskManager`, `StartDate`, `EndDate`, `Notes`, `Status`) VALUES
+(1, 'General Task', 1, 0, 0, NULL, NULL, NULL, 1);
+
+CREATE TABLE `taskshedule` (
+  `EmployeeTaskID` int(11) unsigned NOT NULL auto_increment,
+  `Subject` varchar(50) DEFAULT NULL,
+  `EmployeeID` int(11) DEFAULT NULL,
+  `TaskID` int(11) DEFAULT NULL,
+  `StartDate` datetime DEFAULT NULL,
+  `EndDate` datetime DEFAULT NULL,
+  `ResumeDate` datetime DEFAULT NULL,
+  `CloseDate` datetime DEFAULT NULL,
+  `Labour` decimal(19,4) DEFAULT NULL,
+  `Notes` tinytext,
+  `Status` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY  (`EmployeeTaskID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `TaskID` (`TaskID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE `units` (
+  `unitID` int(11) unsigned NOT NULL auto_increment,
+  `unit` varchar(20) DEFAULT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  PRIMARY KEY  (`unitID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `units` (`unitID`, `unit`, `description`) VALUES
+(1, 'Piece', 'Default Unit');
+
+CREATE TABLE `usergroups` (
+  `usergroup` varchar(20) DEFAULT NULL,
+  `10` bit(1) NOT NULL,
+  `11` bit(1) NOT NULL,
+  `11edit` bit(1) NOT NULL,
+  `11print` bit(1) NOT NULL,
+  `111` bit(1) NOT NULL,
+  `111edit` bit(1) NOT NULL,
+  `111add` bit(1) NOT NULL,
+  `111del` bit(1) NOT NULL,
+  `12` bit(1) NOT NULL,
+  `12edit` bit(1) NOT NULL,
+  `12add` bit(1) NOT NULL,
+  `12del` bit(1) NOT NULL,
+  `12print` bit(1) NOT NULL,
+  `13` bit(1) NOT NULL,
+  `13edit` bit(1) NOT NULL,
+  `13add` bit(1) NOT NULL,
+  `13del` bit(1) NOT NULL,
+  `13print` bit(1) NOT NULL,
+  `14` bit(1) NOT NULL,
+  `14edit` bit(1) NOT NULL,
+  `14add` bit(1) NOT NULL,
+  `14del` bit(1) NOT NULL,
+  `14print` bit(1) NOT NULL,
+  `141` bit(1) NOT NULL,
+  `141edit` bit(1) NOT NULL,
+  `141add` bit(1) NOT NULL,
+  `141del` bit(1) NOT NULL,
+  `141print` bit(1) NOT NULL,
+  `15` bit(1) NOT NULL,
+  `15edit` bit(1) NOT NULL,
+  `15add` bit(1) NOT NULL,
+  `15del` bit(1) NOT NULL,
+  `15print` bit(1) NOT NULL,
+  `16` bit(1) NOT NULL,
+  `16edit` bit(1) NOT NULL,
+  `16add` bit(1) NOT NULL,
+  `16del` bit(1) NOT NULL,
+  `16print` bit(1) NOT NULL,
+  `161` bit(1) NOT NULL,
+  `16preview` bit(1) NOT NULL,
+  `16setup` bit(1) NOT NULL,
+  `17` bit(1) NOT NULL,
+  `17browser` bit(1) NOT NULL,
+  `17update` bit(1) NOT NULL,
+  `17print` bit(1) NOT NULL,
+  `18` bit(1) NOT NULL,
+  `18edit` bit(1) NOT NULL,
+  `18add` bit(1) NOT NULL,
+  `18del` bit(1) NOT NULL,
+  `18print` bit(1) NOT NULL,
+  `20` bit(1) NOT NULL,
+  `21` bit(1) NOT NULL,
+  `21edit` bit(1) NOT NULL,
+  `21add` bit(1) NOT NULL,
+  `21del` bit(1) NOT NULL,
+  `21print` bit(1) NOT NULL,
+  `22` bit(1) NOT NULL,
+  `22edit` bit(1) NOT NULL,
+  `22add` bit(1) NOT NULL,
+  `22del` bit(1) NOT NULL,
+  `22print` bit(1) NOT NULL,
+  `23` bit(1) NOT NULL,
+  `23edit` bit(1) NOT NULL,
+  `23add` bit(1) NOT NULL,
+  `23del` bit(1) NOT NULL,
+  `23print` bit(1) NOT NULL,
+  `24` bit(1) NOT NULL,
+  `24edit` bit(1) NOT NULL,
+  `24add` bit(1) NOT NULL,
+  `24del` bit(1) NOT NULL,
+  `24print` bit(1) NOT NULL,
+  `25` bit(1) NOT NULL,
+  `25edit` bit(1) NOT NULL,
+  `25add` bit(1) NOT NULL,
+  `25del` bit(1) NOT NULL,
+  `25print` bit(1) NOT NULL,
+  `26` bit(1) NOT NULL,
+  `26edit` bit(1) NOT NULL,
+  `26add` bit(1) NOT NULL,
+  `26del` bit(1) NOT NULL,
+  `26print` bit(1) NOT NULL,
+  `27` bit(1) NOT NULL,
+  `27edit` bit(1) NOT NULL,
+  `27add` bit(1) NOT NULL,
+  `27del` bit(1) NOT NULL,
+  `27print` bit(1) NOT NULL,
+  `28` bit(1) NOT NULL,
+  `28edit` bit(1) NOT NULL,
+  `28add` bit(1) NOT NULL,
+  `28del` bit(1) NOT NULL,
+  `28print` bit(1) NOT NULL,
+  `30` bit(1) NOT NULL,
+  `31` bit(1) NOT NULL,
+  `31edit` bit(1) NOT NULL,
+  `31add` bit(1) NOT NULL,
+  `31del` bit(1) NOT NULL,
+  `31print` bit(1) NOT NULL,
+  `32` bit(1) NOT NULL,
+  `32edit` bit(1) NOT NULL,
+  `32add` bit(1) NOT NULL,
+  `32del` bit(1) NOT NULL,
+  `32print` bit(1) NOT NULL,
+  `33` bit(1) NOT NULL,
+  `33edit` bit(1) NOT NULL,
+  `33add` bit(1) NOT NULL,
+  `33del` bit(1) NOT NULL,
+  `33print` bit(1) NOT NULL,
+  `34` bit(1) NOT NULL,
+  `34edit` bit(1) NOT NULL,
+  `34add` bit(1) NOT NULL,
+  `34del` bit(1) NOT NULL,
+  `34print` bit(1) NOT NULL,
+  `35` bit(1) NOT NULL,
+  `35edit` bit(1) NOT NULL,
+  `35add` bit(1) NOT NULL,
+  `35del` bit(1) NOT NULL,
+  `35print` bit(1) NOT NULL,
+  `40` bit(1) NOT NULL,
+  `41` bit(1) NOT NULL,
+  `41edit` bit(1) NOT NULL,
+  `41add` bit(1) NOT NULL,
+  `41del` bit(1) NOT NULL,
+  `41print` bit(1) NOT NULL,
+  `42` bit(1) NOT NULL,
+  `42edit` bit(1) NOT NULL,
+  `42add` bit(1) NOT NULL,
+  `42del` bit(1) NOT NULL,
+  `42print` bit(1) NOT NULL,
+  `43` bit(1) NOT NULL,
+  `43edit` bit(1) NOT NULL,
+  `43add` bit(1) NOT NULL,
+  `43del` bit(1) NOT NULL,
+  `43print` bit(1) NOT NULL,
+  `44` bit(1) NOT NULL,
+  `44edit` bit(1) NOT NULL,
+  `44add` bit(1) NOT NULL,
+  `44del` bit(1) NOT NULL,
+  `44print` bit(1) NOT NULL,
+  `45` bit(1) NOT NULL,
+  `45edit` bit(1) NOT NULL,
+  `45add` bit(1) NOT NULL,
+  `45del` bit(1) NOT NULL,
+  `45print` bit(1) NOT NULL,
+  `46` bit(1) NOT NULL,
+  `46edit` bit(1) NOT NULL,
+  `46add` bit(1) NOT NULL,
+  `46del` bit(1) NOT NULL,
+  `46print` bit(1) NOT NULL,
+  `50` bit(1) NOT NULL,
+  `51` bit(1) NOT NULL,
+  `51edit` bit(1) NOT NULL,
+  `51add` bit(1) NOT NULL,
+  `51del` bit(1) NOT NULL,
+  `51print` bit(1) NOT NULL,
+  `52` bit(1) NOT NULL,
+  `52edit` bit(1) NOT NULL,
+  `52add` bit(1) NOT NULL,
+  `52del` bit(1) NOT NULL,
+  `52print` bit(1) NOT NULL,
+  `52price` bit(1) NOT NULL,
+  `521` bit(1) NOT NULL,
+  `521edit` bit(1) NOT NULL,
+  `53` bit(1) NOT NULL,
+  `53edit` bit(1) NOT NULL,
+  `53add` bit(1) NOT NULL,
+  `53del` bit(1) NOT NULL,
+  `53post` bit(1) NOT NULL,
+  `53det` bit(1) NOT NULL,
+  `53print` bit(1) NOT NULL,
+  `54` bit(1) NOT NULL,
+  `54edit` bit(1) NOT NULL,
+  `54add` bit(1) NOT NULL,
+  `54del` bit(1) NOT NULL,
+  `54print` bit(1) NOT NULL,
+  `55` bit(1) NOT NULL,
+  `55edit` bit(1) NOT NULL,
+  `55add` bit(1) NOT NULL,
+  `55del` bit(1) NOT NULL,
+  `55Post` bit(1) NOT NULL,
+  `55print` bit(1) NOT NULL,
+  `56` bit(1) NOT NULL,
+  `56edit` bit(1) NOT NULL,
+  `56add` bit(1) NOT NULL,
+  `56del` bit(1) NOT NULL,
+  `56Post` bit(1) NOT NULL,
+  `56print` bit(1) NOT NULL,
+  `57` bit(1) NOT NULL,
+  `57edit` bit(1) NOT NULL,
+  `57add` bit(1) NOT NULL,
+  `57del` bit(1) NOT NULL,
+  `57post` bit(1) NOT NULL,
+  `57print` bit(1) NOT NULL,
+  `60` bit(1) NOT NULL,
+  `61` bit(1) NOT NULL,
+  `61edit` bit(1) NOT NULL,
+  `61add` bit(1) NOT NULL,
+  `61del` bit(1) NOT NULL,
+  `61post` bit(1) NOT NULL,
+  `61print` bit(1) NOT NULL,
+  `61Rate` bit(1) NOT NULL,
+  `61unlock` bit(1) NOT NULL,
+  `611` bit(1) NOT NULL,
+  `612` bit(1) NOT NULL,
+  `62` bit(1) NOT NULL,
+  `62edit` bit(1) NOT NULL,
+  `62add` bit(1) NOT NULL,
+  `62del` bit(1) NOT NULL,
+  `62post` bit(1) NOT NULL,
+  `62print` bit(1) NOT NULL,
+  `63` bit(1) NOT NULL,
+  `63edit` bit(1) NOT NULL,
+  `63add` bit(1) NOT NULL,
+  `63del` bit(1) NOT NULL,
+  `63post` bit(1) NOT NULL,
+  `63print` bit(1) NOT NULL,
+  `64` bit(1) NOT NULL,
+  `64edit` bit(1) NOT NULL,
+  `64add` bit(1) NOT NULL,
+  `64del` bit(1) NOT NULL,
+  `64post` bit(1) NOT NULL,
+  `64print` bit(1) NOT NULL,
+  `65` bit(1) NOT NULL,
+  `65edit` bit(1) NOT NULL,
+  `65add` bit(1) NOT NULL,
+  `65del` bit(1) NOT NULL,
+  `65print` bit(1) NOT NULL,
+  `66` bit(1) NOT NULL,
+  `66edit` bit(1) NOT NULL,
+  `66add` bit(1) NOT NULL,
+  `66del` bit(1) NOT NULL,
+  `66print` bit(1) NOT NULL,
+  `600` bit(1) NOT NULL,
+  `70` bit(1) NOT NULL,
+  `71` bit(1) NOT NULL,
+  `71edit` bit(1) NOT NULL,
+  `71add` bit(1) NOT NULL,
+  `71del` bit(1) NOT NULL,
+  `71print` bit(1) NOT NULL,
+  PRIMARY KEY  (`usergroup`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `usergroups` (`usergroup`, `10`, `11`, `11edit`, `11print`, `111`, `111edit`, `111add`, `111del`, `12`, `12edit`, `12add`, `12del`, `12print`, `13`, `13edit`, `13add`, `13del`, `13print`, `14`, `14edit`, `14add`, `14del`, `14print`, `141`, `141edit`, `141add`, `141del`, `141print`, `15`, `15edit`, `15add`, `15del`, `15print`, `16`, `16edit`, `16add`, `16del`, `16print`, `161`, `16preview`, `16setup`, `17`, `17browser`, `17update`, `17print`, `18`, `18edit`, `18add`, `18del`, `18print`, `20`, `21`, `21edit`, `21add`, `21del`, `21print`, `22`, `22edit`, `22add`, `22del`, `22print`, `23`, `23edit`, `23add`, `23del`, `23print`, `24`, `24edit`, `24add`, `24del`, `24print`, `25`, `25edit`, `25add`, `25del`, `25print`, `26`, `26edit`, `26add`, `26del`, `26print`, `27`, `27edit`, `27add`, `27del`, `27print`, `28`, `28edit`, `28add`, `28del`, `28print`, `30`, `31`, `31edit`, `31add`, `31del`, `31print`, `32`, `32edit`, `32add`, `32del`, `32print`, `33`, `33edit`, `33add`, `33del`, `33print`, `34`, `34edit`, `34add`, `34del`, `34print`, `35`, `35edit`, `35add`, `35del`, `35print`, `40`, `41`, `41edit`, `41add`, `41del`, `41print`, `42`, `42edit`, `42add`, `42del`, `42print`, `43`, `43edit`, `43add`, `43del`, `43print`, `44`, `44edit`, `44add`, `44del`, `44print`, `45`, `45edit`, `45add`, `45del`, `45print`, `46`, `46edit`, `46add`, `46del`, `46print`, `50`, `51`, `51edit`, `51add`, `51del`, `51print`, `52`, `52edit`, `52add`, `52del`, `52print`, `52price`, `521`, `521edit`, `53`, `53edit`, `53add`, `53del`, `53post`, `53det`, `53print`, `54`, `54edit`, `54add`, `54del`, `54print`, `55`, `55edit`, `55add`, `55del`, `55Post`, `55print`, `56`, `56edit`, `56add`, `56del`, `56Post`, `56print`, `57`, `57edit`, `57add`, `57del`, `57post`, `57print`, `60`, `61`, `61edit`, `61add`, `61del`, `61post`, `61print`, `61Rate`, `61unlock`, `611`, `612`, `62`, `62edit`, `62add`, `62del`, `62post`, `62print`, `63`, `63edit`, `63add`, `63del`, `63post`, `63print`, `64`, `64edit`, `64add`, `64del`, `64post`, `64print`, `65`, `65edit`, `65add`, `65del`, `65print`, `66`, `66edit`, `66add`, `66del`, `66print`, `600`, `70`, `71`, `71edit`, `71add`, `71del`, `71print`) VALUES
+('Admin', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1'),
+('NoAccess', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0'),
+('Sales', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'1', b'0', b'0', b'1', b'0', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'1', b'0', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'0', b'1', b'1', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'1'),
+('Management', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'0', b'1', b'0', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0'),
+('Store', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0');
+
+CREATE TABLE `users` (
+  `username` varchar(20) DEFAULT NULL,
+  `userpass` varchar(20) DEFAULT NULL,
+  `usergroup` varchar(20) DEFAULT NULL,
+  `EmployeeID` int(11) DEFAULT NULL,
+  PRIMARY KEY  (`username`),
+  KEY `EmployeeID` (`EmployeeID`),
+  KEY `usergroup` (`usergroup`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`username`, `userpass`, `usergroup`, `EmployeeID`) VALUES
+('Admin', '1', 'Admin', 1);
+
+CREATE TABLE `vendors` (
+  `VendorID` int(11) unsigned NOT NULL auto_increment,
+  `vendorcode` varchar(20) DEFAULT NULL,
+  `CompanyName` varchar(50) DEFAULT NULL,
+  `parentcompany` int(11) DEFAULT NULL,
+  `VendorType` tinyint(3) unsigned DEFAULT NULL,
+  `ClientType` int(11) DEFAULT NULL,
+  `InUse` bit(1) NOT NULL,
+  `ContactTitle` varchar(50) DEFAULT NULL,
+  `ContactFirstName` varchar(30) DEFAULT NULL,
+  `ContactMidName` varchar(30) DEFAULT NULL,
+  `ContactLastName` varchar(50) DEFAULT NULL,
+  `CompanyOrDepartment` varchar(50) DEFAULT NULL,
+  `BillingAddress` tinytext,
+  `City` varchar(50) DEFAULT NULL,
+  `StateOrProvince` varchar(30) DEFAULT NULL,
+  `Country` smallint(6) DEFAULT NULL,
+  `PostalCode` varchar(100) DEFAULT NULL,
+  `PhoneNumber` varchar(30) DEFAULT NULL,
+  `MobilePhone` varchar(30) DEFAULT NULL,
+  `FaxNumber` varchar(30) DEFAULT NULL,
+  `Extension` varchar(30) DEFAULT NULL,
+  `EmailAddress` varchar(50) DEFAULT NULL,
+  `Notes` tinytext,
+  `currency` int(11) DEFAULT NULL,
+  `credit` bit(1) NOT NULL,
+  `cheque` bit(1) NOT NULL,
+  `amtbal` decimal(19,4) DEFAULT NULL,
+  `creditlimit` decimal(19,4) DEFAULT NULL,
+  `Discount` smallint(6) DEFAULT NULL,
+  `signfile` varchar(50) DEFAULT NULL,
+  `logofile` varchar(50) DEFAULT NULL,
+  `ReferredBy` varchar(50) DEFAULT NULL,
+  `Birthdate` datetime DEFAULT NULL,
+  `LastMeetingDate` datetime DEFAULT NULL,
+  `ContactsInterests` tinytext,
+  `ChildrenNames` tinytext,
+  `categoryid` int(11) DEFAULT NULL,
+  `DeptID` int(11) DEFAULT NULL,
+  `passportno` varchar(20) DEFAULT NULL,
+  `dateofbirth` datetime DEFAULT NULL,
+  `religion` int(11) DEFAULT NULL,
+  `sex` int(11) NOT NULL,
+  `picturefile` tinytext,
+  `spousename` varchar(30) DEFAULT NULL,
+  `ability` int(11) DEFAULT NULL,
+  `workphone` varchar(20) DEFAULT NULL,
+  `nationality` smallint(6) DEFAULT NULL,
+  `stateorigin` varchar(20) DEFAULT NULL,
+  `locgovorigin` varchar(30) DEFAULT NULL,
+  `datehired` datetime DEFAULT NULL,
+  `datefired` datetime DEFAULT NULL,
+  `supervisor` int(11) DEFAULT NULL,
+  `homephone` varchar(20) DEFAULT NULL,
+  `leavstatus` bit(1) NOT NULL,
+  `emertype` varchar(20) DEFAULT NULL,
+  `emername` varchar(50) DEFAULT NULL,
+  `emerphone` varchar(20) DEFAULT NULL,
+  `emeraddress` varchar(100) DEFAULT NULL,
+  `staffrec` mediumtext,
+  `salary` int(11) DEFAULT NULL,
+  `fingerprint` tinytext,
+  PRIMARY KEY  (`VendorID`),
+  KEY `parentcompany` (`parentcompany`),
+  KEY `VendorType` (`VendorType`),
+  KEY `ClientType` (`ClientType`),
+  KEY `Country` (`Country`),
+  KEY `salary` (`salary`),
+  KEY `supervisor` (`supervisor`),
+  KEY `nationality` (`nationality`),
+  KEY `religion` (`religion`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `vendors` (`VendorID`, `vendorcode`, `CompanyName`, `parentcompany`, `VendorType`, `ClientType`, `InUse`, `ContactTitle`, `ContactFirstName`, `ContactMidName`, `ContactLastName`, `CompanyOrDepartment`, `BillingAddress`, `City`, `StateOrProvince`, `Country`, `PostalCode`, `PhoneNumber`, `MobilePhone`, `FaxNumber`, `Extension`, `EmailAddress`, `Notes`, `currency`, `credit`, `cheque`, `amtbal`, `creditlimit`, `Discount`, `signfile`, `logofile`, `ReferredBy`, `Birthdate`, `LastMeetingDate`, `ContactsInterests`, `ChildrenNames`, `categoryid`, `DeptID`, `passportno`, `dateofbirth`, `religion`, `sex`, `picturefile`, `spousename`, `ability`, `workphone`, `nationality`, `stateorigin`, `locgovorigin`, `datehired`, `datefired`, `supervisor`, `homephone`, `leavstatus`, `emertype`, `emername`, `emerphone`, `emeraddress`, `staffrec`, `salary`, `fingerprint`) VALUES
+(1, 'Admin', NULL, NULL, 5, 1, b'1', '', 'Admin', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, b'1', b'1', '0.0000', '0.0000', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Cash at Hand', 'Cash at Hand', NULL, 4, 1, b'1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, b'0', b'0', '0.0000', '0.0000', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'company', 'Company Transactions', NULL, 0, 0, b'1', NULL, NULL, NULL, 'Company Transactions', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, b'1', b'1', '0.0000', '0.0000', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Customer', 'Customer', NULL, 1, 1, b'1', NULL, NULL, NULL, 'Customer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, b'1', b'1', '0.0000', '0.0000', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'Direct', 'Direct Purchase', NULL, 2, 2, b'1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, b'0', b'0', '0.0000', '0.0000', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Vendor', 'Vendor', NULL, 3, 2, b'1', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, b'0', b'0', '0.0000', '0.0000', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+CREATE TABLE `warranty` (
+  `Waranty` int(11) unsigned NOT NULL auto_increment,
+  `WarantyCode` varchar(50) DEFAULT NULL,
+  `PeriodType` tinyint(3) unsigned DEFAULT NULL,
+  `Duration` smallint(6) DEFAULT NULL,
+  `Warantee` mediumtext,
+  PRIMARY KEY  (`Waranty`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+INSERT INTO `warranty` (`Waranty`, `WarantyCode`, `PeriodType`, `Duration`, `Warantee`) VALUES
+(1, 'N/A', 0, 0, NULL);
+
+ALTER TABLE `assets`
+  ADD CONSTRAINT `assets_ibfk_1` FOREIGN KEY (`dept`) REFERENCES `classifications` (`catID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `assets_ibfk_2` FOREIGN KEY (`Category`) REFERENCES `status` (`CategoryID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `assets_ibfk_4` FOREIGN KEY (`Status`) REFERENCES `status` (`CategoryID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `assets_ibfk_5` FOREIGN KEY (`purchfrom`) REFERENCES `vendors` (`VendorID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `assets_ibfk_6` FOREIGN KEY (`insurers`) REFERENCES `vendors` (`VendorID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `assets_ibfk_7` FOREIGN KEY (`servcomp`) REFERENCES `vendors` (`VendorID`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE `bills`
+  ADD CONSTRAINT `bills_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `bills_ibfk_2` FOREIGN KEY (`VendorID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `bills_ibfk_3` FOREIGN KEY (`BillType`) REFERENCES `status` (`CategoryID`) ON UPDATE CASCADE;
+
+ALTER TABLE `classifications`
+  ADD CONSTRAINT `classifications_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `classifications` (`category_id`) ON UPDATE CASCADE;
+
+ALTER TABLE `deliveries`
+  ADD CONSTRAINT `deliveries_ibfk_1` FOREIGN KEY (`ShipperID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `deliveries_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `depreciation`
+  ADD CONSTRAINT `depreciation_ibfk_1` FOREIGN KEY (`EquipID`) REFERENCES `assets` (`AssetID`) ON UPDATE CASCADE;
+
+ALTER TABLE `deptstock`
+  ADD CONSTRAINT `deptstock_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `deptstock_ibfk_2` FOREIGN KEY (`OutletID`) REFERENCES `classifications` (`catID`) ON UPDATE CASCADE;
+
+ALTER TABLE `deptstockded`
+  ADD CONSTRAINT `deptstockded_ibfk_1` FOREIGN KEY (`DeptID`) REFERENCES `classifications` (`catID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `deptstockded_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE;
+
+ALTER TABLE `documentfiles`
+  ADD CONSTRAINT `documentfiles_ibfk_1` FOREIGN KEY (`OwnerID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `documentfiles_ibfk_2` FOREIGN KEY (`fileCat`) REFERENCES `classifications` (`catID`) ON UPDATE CASCADE;
+
+ALTER TABLE `expenses`
+  ADD CONSTRAINT `expenses_ibfk_1` FOREIGN KEY (`AccountID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `expenses_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `expenses_ibfk_3` FOREIGN KEY (`AuthorizedBy`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `expenses_ibfk_4` FOREIGN KEY (`RecipientID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `expenses_ibfk_5` FOREIGN KEY (`ExpenseType`) REFERENCES `status` (`CategoryID`) ON UPDATE CASCADE;
+
+ALTER TABLE `hourclock`
+  ADD CONSTRAINT `hourclock_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `invoicedetails`
+  ADD CONSTRAINT `invoicedetails_ibfk_1` FOREIGN KEY (`InvoiceID`) REFERENCES `invoices` (`InvoiceID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoicedetails_ibfk_2` FOREIGN KEY (`DeliveryID`) REFERENCES `deliveries` (`DeliveryID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoicedetails_ibfk_3` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE;
+
+ALTER TABLE `invoices`
+  ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`OutletID`) REFERENCES `outlets` (`OutletID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoices_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoices_ibfk_3` FOREIGN KEY (`CustomerID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `maintenance`
+  ADD CONSTRAINT `maintenance_ibfk_1` FOREIGN KEY (`EquipID`) REFERENCES `assets` (`AssetID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `maintenance_ibfk_2` FOREIGN KEY (`VendorID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `orderdetails`
+  ADD CONSTRAINT `orderdetails_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE;
+
+ALTER TABLE `orderreturndet`
+  ADD CONSTRAINT `orderreturndet_ibfk_1` FOREIGN KEY (`OrderDetailID`) REFERENCES `orderdetails` (`OrderDetailID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `orderreturndet_ibfk_2` FOREIGN KEY (`OrderRetID`) REFERENCES `orderreturns` (`OrderRetID`) ON UPDATE CASCADE;
+
+ALTER TABLE `orderreturns`
+  ADD CONSTRAINT `orderreturns_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `orderreturns_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_10` FOREIGN KEY (`Currency`) REFERENCES `currencies` (`cur_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_7` FOREIGN KEY (`SupplierID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_8` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_9` FOREIGN KEY (`ShopCurrency`) REFERENCES `currencies` (`cur_id`) ON UPDATE CASCADE;
+
+ALTER TABLE `outlet`
+  ADD CONSTRAINT `outlet_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `outlet_ibfk_2` FOREIGN KEY (`OutletID`) REFERENCES `outlets` (`OutletID`) ON UPDATE CASCADE;
+
+ALTER TABLE `outlets`
+  ADD CONSTRAINT `outlets_ibfk_1` FOREIGN KEY (`Dept`) REFERENCES `classifications` (`catID`) ON UPDATE CASCADE;
+
+ALTER TABLE `outletstaff`
+  ADD CONSTRAINT `outletstaff_ibfk_1` FOREIGN KEY (`OutletID`) REFERENCES `outlets` (`OutletID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `outletstaff_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `packageitems`
+  ADD CONSTRAINT `packageitems_ibfk_1` FOREIGN KEY (`PackageID`) REFERENCES `packages` (`PackageID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `packageitems_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE;
+
+ALTER TABLE `packages`
+  ADD CONSTRAINT `packages_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE;
+
+ALTER TABLE `packageservices`
+  ADD CONSTRAINT `packageservices_ibfk_1` FOREIGN KEY (`PackageID`) REFERENCES `packages` (`PackageID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `packageservices_ibfk_2` FOREIGN KEY (`servicecode`) REFERENCES `services` (`ServiceID`) ON UPDATE CASCADE;
+
+ALTER TABLE `payments`
+  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`OutletID`) REFERENCES `outlets` (`OutletID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `payments_ibfk_3` FOREIGN KEY (`PayeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `payments_ibfk_4` FOREIGN KEY (`AccountID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `payslip`
+  ADD CONSTRAINT `payslip_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `payslip_ibfk_2` FOREIGN KEY (`SalaryID`) REFERENCES `salaryscale` (`SalaryID`) ON UPDATE CASCADE;
+
+ALTER TABLE `paytaxfactors`
+  ADD CONSTRAINT `paytaxfactors_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `produce`
+  ADD CONSTRAINT `produce_ibfk_1` FOREIGN KEY (`ProductionID`) REFERENCES `production` (`ProductionID`) ON UPDATE CASCADE;
+
+ALTER TABLE `production`
+  ADD CONSTRAINT `production_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_10` FOREIGN KEY (`warranty`) REFERENCES `warranty` (`Waranty`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_11` FOREIGN KEY (`SupplierID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_12` FOREIGN KEY (`unit`) REFERENCES `units` (`unitID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_13` FOREIGN KEY (`currency`) REFERENCES `currencies` (`cur_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_7` FOREIGN KEY (`Brand`) REFERENCES `brands` (`brandID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_8` FOREIGN KEY (`Classification`) REFERENCES `classifications` (`catID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_9` FOREIGN KEY (`shelf`) REFERENCES `shelves` (`shelfID`) ON UPDATE CASCADE;
+
+ALTER TABLE `projects`
+  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`VendorID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `recipes`
+  ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `recipes_ibfk_2` FOREIGN KEY (`ProductionID`) REFERENCES `production` (`ProductionID`) ON UPDATE CASCADE;
+
+ALTER TABLE `requisitions`
+  ADD CONSTRAINT `requisitions_ibfk_1` FOREIGN KEY (`Outletout`) REFERENCES `outlets` (`OutletID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `requisitions_ibfk_2` FOREIGN KEY (`Outletin`) REFERENCES `outlets` (`OutletID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `requisitions_ibfk_3` FOREIGN KEY (`RequestedBy`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `requisitions_ibfk_4` FOREIGN KEY (`GivenBy`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE;
+
+ALTER TABLE `serviceequip`
+  ADD CONSTRAINT `serviceequip_ibfk_1` FOREIGN KEY (`EquipID`) REFERENCES `assets` (`AssetID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `serviceequip_ibfk_3` FOREIGN KEY (`ServiceID`) REFERENCES `services` (`ServiceID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `serviceequip_ibfk_4` FOREIGN KEY (`ReleasedBy`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `serviceequip_ibfk_5` FOREIGN KEY (`Status`) REFERENCES `status` (`CategoryID`) ON UPDATE CASCADE;
+
+ALTER TABLE `serviceinvdetails`
+  ADD CONSTRAINT `serviceinvdetails_ibfk_5` FOREIGN KEY (`InvoiceID`) REFERENCES `invoices` (`InvoiceID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `serviceinvdetails_ibfk_6` FOREIGN KEY (`servicecode`) REFERENCES `services` (`ServiceID`) ON UPDATE CASCADE;
+
+ALTER TABLE `services`
+  ADD CONSTRAINT `services_ibfk_1` FOREIGN KEY (`Classification`) REFERENCES `classifications` (`catID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `services_ibfk_2` FOREIGN KEY (`Department`) REFERENCES `classifications` (`catID`) ON UPDATE CASCADE;
+
+ALTER TABLE `shop_transfers`
+  ADD CONSTRAINT `shop_transfers_ibfk_1` FOREIGN KEY (`RequisitID`) REFERENCES `requisitions` (`RequisitID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `shop_transfers_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON UPDATE CASCADE;
+
+ALTER TABLE `stockdeductions`
+  ADD CONSTRAINT `stockdeductions_ibfk_1` FOREIGN KEY (`InvoiceDetailID`) REFERENCES `invoicedetails` (`InvoiceDetailID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `stockdeductions_ibfk_2` FOREIGN KEY (`OrderDetailID`) REFERENCES `orderdetails` (`OrderDetailID`) ON UPDATE CASCADE;
+
+ALTER TABLE `taskshedule`
+  ADD CONSTRAINT `taskshedule_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `taskshedule_ibfk_2` FOREIGN KEY (`TaskID`) REFERENCES `tasks` (`TaskID`) ON UPDATE CASCADE;
+
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`usergroup`) REFERENCES `usergroups` (`usergroup`) ON UPDATE CASCADE;
+
+ALTER TABLE `Vendors`
+  ADD CONSTRAINT `clients_ibfk_6` FOREIGN KEY (`supervisor`) REFERENCES `vendors` (`VendorID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `clients_ibfk_8` FOREIGN KEY (`parentcompany`) REFERENCES `vendors` (`VendorID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `clients_ibfk_9` FOREIGN KEY (`salary`) REFERENCES `salaryscale` (`SalaryID`) ON UPDATE CASCADE;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `alloutlets` AS select 0 AS `OutletID`,'Store' AS `OutletName` from `classifications` union select `classifications`.`catID` AS `OutletID`,`classifications`.`category_name` AS `OutletName` from `classifications` where (`classifications`.`catype` = 1) union select `outlets`.`OutletID` AS `OutletID`,`outlets`.`OutletName` AS `OutletName` from `outlets`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `VendorID` AS select `vendors`.`VendorID` AS `VendorID`,if((`vendors`.`ClientType` = 2),`vendors`.`CompanyName`,concat(`vendors`.`ContactLastName`,' ',`vendors`.`ContactFirstName`,' ',`vendors`.`ContactMidName`,' (',`vendors`.`ContactTitle`,')')) AS `VendorName`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`InUse` AS `InUse`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount` from `vendors`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vstaffid` AS select `vendors`.`VendorID` AS `VendorID`,concat(`vendors`.`ContactTitle`,' ',`vendors`.`ContactFirstName`,' ',`vendors`.`ContactMidName`,' ',`vendors`.`ContactLastName`) AS `VendorName`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`InUse` AS `InUse`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount`,`currencies`.`currencyname` AS `currencyname`,`currencies`.`unitname` AS `unitname`,`currencies`.`fromrate` AS `fromrate`,`currencies`.`torate` AS `torate` from (`vendors` join `currencies` on((`vendors`.`currency` = `currencies`.`cur_id`))) where (`vendors`.`VendorType` = 5);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `allshops` AS select (`products`.`ProductID` * 100) AS `ID`,`products`.`ProductID` AS `ProductID`,`products`.`serials` AS `serials`,0 AS `OutletID`,`products`.`shelf` AS `Shopshelf`,`products`.`UnitsInStock` AS `ShopStock`,`products`.`actualstock` AS `Shopactlstock`,`products`.`stockcntdate` AS `Shopstkcntdate`,`products`.`ReorderLevel` AS `Shoplevel`,`products`.`Notes` AS `ShopNotes` from `products` union select `outlet`.`ID` AS `ID`,`outlet`.`ProductID` AS `ProductID`,`outlet`.`serials` AS `serials`,`outlet`.`OutletID` AS `OutletID`,`outlet`.`Shopshelf` AS `Shopshelf`,`outlet`.`ShopStock` AS `ShopStock`,`outlet`.`Shopactlstock` AS `Shopactlstock`,`outlet`.`Shopstkcntdate` AS `Shopstkcntdate`,`outlet`.`Shoplevel` AS `Shoplevel`,`outlet`.`ShopNotes` AS `ShopNotes` from `outlet` union select `deptstock`.`ID` AS `ID`,`deptstock`.`ProductID` AS `ProductID`,`deptstock`.`serials` AS `serials`,`deptstock`.`OutletID` AS `OutletID`,`deptstock`.`shelf` AS `Shopshelf`,`deptstock`.`ShopStock` AS `ShopStock`,`deptstock`.`actlstock` AS `Shopactlstock`,`deptstock`.`stkcntdate` AS `Shopstkcntdate`,`deptstock`.`deptlevel` AS `Shoplevel`,`deptstock`.`Notes` AS `ShopNotes` from `deptstock`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `assetcat` AS select `classifications`.`catID` AS `catID`,`classifications`.`category_id` AS `category_id`,`classifications`.`parent_id` AS `parent_id`,`classifications`.`category_name` AS `category_name`,`classifications`.`catname` AS `catname`,`classifications`.`catype` AS `catype`,`classifications`.`pix` AS `pix`,`classifications`.`description` AS `description` from `classifications` where (`classifications`.`catype` = 4);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `assetlist` AS select `assets`.`AssetID` AS `AssetID`,`assets`.`AssetName` AS `AssetName`,`assets`.`AssetType` AS `AssetType`,if((`assets`.`AssetType` = 1),'Equipment',if((`assets`.`AssetType` = 2),'Vehicle',if((`assets`.`AssetType` = 3),'Facility','N/A'))) AS `AssType`,`assets`.`Status` AS `Status`,`status`.`Category` AS `AssetStatus`,`assets`.`Category` AS `Category`,`classifications`.`catname` AS `AssetCat`,`assets`.`dept` AS `dept`,`assets`.`occupant` AS `occupant`,`VendorID`.`VendorName` AS `VendorName`,`assets`.`Capacity` AS `Capacity`,`assets`.`Adults` AS `Adults`,`assets`.`Children` AS `Children`,`assets`.`Brand` AS `Brand`,`assets`.`Model` AS `Model`,`assets`.`licenceno` AS `licenceno` from (((`assets` left join `VendorID` on((`assets`.`occupant` = `VendorID`.`VendorID`))) left join `status` on((`assets`.`Status` = `status`.`CategoryID`))) left join `classifications` on((`assets`.`Category` = `classifications`.`catID`))) where (`assets`.`InUse` = 1);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `assetstatus` AS select `status`.`CategoryID` AS `CategoryID`,`status`.`Category` AS `Category`,`status`.`Description` AS `Description`,`status`.`cattype` AS `cattype` from `status` where (`status`.`cattype` = 'AssetStatus');
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cashaccounts` AS select `vendors`.`VendorID` AS `VendorID`,`vendors`.`vendorcode` AS `vendorcode`,`vendors`.`CompanyName` AS `CompanyName`,`vendors`.`parentcompany` AS `parentcompany`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`ClientType` AS `ClientType`,`vendors`.`InUse` AS `InUse`,`vendors`.`ContactTitle` AS `ContactTitle`,`vendors`.`ContactFirstName` AS `ContactFirstName`,`vendors`.`ContactMidName` AS `ContactMidName`,`vendors`.`ContactLastName` AS `ContactLastName`,`vendors`.`CompanyOrDepartment` AS `CompanyOrDepartment`,`vendors`.`BillingAddress` AS `BillingAddress`,`vendors`.`City` AS `City`,`vendors`.`StateOrProvince` AS `StateOrProvince`,`vendors`.`Country` AS `Country`,`vendors`.`PostalCode` AS `PostalCode`,`vendors`.`PhoneNumber` AS `PhoneNumber`,`vendors`.`MobilePhone` AS `MobilePhone`,`vendors`.`FaxNumber` AS `FaxNumber`,`vendors`.`Extension` AS `Extension`,`vendors`.`EmailAddress` AS `EmailAddress`,`vendors`.`Notes` AS `Notes`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount`,`vendors`.`signfile` AS `signfile`,`vendors`.`logofile` AS `logofile`,`vendors`.`ReferredBy` AS `ReferredBy`,`vendors`.`Birthdate` AS `Birthdate`,`vendors`.`LastMeetingDate` AS `LastMeetingDate`,`vendors`.`ContactsInterests` AS `ContactsInterests`,`vendors`.`ChildrenNames` AS `ChildrenNames`,`vendors`.`categoryid` AS `categoryid`,`vendors`.`DeptID` AS `DeptID`,`vendors`.`passportno` AS `passportno`,`vendors`.`dateofbirth` AS `dateofbirth`,`vendors`.`religion` AS `religion`,`vendors`.`sex` AS `sex`,`vendors`.`picturefile` AS `picturefile`,`vendors`.`spousename` AS `spousename`,`vendors`.`ability` AS `ability`,`vendors`.`workphone` AS `workphone`,`vendors`.`nationality` AS `nationality`,`vendors`.`stateorigin` AS `stateorigin`,`vendors`.`locgovorigin` AS `locgovorigin`,`vendors`.`datehired` AS `datehired`,`vendors`.`datefired` AS `datefired`,`vendors`.`supervisor` AS `supervisor`,`vendors`.`homephone` AS `homephone`,`vendors`.`leavstatus` AS `leavstatus`,`vendors`.`emertype` AS `emertype`,`vendors`.`emername` AS `emername`,`vendors`.`emerphone` AS `emerphone`,`vendors`.`emeraddress` AS `emeraddress`,`vendors`.`staffrec` AS `staffrec`,`vendors`.`salary` AS `salary`,`vendors`.`fingerprint` AS `fingerprint` from `vendors` where (`vendors`.`VendorType` = 4);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `contractors` AS select `vendors`.`VendorID` AS `VendorID`,`vendors`.`vendorcode` AS `vendorcode`,`vendors`.`CompanyName` AS `CompanyName`,`vendors`.`parentcompany` AS `parentcompany`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`ClientType` AS `ClientType`,`vendors`.`InUse` AS `InUse`,`vendors`.`ContactTitle` AS `ContactTitle`,`vendors`.`ContactFirstName` AS `ContactFirstName`,`vendors`.`ContactMidName` AS `ContactMidName`,`vendors`.`ContactLastName` AS `ContactLastName`,`vendors`.`CompanyOrDepartment` AS `CompanyOrDepartment`,`vendors`.`BillingAddress` AS `BillingAddress`,`vendors`.`City` AS `City`,`vendors`.`StateOrProvince` AS `StateOrProvince`,`vendors`.`Country` AS `Country`,`vendors`.`PostalCode` AS `PostalCode`,`vendors`.`PhoneNumber` AS `PhoneNumber`,`vendors`.`MobilePhone` AS `MobilePhone`,`vendors`.`FaxNumber` AS `FaxNumber`,`vendors`.`Extension` AS `Extension`,`vendors`.`EmailAddress` AS `EmailAddress`,`vendors`.`Notes` AS `Notes`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount`,`vendors`.`signfile` AS `signfile`,`vendors`.`logofile` AS `logofile`,`vendors`.`ReferredBy` AS `ReferredBy`,`vendors`.`Birthdate` AS `Birthdate`,`vendors`.`LastMeetingDate` AS `LastMeetingDate`,`vendors`.`ContactsInterests` AS `ContactsInterests`,`vendors`.`ChildrenNames` AS `ChildrenNames`,`vendors`.`categoryid` AS `categoryid`,`vendors`.`DeptID` AS `DeptID`,`vendors`.`passportno` AS `passportno`,`vendors`.`dateofbirth` AS `dateofbirth`,`vendors`.`religion` AS `religion`,`vendors`.`sex` AS `sex`,`vendors`.`picturefile` AS `picturefile`,`vendors`.`spousename` AS `spousename`,`vendors`.`ability` AS `ability`,`vendors`.`workphone` AS `workphone`,`vendors`.`nationality` AS `nationality`,`vendors`.`stateorigin` AS `stateorigin`,`vendors`.`locgovorigin` AS `locgovorigin`,`vendors`.`datehired` AS `datehired`,`vendors`.`datefired` AS `datefired`,`vendors`.`supervisor` AS `supervisor`,`vendors`.`homephone` AS `homephone`,`vendors`.`leavstatus` AS `leavstatus`,`vendors`.`emertype` AS `emertype`,`vendors`.`emername` AS `emername`,`vendors`.`emerphone` AS `emerphone`,`vendors`.`emeraddress` AS `emeraddress`,`vendors`.`staffrec` AS `staffrec`,`vendors`.`salary` AS `salary`,`vendors`.`fingerprint` AS `fingerprint` from `vendors` where (`vendors`.`VendorType` = 3);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `customers` AS select `vendors`.`VendorID` AS `VendorID`,`vendors`.`vendorcode` AS `vendorcode`,`vendors`.`CompanyName` AS `CompanyName`,`vendors`.`parentcompany` AS `parentcompany`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`ClientType` AS `ClientType`,`vendors`.`InUse` AS `InUse`,`vendors`.`ContactTitle` AS `ContactTitle`,`vendors`.`ContactFirstName` AS `ContactFirstName`,`vendors`.`ContactMidName` AS `ContactMidName`,`vendors`.`ContactLastName` AS `ContactLastName`,`vendors`.`CompanyOrDepartment` AS `CompanyOrDepartment`,`vendors`.`BillingAddress` AS `BillingAddress`,`vendors`.`City` AS `City`,`vendors`.`StateOrProvince` AS `StateOrProvince`,`vendors`.`Country` AS `Country`,`vendors`.`PostalCode` AS `PostalCode`,`vendors`.`PhoneNumber` AS `PhoneNumber`,`vendors`.`MobilePhone` AS `MobilePhone`,`vendors`.`FaxNumber` AS `FaxNumber`,`vendors`.`Extension` AS `Extension`,`vendors`.`EmailAddress` AS `EmailAddress`,`vendors`.`Notes` AS `Notes`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount`,`vendors`.`signfile` AS `signfile`,`vendors`.`logofile` AS `logofile`,`vendors`.`ReferredBy` AS `ReferredBy`,`vendors`.`Birthdate` AS `Birthdate`,`vendors`.`LastMeetingDate` AS `LastMeetingDate`,`vendors`.`ContactsInterests` AS `ContactsInterests`,`vendors`.`ChildrenNames` AS `ChildrenNames`,`vendors`.`categoryid` AS `categoryid`,`vendors`.`DeptID` AS `DeptID`,`vendors`.`passportno` AS `passportno`,`vendors`.`dateofbirth` AS `dateofbirth`,`vendors`.`religion` AS `religion`,`vendors`.`sex` AS `sex`,`vendors`.`picturefile` AS `picturefile`,`vendors`.`spousename` AS `spousename`,`vendors`.`ability` AS `ability`,`vendors`.`workphone` AS `workphone`,`vendors`.`nationality` AS `nationality`,`vendors`.`stateorigin` AS `stateorigin`,`vendors`.`locgovorigin` AS `locgovorigin`,`vendors`.`datehired` AS `datehired`,`vendors`.`datefired` AS `datefired`,`vendors`.`supervisor` AS `supervisor`,`vendors`.`homephone` AS `homephone`,`vendors`.`leavstatus` AS `leavstatus`,`vendors`.`emertype` AS `emertype`,`vendors`.`emername` AS `emername`,`vendors`.`emerphone` AS `emerphone`,`vendors`.`emeraddress` AS `emeraddress`,`vendors`.`staffrec` AS `staffrec`,`vendors`.`salary` AS `salary`,`vendors`.`fingerprint` AS `fingerprint` from `vendors` where (`vendors`.`VendorType` = 1);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `deptpick` AS select `classifications`.`catID` AS `OutletID`,`vendors`.`VendorID` AS `StaffID`,`classifications`.`category_name` AS `OutletName` from (`classifications` join `vendors` on((`classifications`.`catID` = `vendors`.`DeptID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `employcats` AS select `classifications`.`catID` AS `catID`,`classifications`.`category_id` AS `category_id`,`classifications`.`parent_id` AS `parent_id`,`classifications`.`category_name` AS `category_name`,`classifications`.`catname` AS `catname`,`classifications`.`catype` AS `catype`,`classifications`.`pix` AS `pix`,`classifications`.`description` AS `description` from `classifications` where (`classifications`.`catype` = 5);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `expensetype` AS select `status`.`CategoryID` AS `CategoryID`,`status`.`Category` AS `Category`,`status`.`Description` AS `Description`,`status`.`cattype` AS `cattype` from `status` where (`status`.`cattype` = 'ExpenseType');
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `guesttypes` AS select `status`.`CategoryID` AS `CategoryID`,`status`.`Category` AS `Category`,`status`.`Description` AS `Description`,`status`.`cattype` AS `cattype` from `status` where (`status`.`cattype` = 'GuestType');
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `negstockded` AS select `orderdetails`.`OrderID` AS `OrderID`,`orderdetails`.`OrderDetailID` AS `OrderDetailID`,`orderdetails`.`ProductID` AS `ProductID`,`orderdetails`.`QtyinStock` AS `QtyinStock` from `orderdetails` where ((`orderdetails`.`OrderID` = 1) and (`orderdetails`.`QtyinStock` < 0));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `outletpick` AS select `outletstaff`.`OutletID` AS `OutletID`,`outletstaff`.`StaffID` AS `StaffID`,`outlets`.`OutletName` AS `OutletName` from (`outlets` join `outletstaff` on((`outlets`.`OutletID` = `outletstaff`.`OutletID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `outletservices` AS select `services`.`ServiceID` AS `ServiceID`,`services`.`servicecode` AS `servicecode`,`services`.`service` AS `service`,`services`.`useasset` AS `useasset`,`services`.`assetcat` AS `assetcat`,`services`.`quantity` AS `quantity`,`services`.`charge` AS `charge`,`services`.`periodtype` AS `periodtype`,`services`.`timetype` AS `timetype`,`services`.`starttime` AS `starttime`,`services`.`endtime` AS `endtime`,`services`.`periods` AS `periods`,`services`.`alertperiod` AS `alertperiod`,`outletsrv`.`OutletID` AS `OutletID` from (`services` join `outletsrv` on((`services`.`ServiceID` = `outletsrv`.`ServiceID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `outletstock` AS select `outlet`.`ProductID` AS `ProductID`,sum(`outlet`.`ShopStock`) AS `OutletStock` from `outlet` group by `outlet`.`ProductID`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `paymenttype` AS select `status`.`CategoryID` AS `CategoryID`,`status`.`Category` AS `Category`,`status`.`Description` AS `Description`,`status`.`cattype` AS `cattype` from `status` where (`status`.`cattype` = 'PaymentType');
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prodclass` AS select `classifications`.`catID` AS `catID`,`classifications`.`category_id` AS `category_id`,`classifications`.`parent_id` AS `parent_id`,`classifications`.`category_name` AS `category_name`,`classifications`.`catname` AS `catname`,`classifications`.`catype` AS `catype`,`classifications`.`pix` AS `pix`,`classifications`.`description` AS `description` from `classifications` where (`classifications`.`catype` = 2);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `projbills` AS select `projectfiles`.`ProjectID` AS `ProjectID`,`projectfiles`.`AttachID` AS `AttachID`,`bills`.`BillTitle` AS `BillTitle`,`bills`.`VendorID` AS `VendorID`,`bills`.`CustomerName` AS `CustomerName`,`bills`.`BillDate` AS `BillDate`,`bills`.`BillValue` AS `BillValue`,`projectfiles`.`AttachType` AS `AttachType` from (`bills` join `projectfiles` on((`bills`.`BillID` = `projectfiles`.`AttachID`))) where ((`projectfiles`.`AttachType` = 1) and (`bills`.`posted` = 1));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `projinv` AS select `projectfiles`.`ProjectID` AS `ProjectID`,`projectfiles`.`AttachID` AS `AttachID`,`invoices`.`CustomerID` AS `CustomerID`,`invoices`.`CustomerName` AS `CustomerName`,`invoices`.`InvoiceDate` AS `InvoiceDate`,`invoices`.`Grandvalue` AS `Grandvalue`,`invoices`.`Locked` AS `Locked`,`projectfiles`.`AttachType` AS `AttachType` from (`invoices` join `projectfiles` on((`invoices`.`InvoiceID` = `projectfiles`.`AttachID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `projpay` AS select `projectfiles`.`ProjectID` AS `ProjectID`,`projectfiles`.`AttachID` AS `AttachID`,`payments`.`PayeeID` AS `PayeeID`,`payments`.`Payee` AS `Payee`,`payments`.`PaymentDate` AS `PaymentDate`,`payments`.`PaymentAmount` AS `PaymentAmount`,`payments`.`Posted` AS `Posted`,`projectfiles`.`AttachType` AS `AttachType` from (`payments` join `projectfiles` on((`payments`.`PaymentID` = `projectfiles`.`AttachID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qassetalloc` AS select `VendorID`.`VendorName` AS `VendorName`,`invoices`.`CustomerID` AS `CustomerID`,`assets`.`AssetName` AS `AssetName`,`serviceinvdetails`.`startdate` AS `startdate`,`serviceinvdetails`.`enddate` AS `enddate`,`assets`.`AssetID` AS `AssetID`,`serviceinvdetails`.`served` AS `served`,`serviceequip`.`Status` AS `srvstatus`,`serviceequip`.`startdate` AS `startD`,`serviceequip`.`enddate` AS `endD`,`assets`.`Status` AS `Status` from (((`invoices` join `VendorID` on((`invoices`.`CustomerID` = `VendorID`.`VendorID`))) join `serviceinvdetails` on((`invoices`.`InvoiceID` = `serviceinvdetails`.`InvoiceID`))) join (`assets` join `serviceequip` on((`assets`.`AssetID` = `serviceequip`.`EquipID`))) on((`serviceinvdetails`.`InvoiceDetailID` = `serviceequip`.`ServiceID`))) where ((`serviceinvdetails`.`served` = 0) and (`serviceequip`.`Status` = 0) and (`assets`.`Status` = 27) and (`invoices`.`Locked` = 1));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qclassify` AS select `classifications`.`catID` AS `catID`,`classifications`.`category_id` AS `category_id`,`classifications`.`parent_id` AS `parent_id`,`classifications`.`category_name` AS `category_name`,`classifications`.`catname` AS `catname`,`classifications`.`catype` AS `catype`,`classifications`.`pix` AS `pix`,`classifications`.`description` AS `description`,`classifications_1`.`category_name` AS `ParName` from (`classifications` left join `classifications` `classifications_1` on((`classifications_1`.`catID` = `classifications`.`parent_id`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qclassprods` AS select `classifications`.`catID` AS `catID`,`classifications`.`category_id` AS `category_id`,`classifications`.`parent_id` AS `parent_id`,`classifications`.`category_name` AS `category_name`,`classifications`.`catname` AS `catname`,`classifications`.`pix` AS `pix`,`classifications`.`description` AS `description`,`classifications`.`catype` AS `catype` from `classifications` where (`classifications`.`catype` = 2);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qdepartments` AS select `classifications`.`catID` AS `catID`,`classifications`.`category_id` AS `category_id`,`classifications`.`parent_id` AS `parent_id`,`classifications`.`category_name` AS `category_name`,`classifications`.`catname` AS `catname`,`classifications`.`pix` AS `pix`,`classifications`.`description` AS `description`,`classifications`.`catype` AS `catype` from `classifications` where (`classifications`.`catype` = 1);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qequips` AS select `assets`.`AssetID` AS `AssetID`,`assets`.`AssetName` AS `AssetName`,`assets`.`dept` AS `dept`,`assets`.`Category` AS `Category`,`assets`.`AssetType` AS `AssetType`,`assets`.`department` AS `department`,`assets`.`occupant` AS `occupant`,`assets`.`designation` AS `designation`,`assets`.`colour` AS `colour`,`assets`.`colorvalue` AS `colorvalue`,`assets`.`picturefile` AS `picturefile`,`assets`.`description` AS `description`,`assets`.`usage` AS `usage`,`assets`.`Status` AS `Status`,`assets`.`InUse` AS `InUse`,`assets`.`NextSchedMaint` AS `NextSchedMaint`,`assets`.`Capacity` AS `Capacity`,`assets`.`Adults` AS `Adults`,`assets`.`Children` AS `Children`,`assets`.`Brand` AS `Brand`,`assets`.`Model` AS `Model`,`assets`.`serialno` AS `serialno`,`assets`.`modelno` AS `modelno`,`assets`.`partno` AS `partno`,`assets`.`BarcodeNumber` AS `BarcodeNumber`,`assets`.`licenceno` AS `licenceno`,`assets`.`purchfrom` AS `purchfrom`,`assets`.`PurchCost` AS `PurchCost`,`assets`.`CurPurchCost` AS `CurPurchCost`,`assets`.`AuctionValue` AS `AuctionValue`,`assets`.`dateofpurch` AS `dateofpurch`,`assets`.`DateSold` AS `DateSold`,`assets`.`insurers` AS `insurers`,`assets`.`servcomp` AS `servcomp`,`assets`.`insuranceno` AS `insuranceno`,`assets`.`DepreciationMethod` AS `DepreciationMethod`,`assets`.`DepreciableLife` AS `DepreciableLife`,`assets`.`DepreciationValue` AS `DepreciationValue`,`assets`.`DepreciationRate` AS `DepreciationRate`,`assets`.`SalvageValue` AS `SalvageValue` from `assets` where (`assets`.`AssetType` = 1);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qfacility` AS select `assets`.`AssetID` AS `AssetID`,`assets`.`AssetName` AS `AssetName`,`assets`.`dept` AS `dept`,`assets`.`Category` AS `Category`,`assets`.`AssetType` AS `AssetType`,`assets`.`department` AS `department`,`assets`.`occupant` AS `occupant`,`assets`.`designation` AS `designation`,`assets`.`colour` AS `colour`,`assets`.`colorvalue` AS `colorvalue`,`assets`.`picturefile` AS `picturefile`,`assets`.`description` AS `description`,`assets`.`usage` AS `usage`,`assets`.`Status` AS `Status`,`assets`.`InUse` AS `InUse`,`assets`.`NextSchedMaint` AS `NextSchedMaint`,`assets`.`Capacity` AS `Capacity`,`assets`.`Adults` AS `Adults`,`assets`.`Children` AS `Children`,`assets`.`Brand` AS `Brand`,`assets`.`Model` AS `Model`,`assets`.`serialno` AS `serialno`,`assets`.`modelno` AS `modelno`,`assets`.`partno` AS `partno`,`assets`.`BarcodeNumber` AS `BarcodeNumber`,`assets`.`licenceno` AS `licenceno`,`assets`.`purchfrom` AS `purchfrom`,`assets`.`PurchCost` AS `PurchCost`,`assets`.`CurPurchCost` AS `CurPurchCost`,`assets`.`AuctionValue` AS `AuctionValue`,`assets`.`dateofpurch` AS `dateofpurch`,`assets`.`DateSold` AS `DateSold`,`assets`.`insurers` AS `insurers`,`assets`.`servcomp` AS `servcomp`,`assets`.`insuranceno` AS `insuranceno`,`assets`.`DepreciationMethod` AS `DepreciationMethod`,`assets`.`DepreciableLife` AS `DepreciableLife`,`assets`.`DepreciationValue` AS `DepreciationValue`,`assets`.`DepreciationRate` AS `DepreciationRate`,`assets`.`SalvageValue` AS `SalvageValue` from `assets` where (`assets`.`AssetType` = 3);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qoutlet` AS select `products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`brands`.`BrandName` AS `BrandName`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`UnitPrice` AS `UnitPrice`,`outlet`.`ID` AS `ID`,`outlet`.`ProductID` AS `ProductID`,`outlet`.`serials` AS `serials`,`outlet`.`OutletID` AS `OutletID`,`outlet`.`Shopshelf` AS `Shopshelf`,`outlet`.`ShopStock` AS `ShopStock`,`outlet`.`Shopactlstock` AS `Shopactlstock`,`outlet`.`Shopstkcntdate` AS `Shopstkcntdate`,`outlet`.`Shoplevel` AS `Shoplevel`,`outlet`.`ShopNotes` AS `ShopNotes`,`classifications`.`category_name` AS `category_name` from (`classifications` join ((`brands` join `products` on((`brands`.`brandID` = `products`.`Brand`))) join `outlet` on((`products`.`ProductID` = `outlet`.`ProductID`))) on((`classifications`.`catID` = `products`.`Classification`))) where (`products`.`Discontinued` = 0);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qservicecats` AS select `classifications`.`catID` AS `catID`,`classifications`.`category_id` AS `category_id`,`classifications`.`parent_id` AS `parent_id`,`classifications`.`category_name` AS `category_name`,`classifications`.`catname` AS `catname`,`classifications`.`pix` AS `pix`,`classifications`.`description` AS `description`,`classifications`.`catype` AS `catype` from `classifications` where (`classifications`.`catype` = 3);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qtaskshedule` AS select `tasks`.`TaskID` AS `TaskID`,`tasks`.`TaskDescription` AS `TaskDescription`,`tasks`.`TaskType` AS `TaskType`,`tasks`.`ServiceID` AS `ServiceID`,`tasks`.`TaskManager` AS `TaskManager`,`tasks`.`StartDate` AS `StartDate`,`tasks`.`EndDate` AS `EndDate`,`tasks`.`Notes` AS `Notes`,`tasks`.`Status` AS `Status`,`taskshedule`.`EmployeeTaskID` AS `EmployeeTaskID`,`taskshedule`.`Subject` AS `Subject`,`taskshedule`.`EmployeeID` AS `EmployeeID`,`taskshedule`.`StartDate` AS `schstart`,`taskshedule`.`EndDate` AS `schend`,`taskshedule`.`ResumeDate` AS `ResumeDate`,`taskshedule`.`CloseDate` AS `CloseDate`,`taskshedule`.`Labour` AS `Labour`,`taskshedule`.`Notes` AS `shcnotes`,`taskshedule`.`Status` AS `schstatus` from (`tasks` join `taskshedule` on((`tasks`.`TaskID` = `taskshedule`.`TaskID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qvehicles` AS select `assets`.`AssetID` AS `AssetID`,`assets`.`AssetName` AS `AssetName`,`assets`.`dept` AS `dept`,`assets`.`Category` AS `Category`,`assets`.`AssetType` AS `AssetType`,`assets`.`department` AS `department`,`assets`.`occupant` AS `occupant`,`assets`.`designation` AS `designation`,`assets`.`colour` AS `colour`,`assets`.`colorvalue` AS `colorvalue`,`assets`.`picturefile` AS `picturefile`,`assets`.`description` AS `description`,`assets`.`usage` AS `usage`,`assets`.`Status` AS `Status`,`assets`.`InUse` AS `InUse`,`assets`.`NextSchedMaint` AS `NextSchedMaint`,`assets`.`Capacity` AS `Capacity`,`assets`.`Adults` AS `Adults`,`assets`.`Children` AS `Children`,`assets`.`Brand` AS `Brand`,`assets`.`Model` AS `Model`,`assets`.`serialno` AS `serialno`,`assets`.`modelno` AS `modelno`,`assets`.`partno` AS `partno`,`assets`.`BarcodeNumber` AS `BarcodeNumber`,`assets`.`licenceno` AS `licenceno`,`assets`.`purchfrom` AS `purchfrom`,`assets`.`PurchCost` AS `PurchCost`,`assets`.`CurPurchCost` AS `CurPurchCost`,`assets`.`AuctionValue` AS `AuctionValue`,`assets`.`dateofpurch` AS `dateofpurch`,`assets`.`DateSold` AS `DateSold`,`assets`.`insurers` AS `insurers`,`assets`.`servcomp` AS `servcomp`,`assets`.`insuranceno` AS `insuranceno`,`assets`.`DepreciationMethod` AS `DepreciationMethod`,`assets`.`DepreciableLife` AS `DepreciableLife`,`assets`.`DepreciationValue` AS `DepreciationValue`,`assets`.`DepreciationRate` AS `DepreciationRate`,`assets`.`SalvageValue` AS `SalvageValue` from `assets` where (`assets`.`AssetType` = 2);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rbills` AS select `bills`.`BillID` AS `BillID`,`VendorID`.`VendorName` AS `VendorName`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol` from (`currencies` join (`VendorID` join `bills` on((`VendorID`.`VendorID` = `bills`.`VendorID`))) on((`currencies`.`cur_id` = `VendorID`.`currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rexpense` AS select `expenses`.`ExpenseID` AS `ExpenseID`,if(`expenses`.`Authorized`,'P A I D','') AS `ExpType`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol`,if((`expenses`.`PaymentMethodID` = 25),`expenses`.`PaymentMethod`,`expenses`.`PaymentMethodID`) AS `paymethod`,if(((`expenses`.`PaymentMethodID` = 23) or (`expenses`.`PaymentMethodID` = 25)),'Bank:',if((`expenses`.`PaymentMethodID` = 21),'Card Type:','')) AS `bank`,if((`expenses`.`PaymentMethodID` = 22),'',if((`expenses`.`PaymentMethodID` = 21),`expenses`.`CreditCardType`,`expenses`.`PaymentMethod`)) AS `bankname`,if((`expenses`.`PaymentMethodID` = 22),'',if((`expenses`.`PaymentMethodID` = 25),'Ref 0.:',concat(`expenses`.`PaymentMethodID`,' No.:'))) AS `check`,if((`expenses`.`PaymentMethodID` = 22),'',if((`expenses`.`PaymentMethodID` = 21),`expenses`.`CreditCardNumber`,`expenses`.`CheckNumber`)) AS `chno` from ((`currencies` join `vendors` on((`currencies`.`cur_id` = `vendors`.`currency`))) join `expenses` on((`vendors`.`VendorID` = `expenses`.`AccountID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rinvoice` AS select `invoices`.`InvoiceID` AS `InvoiceID`,`invoices`.`OutletID` AS `OutletID`,`invoices`.`EmployeeID` AS `EmployeeID`,`invoices`.`ProjectID` AS `ProjectID`,`invoices`.`CustomerType` AS `CustomerType`,`invoices`.`CustomerID` AS `CustomerID`,`invoices`.`CustomerName` AS `CustomerName`,`invoices`.`Status` AS `Status`,`invoices`.`InvoiceDate` AS `InvoiceDate`,`invoices`.`TaxRate` AS `TaxRate`,`invoices`.`Dscnt` AS `Dscnt`,`invoices`.`Discount` AS `Discount`,`invoices`.`ServiceCharge` AS `ServiceCharge`,`invoices`.`ServiceDisc` AS `ServiceDisc`,`invoices`.`TotTax` AS `TotTax`,`invoices`.`TotDisc` AS `TotDisc`,`invoices`.`TotalValue` AS `TotalValue`,`invoices`.`Grandvalue` AS `Grandvalue`,`invoices`.`amtwords` AS `amtwords`,`invoices`.`ExchangeFrom` AS `ExchangeFrom`,`invoices`.`ExchangeTo` AS `ExchangeTo`,`invoices`.`Notes` AS `Notes`,`invoices`.`Locked` AS `Locked`,`invoices`.`amtpaid` AS `amtpaid`,`invoices`.`amtchng` AS `amtchng`,`invoices`.`RecAccountBalance` AS `RecAccountBalance`,`invoices`.`synctext` AS `synctext`,`invoices`.`ShipTo` AS `ShipTo`,if(`invoices`.`Locked`,'I N V O I C E','P R O F O R M A    I N V O I C E') AS `InvType`,if(`invoices`.`Locked`,'','R E C E I P T   P R E V I E W ') AS `preview`,concat(`vendors_1`.`ContactFirstName`,' ',`vendors_1`.`ContactMidName`,' ',`vendors_1`.`ContactLastName`) AS `Cashier`,`vendors`.`BillingAddress` AS `BillingAddress`,`vendors`.`City` AS `City`,`vendors`.`StateOrProvince` AS `StateOrProvince`,`vendors`.`Country` AS `Country`,`vendors`.`currency` AS `currency`,`currencies`.`currencyname` AS `currencyname`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitname` AS `unitname`,`currencies`.`unitsymbol` AS `unitsymbol`,`outlets`.`OutletName` AS `OutletName` from (`currencies` join (`vendors` join (`outlets` join (`invoices` join `vendors` `vendors_1` on((`invoices`.`EmployeeID` = `vendors_1`.`VendorID`))) on((`outlets`.`OutletID` = `invoices`.`OutletID`))) on((`vendors`.`VendorID` = `invoices`.`CustomerID`))) on((`currencies`.`cur_id` = `vendors`.`currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rinvoicedet` AS select `invoicedetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`invoicedetails`.`InvoiceID` AS `InvoiceID`,`invoicedetails`.`SerialNumber` AS `SerialNumber`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`invoicedetails`.`Quantity` AS `Quantity`,`invoicedetails`.`UnitPrice` AS `UnitPrice`,`invoicedetails`.`Discount` AS `Discount`,`invoicedetails`.`SalesPrice` AS `SalesPrice`,`invoicedetails`.`TaxRate` AS `TaxRate`,`invoicedetails`.`TotalValue` AS `TotalValue` from (`products` join `invoicedetails` on((`products`.`ProductID` = `invoicedetails`.`ProductID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ritemtags` AS select `products`.`ProductID` AS `ProductID`,`products`.`FullName` AS `FullName`,`products`.`Brand` AS `Brand`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`UnitPrice` AS `UnitPrice`,`products`.`currency` AS `currency`,`currencies`.`cur_id` AS `cur_id`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol` from (`currencies` join `products` on((`currencies`.`cur_id` = `products`.`currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rorderdet` AS select `orderdetails`.`OrderDetailID` AS `OrderDetailID`,`orderdetails`.`OrderID` AS `OrderID`,`products`.`FullName` AS `FullName`,`orderdetails`.`unitsinpack` AS `unitsinpack`,`orderdetails`.`UnitPrice` AS `UnitPrice`,`orderdetails`.`Quantity` AS `Quantity`,`orderdetails`.`Received` AS `Received`,`orderdetails`.`SalePrice` AS `SalePrice`,`orderdetails`.`LineTotal` AS `LineTotal` from (`products` join `orderdetails` on((`products`.`ProductID` = `orderdetails`.`ProductID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rorderretdet` AS select `products`.`FullName` AS `FullName`,`orderreturndet`.`OrderRetDetID` AS `OrderRetDetID`,`orderreturndet`.`OrderDetailID` AS `OrderDetailID`,`orderreturndet`.`OrderRetID` AS `OrderRetID`,`orderreturndet`.`Quantity` AS `Quantity`,`orderreturndet`.`unitsinpack` AS `unitsinpack`,`orderreturndet`.`SalePrice` AS `SalePrice`,`orderreturndet`.`LineTotal` AS `LineTotal`,`orderreturndet`.`serials` AS `serials`,`orderdetails`.`unitsinpack` AS `produnitpacks` from (`products` join (`orderdetails` join `orderreturndet` on((`orderdetails`.`OrderDetailID` = `orderreturndet`.`OrderDetailID`))) on((`products`.`ProductID` = `orderdetails`.`ProductID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rpayments` AS select `payments`.`PaymentID` AS `PaymentID`,`payments`.`OutletID` AS `OutletID`,`payments`.`EmployeeID` AS `EmployeeID`,`payments`.`ProjectID` AS `ProjectID`,`payments`.`InvoiceID` AS `InvoiceID`,`payments`.`PayeeType` AS `PayeeType`,`payments`.`PayeeID` AS `PayeeID`,`payments`.`Payee` AS `Payee`,`payments`.`AccountID` AS `AccountID`,`payments`.`PaymentAmount` AS `PaymentAmount`,`payments`.`PayAccountBalance` AS `PayAccountBalance`,`payments`.`AccountBalance` AS `AccountBalance`,`payments`.`amtwords` AS `amtwords`,`payments`.`PaymentDate` AS `PaymentDate`,`payments`.`PaymentMethod` AS `PaymentMethod`,`payments`.`CheckNumber` AS `CheckNumber`,`payments`.`CreditCardType` AS `CreditCardType`,`payments`.`CreditCardNumber` AS `CreditCardNumber`,`payments`.`CardholdersName` AS `CardholdersName`,`payments`.`CreditCardExpDate` AS `CreditCardExpDate`,`payments`.`CreditCardAuthorizationNumber` AS `CreditCardAuthorizationNumber`,`payments`.`PaymentTerms` AS `PaymentTerms`,`payments`.`PaymentMethodID` AS `PaymentMethodID`,`payments`.`Notes` AS `Notes`,`payments`.`Posted` AS `Posted`,if(`payments`.`Posted`,'P A I D','') AS `Paidstatus`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol`,if(((`payments`.`PaymentMethodID` = 23) or (`payments`.`PaymentMethodID` = 25)),'Bank:',if((`payments`.`PaymentMethodID` = 21),'Card Type:','')) AS `bank`,if((`payments`.`PaymentMethodID` = 22),'',if((`payments`.`PaymentMethodID` = 21),`payments`.`CreditCardType`,`payments`.`PaymentMethod`)) AS `bankname`,if((`payments`.`PaymentMethodID` = 22),'',if((`payments`.`PaymentMethodID` = 25),'Ref 0.:',(`payments`.`PaymentMethodID` & ' No.:'))) AS `check`,if((`payments`.`PaymentMethodID` = 22),'',if((`payments`.`PaymentMethodID` = 21),`payments`.`CreditCardNumber`,`payments`.`CheckNumber`)) AS `chno`,`vstaffid`.`VendorName` AS `staff`,`paymenttype`.`Category` AS `PayType` from (`currencies` join (`vendors` join (`paymenttype` join (`payments` join `vstaffid` on((`payments`.`EmployeeID` = `vstaffid`.`VendorID`))) on((`paymenttype`.`CategoryID` = `payments`.`PaymentMethodID`))) on((`vendors`.`VendorID` = `payments`.`AccountID`))) on((`currencies`.`cur_id` = `vendors`.`currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rpaymentsum` AS select `payments`.`PaymentID` AS `PaymentID`,`payments`.`OutletID` AS `OutletID`,`payments`.`EmployeeID` AS `EmployeeID`,`payments`.`ProjectID` AS `ProjectID`,`payments`.`InvoiceID` AS `InvoiceID`,`payments`.`PayeeType` AS `PayeeType`,`payments`.`PayeeID` AS `PayeeID`,`payments`.`Payee` AS `Payee`,`payments`.`AccountID` AS `AccountID`,`payments`.`PaymentAmount` AS `PaymentAmount`,`payments`.`PayAccountBalance` AS `PayAccountBalance`,`payments`.`AccountBalance` AS `AccountBalance`,`payments`.`amtwords` AS `amtwords`,`payments`.`PaymentDate` AS `PaymentDate`,`payments`.`PaymentMethod` AS `PaymentMethod`,`payments`.`CheckNumber` AS `CheckNumber`,`payments`.`CreditCardType` AS `CreditCardType`,`payments`.`CreditCardNumber` AS `CreditCardNumber`,`payments`.`CardholdersName` AS `CardholdersName`,`payments`.`CreditCardExpDate` AS `CreditCardExpDate`,`payments`.`CreditCardAuthorizationNumber` AS `CreditCardAuthorizationNumber`,`payments`.`PaymentTerms` AS `PaymentTerms`,`payments`.`PaymentMethodID` AS `PaymentMethodID`,`payments`.`Notes` AS `Notes`,`payments`.`Posted` AS `Posted`,`currencies`.`cur_id` AS `cur_id`,`currencies`.`currencyname` AS `currencyname`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitname` AS `unitname`,`currencies`.`unitsymbol` AS `unitsymbol`,`currencies`.`fromrate` AS `fromrate`,`currencies`.`torate` AS `torate`,`currencies`.`fullname` AS `fullname`,`vstaffid`.`VendorID` AS `VendorID`,`vstaffid`.`VendorName` AS `VendorName`,`vstaffid`.`InUse` AS `InUse` from (`currencies` join (`vendors` join (`vstaffid` join `payments` on((`vstaffid`.`VendorID` = `payments`.`EmployeeID`))) on((`vendors`.`VendorID` = `payments`.`AccountID`))) on((`currencies`.`cur_id` = `vendors`.`currency`))) where ((not((`payments`.`PaymentTerms` like 'Sales refund:*'))) and (`payments`.`Posted` = 1));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `suppliers` AS select `vendors`.`VendorID` AS `VendorID`,`vendors`.`vendorcode` AS `vendorcode`,`vendors`.`CompanyName` AS `CompanyName`,`vendors`.`parentcompany` AS `parentcompany`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`ClientType` AS `ClientType`,`vendors`.`InUse` AS `InUse`,`vendors`.`ContactTitle` AS `ContactTitle`,`vendors`.`ContactFirstName` AS `ContactFirstName`,`vendors`.`ContactMidName` AS `ContactMidName`,`vendors`.`ContactLastName` AS `ContactLastName`,`vendors`.`CompanyOrDepartment` AS `CompanyOrDepartment`,`vendors`.`BillingAddress` AS `BillingAddress`,`vendors`.`City` AS `City`,`vendors`.`StateOrProvince` AS `StateOrProvince`,`vendors`.`Country` AS `Country`,`vendors`.`PostalCode` AS `PostalCode`,`vendors`.`PhoneNumber` AS `PhoneNumber`,`vendors`.`MobilePhone` AS `MobilePhone`,`vendors`.`FaxNumber` AS `FaxNumber`,`vendors`.`Extension` AS `Extension`,`vendors`.`EmailAddress` AS `EmailAddress`,`vendors`.`Notes` AS `Notes`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount`,`vendors`.`signfile` AS `signfile`,`vendors`.`logofile` AS `logofile`,`vendors`.`ReferredBy` AS `ReferredBy`,`vendors`.`Birthdate` AS `Birthdate`,`vendors`.`LastMeetingDate` AS `LastMeetingDate`,`vendors`.`ContactsInterests` AS `ContactsInterests`,`vendors`.`ChildrenNames` AS `ChildrenNames`,`vendors`.`categoryid` AS `categoryid`,`vendors`.`DeptID` AS `DeptID`,`vendors`.`passportno` AS `passportno`,`vendors`.`dateofbirth` AS `dateofbirth`,`vendors`.`religion` AS `religion`,`vendors`.`sex` AS `sex`,`vendors`.`picturefile` AS `picturefile`,`vendors`.`spousename` AS `spousename`,`vendors`.`ability` AS `ability`,`vendors`.`workphone` AS `workphone`,`vendors`.`nationality` AS `nationality`,`vendors`.`stateorigin` AS `stateorigin`,`vendors`.`locgovorigin` AS `locgovorigin`,`vendors`.`datehired` AS `datehired`,`vendors`.`datefired` AS `datefired`,`vendors`.`supervisor` AS `supervisor`,`vendors`.`homephone` AS `homephone`,`vendors`.`leavstatus` AS `leavstatus`,`vendors`.`emertype` AS `emertype`,`vendors`.`emername` AS `emername`,`vendors`.`emerphone` AS `emerphone`,`vendors`.`emeraddress` AS `emeraddress`,`vendors`.`staffrec` AS `staffrec`,`vendors`.`salary` AS `salary`,`vendors`.`fingerprint` AS `fingerprint` from `vendors` where (`vendors`.`VendorType` = 2);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rpurchaseorder` AS select `orders`.`OrderID` AS `OrderID`,`orders`.`PurchaseOrderNumber` AS `PurchaseOrderNumber`,`orders`.`OrderDate` AS `OrderDate`,`orders`.`RequiredByDate` AS `RequiredByDate`,`orders`.`ShipDate` AS `ShipDate`,`orders`.`Discount` AS `Discount`,`orders`.`OrderTotal` AS `OrderTotal`,`orders`.`amtwords` AS `amtwords`,if(`orders`.`Locked`,'Received Purchase Order','Purchase Order') AS `OrdType`,`vstaffid`.`VendorName` AS `Empname`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol`,`suppliers`.`VendorID` AS `VendorID`,`suppliers`.`CompanyName` AS `CompanyName`,concat(`suppliers`.`ContactTitle`,' ',`suppliers`.`ContactFirstName`,' ',`suppliers`.`ContactMidName`,' ',`suppliers`.`ContactLastName`) AS `SupContact`,`suppliers`.`BillingAddress` AS `BillingAddress`,`suppliers`.`City` AS `City`,`suppliers`.`StateOrProvince` AS `StateOrProvince`,`suppliers`.`Country` AS `Country`,`suppliers`.`PhoneNumber` AS `PhoneNumber`,`suppliers`.`FaxNumber` AS `FaxNumber`,`suppliers`.`EmailAddress` AS `EmailAddress`,`suppliers`.`PostalCode` AS `PostalCode` from (`currencies` join (`vstaffid` join (`suppliers` join `orders` on((`suppliers`.`VendorID` = `orders`.`SupplierID`))) on((`vstaffid`.`VendorID` = `orders`.`EmployeeID`))) on((`currencies`.`cur_id` = `orders`.`Currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rreceptpayments` AS select `payments`.`PaymentID` AS `PaymentID`,`payments`.`InvoiceID` AS `InvoiceID`,`payments`.`PaymentAmount` AS `PaymentAmount`,`payments`.`PaymentMethodID` AS `PaymentMethodID`,if((`payments`.`PaymentMethodID` = 21),`payments`.`CreditCardType`,'') AS `CCName`,`paymenttype`.`Category` AS `Category` from (`paymenttype` join `payments` on((`paymenttype`.`CategoryID` = `payments`.`PaymentMethodID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rreturnorder` AS select `orders`.`PurchaseOrderNumber` AS `PurchaseOrderNumber`,`orders`.`OrderDate` AS `OrderDate`,`orders`.`RequiredByDate` AS `RequiredByDate`,`orders`.`ShipDate` AS `ordshpdate`,`orders`.`Discount` AS `Discount`,`orders`.`OrderTotal` AS `OrderTotal`,`orders`.`amtwords` AS `ordwords`,if(`orders`.`Locked`,'Receive Note','Purchase Order') AS `OrdType`,`vstaffid`.`VendorName` AS `Empname`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol`,`suppliers`.`VendorID` AS `VendorID`,`suppliers`.`CompanyName` AS `CompanyName`,concat(`suppliers`.`ContactTitle`,' ',`suppliers`.`ContactFirstName`,' ',`suppliers`.`ContactMidName`,' ',`suppliers`.`ContactLastName`) AS `SupContact`,`suppliers`.`BillingAddress` AS `BillingAddress`,`suppliers`.`City` AS `City`,`suppliers`.`StateOrProvince` AS `StateOrProvince`,`suppliers`.`Country` AS `Country`,`suppliers`.`PhoneNumber` AS `PhoneNumber`,`suppliers`.`FaxNumber` AS `FaxNumber`,`suppliers`.`EmailAddress` AS `EmailAddress`,`suppliers`.`PostalCode` AS `PostalCode`,`orderreturns`.`OrderRetID` AS `OrderRetID`,`orderreturns`.`OrderID` AS `OrderID`,`orderreturns`.`EmployeeID` AS `EmployeeID`,`orderreturns`.`ReturnDate` AS `ReturnDate`,`orderreturns`.`ShipName` AS `ShipName`,`orderreturns`.`ShipAddress` AS `ShipAddress`,`orderreturns`.`ShipDate` AS `ShipDate`,`orderreturns`.`ShippingMethodID` AS `ShippingMethodID`,`orderreturns`.`FreightCharge` AS `FreightCharge`,`orderreturns`.`Expenses` AS `Expenses`,`orderreturns`.`TotalValue` AS `TotalValue`,`orderreturns`.`amtwords` AS `amtwords`,`orderreturns`.`Locked` AS `Locked`,`orderreturns`.`notes` AS `notes` from ((`currencies` join (`vstaffid` join (`suppliers` join `orders` on((`suppliers`.`VendorID` = `orders`.`SupplierID`))) on((`vstaffid`.`VendorID` = `orders`.`EmployeeID`))) on((`currencies`.`cur_id` = `orders`.`Currency`))) join `orderreturns` on((`orders`.`OrderID` = `orderreturns`.`OrderID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rservicedet` AS select `serviceinvdetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`serviceinvdetails`.`InvoiceID` AS `InvoiceID`,`services`.`service` AS `service`,`serviceinvdetails`.`Quantity` AS `Quantity`,`serviceinvdetails`.`UnitCharge` AS `UnitCharge`,`serviceinvdetails`.`Discount` AS `Discount`,`serviceinvdetails`.`ServiceCharge` AS `ServiceCharge`,`serviceinvdetails`.`TaxRate` AS `TaxRate`,`serviceinvdetails`.`TotalValue` AS `TotalValue` from (`services` join `serviceinvdetails` on((`services`.`ServiceID` = `serviceinvdetails`.`servicecode`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `salesdet` AS select `invoicedetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`invoicedetails`.`InvoiceID` AS `InvoiceID`,`invoicedetails`.`DeliveryID` AS `DeliveryID`,`invoicedetails`.`ProductID` AS `ProductID`,`invoicedetails`.`ProductName` AS `ProductName`,`invoicedetails`.`SerialNumber` AS `SerialNumber`,`invoicedetails`.`serials` AS `serials`,`invoicedetails`.`Quantity` AS `Quantity`,`invoicedetails`.`units` AS `units`,`invoicedetails`.`UnitPrice` AS `UnitPrice`,`invoicedetails`.`Discount` AS `Discount`,`invoicedetails`.`Discnt` AS `Discnt`,`invoicedetails`.`SalesPrice` AS `SalesPrice`,`invoicedetails`.`TaxRate` AS `TaxRate`,`invoicedetails`.`TotalValue` AS `TotalValue`,`vstaffid`.`VendorName` AS `Salesperson`,`outlets`.`OutletName` AS `OutletName`,`invoices`.`OutletID` AS `OutletID`,`invoices`.`InvoiceDate` AS `InvoiceDate` from ((`outlets` join (`invoices` join `vstaffid` on((`invoices`.`EmployeeID` = `vstaffid`.`VendorID`))) on((`outlets`.`OutletID` = `invoices`.`OutletID`))) join `invoicedetails` on((`invoices`.`InvoiceID` = `invoicedetails`.`InvoiceID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `salessrvdet` AS select `serviceinvdetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`serviceinvdetails`.`InvoiceID` AS `InvoiceID`,`serviceinvdetails`.`servicecode` AS `servicecode`,`serviceinvdetails`.`service` AS `service`,`serviceinvdetails`.`startdate` AS `startdate`,`serviceinvdetails`.`enddate` AS `enddate`,`serviceinvdetails`.`Quantity` AS `Quantity`,`serviceinvdetails`.`UnitCharge` AS `UnitCharge`,`serviceinvdetails`.`Discount` AS `Discount`,`serviceinvdetails`.`Discnt` AS `Discnt`,`serviceinvdetails`.`ServiceCharge` AS `ServiceCharge`,`serviceinvdetails`.`TaxRate` AS `TaxRate`,`serviceinvdetails`.`TotalValue` AS `TotalValue`,`serviceinvdetails`.`served` AS `served`,`serviceinvdetails`.`Asset` AS `Asset`,`vstaffid`.`VendorName` AS `Salesperson`,`outlets`.`OutletName` AS `OutletName`,`invoices`.`OutletID` AS `OutletID`,`invoices`.`InvoiceDate` AS `InvoiceDate` from ((`outlets` join (`invoices` join `vstaffid` on((`invoices`.`EmployeeID` = `vstaffid`.`VendorID`))) on((`outlets`.`OutletID` = `invoices`.`OutletID`))) join `serviceinvdetails` on((`invoices`.`InvoiceID` = `serviceinvdetails`.`InvoiceID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `servicelist` AS select `services`.`ServiceID` AS `ServiceID`,`services`.`servicecode` AS `servicecode`,`outletsrv`.`OutletID` AS `OutletID`,`services`.`service` AS `service`,`services`.`useasset` AS `useasset`,`services`.`assetcat` AS `assetcat`,`services`.`quantity` AS `quantity`,`services`.`charge` AS `charge`,`services`.`periodtype` AS `periodtype`,`status`.`Category` AS `Period_type`,`services`.`timetype` AS `timetype`,`services`.`category` AS `Time_type`,`services`.`starttime` AS `starttime`,`services`.`endtime` AS `endtime`,`services`.`periods` AS `periods`,`services`.`alertperiod` AS `alertperiod` from (((`services` left join `status` on((`services`.`periodtype` = `status`.`CategoryID`))) left join `status` `status_1` on((`services`.`timetype` = `status_1`.`CategoryID`))) join `outletsrv` on((`services`.`ServiceID` = `outletsrv`.`ServiceID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `servicetimetype` AS select `status`.`CategoryID` AS `CategoryID`,`status`.`Category` AS `Category`,`status`.`Description` AS `Description`,`status`.`cattype` AS `cattype` from `status` where (`status`.`cattype` = 'ServiceTimeType');
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `voutlets` AS select `outlets`.`OutletID` AS `OutletID`,`outlets`.`OutletName` AS `OutletName`,`products`.`ProductID` AS `ProductID`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`UnitPrice` AS `UnitPrice`,`outlet`.`ShopStock` AS `UnitsInStock`,`products`.`unitsinpack` AS `unitsinpack`,`products`.`IsPackage` AS `IsPackage`,`products`.`unit` AS `unit`,`outlet`.`serials` AS `serials`,`products`.`serialized` AS `serialized` from (`products` join (`outlets` join `outlet` on((`outlets`.`OutletID` = `outlet`.`OutletID`))) on((`products`.`ProductID` = `outlet`.`ProductID`))) where (`products`.`Discontinued` = 0);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `shopsel` AS select `voutlets`.`OutletID` AS `OutletID`,`voutlets`.`OutletName` AS `OutletName`,`voutlets`.`ProductID` AS `ProductID`,`voutlets`.`ProductName` AS `ProductName`,`voutlets`.`FullName` AS `FullName`,`voutlets`.`SerialNumber` AS `SerialNumber`,`voutlets`.`UnitPrice` AS `UnitPrice`,`voutlets`.`UnitsInStock` AS `UnitsInStock`,`voutlets`.`unitsinpack` AS `unitsinpack`,`voutlets`.`IsPackage` AS `IsPackage`,`units`.`unit` AS `unit`,`voutlets`.`serials` AS `serials`,`voutlets`.`serialized` AS `serialized` from (`voutlets` left join `units` on((`units`.`unitID` = `voutlets`.`unit`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `shopselect` AS select `voutlets`.`OutletID` AS `OutletID`,`voutlets`.`OutletName` AS `OutletName`,`voutlets`.`ProductID` AS `ProductID`,`voutlets`.`ProductName` AS `ProductName`,`voutlets`.`FullName` AS `FullName`,`voutlets`.`SerialNumber` AS `SerialNumber`,`voutlets`.`UnitPrice` AS `UnitPrice`,`voutlets`.`UnitsInStock` AS `UnitsInStock`,`orderdetails`.`QtyinStock` AS `QtyinStock`,`voutlets`.`unitsinpack` AS `unitsinpack`,`voutlets`.`IsPackage` AS `IsPackage`,`orderdetails`.`OrderID` AS `OrderID`,`orderdetails`.`ExpiryDate` AS `ExpiryDate`,`units`.`unit` AS `unit`,`voutlets`.`serials` AS `serials`,`voutlets`.`serialized` AS `serialized` from ((`voutlets` left join `orderdetails` on((`voutlets`.`ProductID` = `orderdetails`.`ProductID`))) left join `units` on((`units`.`unitID` = `voutlets`.`unit`))) where (`orderdetails`.`QtyinStock` > 0);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `srvperiodtype` AS select `status`.`CategoryID` AS `CategoryID`,`status`.`Category` AS `Category`,`status`.`Description` AS `Description`,`status`.`cattype` AS `cattype` from `status` where (`status`.`cattype` = 'SrvPeriodType');
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `staff` AS select `vendors`.`VendorID` AS `VendorID`,`vendors`.`vendorcode` AS `vendorcode`,`vendors`.`CompanyName` AS `CompanyName`,`vendors`.`parentcompany` AS `parentcompany`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`ClientType` AS `ClientType`,`vendors`.`InUse` AS `InUse`,`vendors`.`ContactTitle` AS `ContactTitle`,`vendors`.`ContactFirstName` AS `ContactFirstName`,`vendors`.`ContactMidName` AS `ContactMidName`,`vendors`.`ContactLastName` AS `ContactLastName`,`vendors`.`CompanyOrDepartment` AS `CompanyOrDepartment`,`vendors`.`BillingAddress` AS `BillingAddress`,`vendors`.`City` AS `City`,`vendors`.`StateOrProvince` AS `StateOrProvince`,`vendors`.`Country` AS `Country`,`vendors`.`PostalCode` AS `PostalCode`,`vendors`.`PhoneNumber` AS `PhoneNumber`,`vendors`.`MobilePhone` AS `MobilePhone`,`vendors`.`FaxNumber` AS `FaxNumber`,`vendors`.`Extension` AS `Extension`,`vendors`.`EmailAddress` AS `EmailAddress`,`vendors`.`Notes` AS `Notes`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount`,`vendors`.`signfile` AS `signfile`,`vendors`.`logofile` AS `logofile`,`vendors`.`ReferredBy` AS `ReferredBy`,`vendors`.`Birthdate` AS `Birthdate`,`vendors`.`LastMeetingDate` AS `LastMeetingDate`,`vendors`.`ContactsInterests` AS `ContactsInterests`,`vendors`.`ChildrenNames` AS `ChildrenNames`,`vendors`.`categoryid` AS `categoryid`,`vendors`.`DeptID` AS `DeptID`,`vendors`.`passportno` AS `passportno`,`vendors`.`dateofbirth` AS `dateofbirth`,`vendors`.`religion` AS `religion`,`vendors`.`sex` AS `sex`,`vendors`.`picturefile` AS `picturefile`,`vendors`.`spousename` AS `spousename`,`vendors`.`ability` AS `ability`,`vendors`.`workphone` AS `workphone`,`vendors`.`nationality` AS `nationality`,`vendors`.`stateorigin` AS `stateorigin`,`vendors`.`locgovorigin` AS `locgovorigin`,`vendors`.`datehired` AS `datehired`,`vendors`.`datefired` AS `datefired`,`vendors`.`supervisor` AS `supervisor`,`vendors`.`homephone` AS `homephone`,`vendors`.`leavstatus` AS `leavstatus`,`vendors`.`emertype` AS `emertype`,`vendors`.`emername` AS `emername`,`vendors`.`emerphone` AS `emerphone`,`vendors`.`emeraddress` AS `emeraddress`,`vendors`.`staffrec` AS `staffrec`,`vendors`.`salary` AS `salary`,`vendors`.`fingerprint` AS `fingerprint`,if((`vendors`.`sex` = 1),'Male',if((`vendors`.`sex` = 2),'Female','')) AS `Gender`,if((`vendors`.`ability` = 1),'1',if((`vendors`.`ability` = 2),'0','')) AS `Disability`,if(`vendors`.`leavstatus`,'1','0') AS `Vacation`,if(`vendors`.`InUse`,'1','0') AS `Fired`,if(`vendors`.`credit`,'1','0') AS `UseCredit`,if(`vendors`.`cheque`,'1','0') AS `UseCheque` from `vendors` where (`vendors`.`VendorType` = 5);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `storesel` AS select distinct `products`.`ProductID` AS `ProductID`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`UnitPrice` AS `UnitPrice`,`products`.`UnitsInStock` AS `UnitsInStock`,`products`.`unitsinpack` AS `unitsinpack`,`products`.`IsPackage` AS `IsPackage`,0 AS `OutletID`,`units`.`unit` AS `unit`,`products`.`serials` AS `serials`,`products`.`serialized` AS `serialized` from (`products` left join `units` on((`units`.`unitID` = `products`.`unit`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `storeselect` AS select distinct `products`.`ProductID` AS `ProductID`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`UnitPrice` AS `UnitPrice`,`products`.`UnitsInStock` AS `UnitsInStock`,`orderdetails`.`QtyinStock` AS `QtyinStock`,`products`.`unitsinpack` AS `unitsinpack`,`products`.`IsPackage` AS `IsPackage`,0 AS `OutletID`,`orderdetails`.`OrderID` AS `OrderID`,`orderdetails`.`ExpiryDate` AS `ExpiryDate`,`units`.`unit` AS `unit`,`products`.`serials` AS `serials`,`products`.`serialized` AS `serialized` from ((`products` left join `orderdetails` on((`products`.`ProductID` = `orderdetails`.`ProductID`))) left join `units` on((`units`.`unitID` = `products`.`unit`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `syncinvdet` AS select `invoices`.`InvoiceID` AS `InvoiceID`,`invoicedetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`invoicedetails`.`DeliveryID` AS `DeliveryID`,`invoicedetails`.`ProductID` AS `ProductID`,`invoicedetails`.`ProductName` AS `ProductName`,`invoicedetails`.`SerialNumber` AS `SerialNumber`,`invoicedetails`.`Quantity` AS `Quantity`,`invoicedetails`.`UnitPrice` AS `UnitPrice`,`invoicedetails`.`Discount` AS `Discount`,`invoicedetails`.`Discnt` AS `Discnt`,`invoicedetails`.`SalesPrice` AS `SalesPrice`,`invoicedetails`.`TaxRate` AS `TaxRate`,`invoicedetails`.`TotalValue` AS `TotalValue`,`invoices`.`OutletID` AS `OutletID`,`invoices`.`EmployeeID` AS `EmployeeID`,`invoices`.`CustomerID` AS `CustomerID`,`invoices`.`InvoiceDate` AS `InvoiceDate` from (`invoices` join `invoicedetails` on((`invoices`.`InvoiceID` = `invoicedetails`.`InvoiceID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `transfertype` AS select `status`.`CategoryID` AS `CategoryID`,`status`.`Category` AS `Category`,`status`.`Description` AS `Description`,`status`.`cattype` AS `cattype` from `status` where (`status`.`cattype` = 'Transfertype');
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vcashaccid` AS select `cashaccounts`.`VendorID` AS `VendorID`,`cashaccounts`.`CompanyName` AS `CompanyName`,`cashaccounts`.`currency` AS `currency`,`cashaccounts`.`amtbal` AS `amtbal`,`cashaccounts`.`creditlimit` AS `creditlimit`,`currencies`.`cur_id` AS `cur_id`,`currencies`.`currencyname` AS `currencyname`,`currencies`.`unitname` AS `unitname`,`currencies`.`fromrate` AS `fromrate`,`currencies`.`torate` AS `torate`,`cashaccounts`.`InUse` AS `InUse` from (`currencies` join `cashaccounts` on((`currencies`.`cur_id` = `cashaccounts`.`currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vcontractorid` AS select `contractors`.`VendorID` AS `VendorID`,if((`contractors`.`ClientType` = 2),`contractors`.`CompanyName`,concat(`contractors`.`ContactLastName`,' ',`contractors`.`ContactFirstName`,' ',`contractors`.`ContactMidName`,' (',`contractors`.`ContactTitle`,')')) AS `VendorName`,`contractors`.`currency` AS `currency`,`contractors`.`credit` AS `credit`,`contractors`.`cheque` AS `cheque`,`contractors`.`amtbal` AS `amtbal`,`contractors`.`creditlimit` AS `creditlimit`,`contractors`.`Discount` AS `Discount`,`currencies`.`cur_id` AS `cur_id`,`currencies`.`currencyname` AS `currencyname`,`currencies`.`unitname` AS `unitname`,`currencies`.`fromrate` AS `fromrate`,`currencies`.`torate` AS `torate`,`contractors`.`InUse` AS `InUse` from (`currencies` join `contractors` on((`currencies`.`cur_id` = `contractors`.`currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vcustomerid` AS select `customers`.`VendorID` AS `VendorID`,if((`customers`.`ClientType` = 2),`customers`.`CompanyName`,concat(`customers`.`ContactLastName`,' ',`customers`.`ContactFirstName`,' ',`customers`.`ContactMidName`,' (',`customers`.`ContactTitle`,')')) AS `VendorName`,`customers`.`currency` AS `currency`,`customers`.`credit` AS `credit`,`customers`.`cheque` AS `cheque`,`customers`.`amtbal` AS `amtbal`,`customers`.`creditlimit` AS `creditlimit`,`customers`.`Discount` AS `Discount`,`currencies`.`cur_id` AS `cur_id`,`currencies`.`currencyname` AS `currencyname`,`currencies`.`unitname` AS `unitname`,`currencies`.`fromrate` AS `fromrate`,`currencies`.`torate` AS `torate`,`customers`.`InUse` AS `InUse` from (`currencies` join `customers` on((`currencies`.`cur_id` = `customers`.`currency`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vdeficit` AS select `orderdetails`.`OrderID` AS `OrderID`,`orderdetails`.`ProductName` AS `ProductName`,`orderdetails`.`QtyinStock` AS `QtyOrdered`,`negstockded`.`QtyinStock` AS `QtyDeficit`,`stockdeductions`.`OrderDetailID` AS `StkDedOrdID`,`stockdeductions`.`Units` AS `Units`,`orderdetails`.`OrderDetailID` AS `OrderDetailID` from (`stockdeductions` join (`orderdetails` join `negstockded` on((`orderdetails`.`ProductID` = `negstockded`.`ProductID`))) on((`stockdeductions`.`OrderDetailID` = `negstockded`.`OrderDetailID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vdeptoutlet` AS select `deptstock`.`ID` AS `ID`,`deptstock`.`ProductID` AS `ProductID`,`deptstock`.`serials` AS `serials`,`deptstock`.`OutletID` AS `OutletID`,`deptstock`.`shelf` AS `shelf`,`deptstock`.`ShopStock` AS `ShopStock`,`deptstock`.`actlstock` AS `actlstock`,`deptstock`.`stkcntdate` AS `stkcntdate`,`deptstock`.`deptlevel` AS `deptlevel`,`deptstock`.`Notes` AS `Notes`,`classifications`.`category_name` AS `Department` from (`classifications` join `deptstock` on((`classifications`.`catID` = `deptstock`.`OutletID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vdeptstock` AS select `classifications`.`catID` AS `OutletID`,`classifications`.`category_name` AS `OutletName`,`products`.`ProductID` AS `ProductID`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`UnitPrice` AS `UnitPrice`,`deptstock`.`ShopStock` AS `UnitsInStock`,`products`.`unitsinpack` AS `unitsinpack`,`products`.`serialized` AS `serialized`,`products`.`serials` AS `serials` from (`products` join (`classifications` join `deptstock` on((`classifications`.`catID` = `deptstock`.`OutletID`))) on((`products`.`ProductID` = `deptstock`.`ProductID`))) where (`products`.`Discontinued` = 0);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vinvoicedelcode` AS select `invoices`.`InvoiceID` AS `InvoiceID`,`invoicedetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`stockdeductions`.`StockDeductID` AS `StockDeductID` from ((`invoices` left join `invoicedetails` on((`invoices`.`InvoiceID` = `invoicedetails`.`InvoiceID`))) left join `stockdeductions` on((`invoicedetails`.`InvoiceDetailID` = `stockdeductions`.`InvoiceDetailID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vledger` AS select 'Expense' AS `LedgerType`,`expenses`.`AccountID` AS `AccountID`,`expenses`.`RecipientID` AS `VendorID`,`expenses`.`ExpenseID` AS `LedgerID`,((`expenses`.`RecipientType` & ': ') & `expenses`.`Recipient`) AS `Client`,('Expense: ' & `expenses`.`ExpenseType`) AS `Type`,`expenses`.`ExpenseAmount` AS `Debit`,0 AS `Credit`,`paymenttype`.`Category` AS `TransactionMethod`,`expenses`.`AccountBalance` AS `AccountBalance`,`expenses`.`RecAccountBalance` AS `RecAccountBalance`,`expenses`.`DateSubmitted` AS `TransDate` from (`expenses` join `paymenttype` on((`expenses`.`PaymentMethodID` = `paymenttype`.`CategoryID`))) where (`expenses`.`Authorized` = 1) union select 'Payment' AS `LedgerType`,`payments`.`AccountID` AS `AccountID`,`payments`.`PayeeID` AS `VendorID`,`payments`.`PaymentID` AS `LedgerID`,((`payments`.`PayeeType` & ': ') & `payments`.`Payee`) AS `Client`,('Payment: ' & `payments`.`PaymentTerms`) AS `Type`,0 AS `Debit`,`payments`.`PaymentAmount` AS `Credit`,`paymenttype`.`Category` AS `TransactionMethod`,`payments`.`AccountBalance` AS `AccountBalance`,`payments`.`PayAccountBalance` AS `RecAccountBalance`,`payments`.`PaymentDate` AS `TransDate` from (`payments` join `paymenttype` on((`payments`.`PaymentMethodID` = `paymenttype`.`CategoryID`))) where (`payments`.`Posted` = 1) union select 'Bill' AS `LedgerType`,' - ' AS `AccountID`,`bills`.`VendorID` AS `VendorID`,`bills`.`BillID` AS `LedgerID`,((`bills`.`VendorType` & ': ') & `bills`.`CustomerName`) AS `Client`,('Bill: ' & `bills`.`BillType`) AS `Type`,0 AS `Debit`,`bills`.`BillValue` AS `Credit`,' - ' AS `TransactionMethod`,0 AS `AccountBalance`,`bills`.`RecAccountBalance` AS `RecAccountBalance`,`bills`.`ReceivedDate` AS `TransDate` from `bills` where (`bills`.`posted` = 1) union select 'Invoice' AS `LedgerType`,' - ' AS `AccountID`,`invoices`.`CustomerID` AS `VendorID`,`invoices`.`InvoiceID` AS `LedgerID`,((`invoices`.`CustomerType` & ': ') & `invoices`.`CustomerName`) AS `Client`,'Invoice' AS `Type`,`invoices`.`Grandvalue` AS `Debit`,0 AS `Credit`,'  -  ' AS `TransactionMethod`,0 AS `AccountBalance`,`invoices`.`RecAccountBalance` AS `RecAccountBalance`,`invoices`.`InvoiceDate` AS `TransDate` from `invoices` where (`invoices`.`Locked` = 1);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vordersstkded` AS select `orderdetails`.`OrderDetailID` AS `OrderDetailID`,`orderdetails`.`ProductID` AS `ProductID`,`orderdetails`.`QtyinStock` AS `QtyinStock`,`orderdetails`.`currentstock` AS `currentstock`,`orderdetails`.`Cleared` AS `Cleared`,`orders`.`ShipDate` AS `ShipDate` from (`orders` join `orderdetails` on((`orders`.`OrderID` = `orderdetails`.`OrderID`))) where ((`orderdetails`.`QtyinStock` > 0) and (`orders`.`Locked` = 1));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `voutlet` AS select `outlet`.`ID` AS `ID`,`outlet`.`ProductID` AS `ProductID`,`outlet`.`serials` AS `serials`,`outlet`.`OutletID` AS `OutletID`,`outlet`.`Shopshelf` AS `Shopshelf`,`outlet`.`ShopStock` AS `ShopStock`,`outlet`.`Shopactlstock` AS `Shopactlstock`,`outlet`.`Shopstkcntdate` AS `Shopstkcntdate`,`outlet`.`Shoplevel` AS `Shoplevel`,`outlet`.`ShopNotes` AS `ShopNotes`,`outlets`.`OutletName` AS `OutletName` from (`outlets` join `outlet` on((`outlets`.`OutletID` = `outlet`.`OutletID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vpkgdeductions` AS select `invoicedetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`packageitems`.`ProductID` AS `ProductID`,(`packageitems`.`Quantity` * `invoicedetails`.`Quantity`) AS `Quantity` from ((`invoicedetails` join `packages` on((`invoicedetails`.`ProductID` = `packages`.`ProductID`))) join `packageitems` on((`packages`.`PackageID` = `packageitems`.`PackageID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vrequisitions` AS select `requisitions`.`RequisitID` AS `RequisitID`,`requisitions`.`Outletout` AS `Outletout`,`requisitions`.`Outletin` AS `Outletin`,`requisitions`.`transfertype` AS `transfertype`,`requisitions`.`RequestedBy` AS `RequestedBy`,`requisitions`.`GivenBy` AS `GivenBy`,`requisitions`.`RequestDate` AS `RequestDate`,`requisitions`.`DateGiven` AS `DateGiven`,`requisitions`.`Transfered` AS `Transfered`,`requisitions`.`ShipTo` AS `ShipTo`,`requisitions`.`Notes` AS `Notes`,`vstaffid`.`VendorName` AS `ReqBy`,`vstaffid_1`.`VendorName` AS `GivBy`,`transfertype`.`Category` AS `Transfer`,`transfertype`.`CategoryID` AS `CategoryID`,`vstaffid`.`VendorID` AS `reID`,`vstaffid_1`.`VendorID` AS `givID`,`requisitions`.`Outletout` AS `FromOutlet`,`requisitions`.`Outletin` AS `ToOutlet` from (`alloutlets` `alloutlets_1` join (`alloutlets` join (`transfertype` join (`vstaffid` `vstaffid_1` join (`vstaffid` join `requisitions` on((`vstaffid`.`VendorID` = `requisitions`.`RequestedBy`))) on((`vstaffid_1`.`VendorID` = `requisitions`.`GivenBy`))) on((`transfertype`.`CategoryID` = `requisitions`.`transfertype`))) on((`alloutlets`.`OutletID` = `requisitions`.`Outletout`))) on((`alloutlets_1`.`OutletID` = `requisitions`.`Outletin`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vsalespnl` AS select `orders`.`OrderID` AS `OrderID`,`orderdetails`.`OrderDetailID` AS `OrderDetailID`,`invoices`.`InvoiceID` AS `InvoiceID`,`invoicedetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`invoices`.`InvoiceDate` AS `InvoiceDate`,`invoicedetails`.`ProductID` AS `ProductID`,`invoicedetails`.`ProductName` AS `ProductName`,`orderdetails`.`SalePrice` AS `SalePrice`,`orderdetails`.`calcost` AS `calcost`,`invoicedetails`.`SalesPrice` AS `SalesPrice`,`stockdeductions`.`Units` AS `Units`,(((`invoicedetails`.`SalesPrice` * `invoices`.`ExchangeTo`) / `invoices`.`ExchangeFrom`) - `orderdetails`.`calcost`) AS `profit`,((((`invoicedetails`.`SalesPrice` * `invoices`.`ExchangeTo`) / `invoices`.`ExchangeFrom`) - `orderdetails`.`calcost`) * `stockdeductions`.`Units`) AS `TotalProfit`,`invoices`.`Discount` AS `Discount`,`orders`.`SupplierID` AS `SupplierID`,`orders`.`OrderDate` AS `OrderDate`,`invoices`.`OutletID` AS `OutletID`,`invoices`.`EmployeeID` AS `EmployeeID`,`invoices`.`CustomerID` AS `CustomerID`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol`,`outlets`.`OutletName` AS `OutletName`,`invoices`.`TotTax` AS `TotTax`,`products`.`IsPackage` AS `IsPackage` from (`orders` join ((`currencies` join `products` on((`currencies`.`cur_id` = `products`.`currency`))) join (((`outlets` join `invoices` on((`outlets`.`OutletID` = `invoices`.`OutletID`))) join `invoicedetails` on((`invoices`.`InvoiceID` = `invoicedetails`.`InvoiceID`))) join (`orderdetails` join `stockdeductions` on((`orderdetails`.`OrderDetailID` = `stockdeductions`.`OrderDetailID`))) on((`invoicedetails`.`InvoiceDetailID` = `stockdeductions`.`InvoiceDetailID`))) on((`products`.`ProductID` = `invoicedetails`.`ProductID`))) on((`orders`.`OrderID` = `orderdetails`.`OrderID`))) where (`invoices`.`Locked` = 1);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vsalespnlpkg` AS select `orders`.`OrderID` AS `OrderID`,`orderdetails`.`OrderDetailID` AS `OrderDetailID`,`invoices`.`InvoiceID` AS `InvoiceID`,`invoicedetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`invoices`.`InvoiceDate` AS `InvoiceDate`,`invoicedetails`.`ProductID` AS `ProductID`,(((`invoicedetails`.`SalesPrice` * `invoices`.`ExchangeTo`) / `invoices`.`ExchangeFrom`) - `orderdetails`.`calcost`) AS `profit`,((((`invoicedetails`.`SalesPrice` * `invoices`.`ExchangeTo`) / `invoices`.`ExchangeFrom`) - `orderdetails`.`calcost`) * `stockdeductions`.`Units`) AS `TotalProfit`,`invoices`.`Discount` AS `Discount`,`orders`.`SupplierID` AS `SupplierID`,`orders`.`OrderDate` AS `OrderDate`,`invoices`.`OutletID` AS `OutletID`,`invoices`.`EmployeeID` AS `EmployeeID`,`invoices`.`CustomerID` AS `CustomerID`,`currencies`.`symbol` AS `symbol`,`currencies`.`unitsymbol` AS `unitsymbol`,`outlets`.`OutletName` AS `OutletName`,`invoices`.`TotTax` AS `TotTax` from (`orders` join ((`currencies` join `products` on((`currencies`.`cur_id` = `products`.`currency`))) join (((`outlets` join `invoices` on((`outlets`.`OutletID` = `invoices`.`OutletID`))) join `invoicedetails` on((`invoices`.`InvoiceID` = `invoicedetails`.`InvoiceID`))) join (`orderdetails` join `stockdeductions` on((`orderdetails`.`OrderDetailID` = `stockdeductions`.`OrderDetailID`))) on((`invoicedetails`.`InvoiceDetailID` = `stockdeductions`.`InvoiceDetailID`))) on((`products`.`ProductID` = `invoicedetails`.`ProductID`))) on((`orders`.`OrderID` = `orderdetails`.`OrderID`))) where ((`products`.`IsPackage` = 1) and (`invoices`.`Locked` = 1));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vsalessrvsched` AS select `serviceinvdetails`.`InvoiceDetailID` AS `InvoiceDetailID`,`invoices`.`InvoiceID` AS `InvoiceID`,`invoices`.`CustomerName` AS `CustomerName`,`serviceinvdetails`.`service` AS `service`,`serviceinvdetails`.`startdate` AS `startdate`,`serviceinvdetails`.`enddate` AS `enddate`,`assets`.`AssetName` AS `AssetName`,concat('Invoice: ',`invoices`.`InvoiceID`,',  Asset: ',`assets`.`AssetName`,',  Client: ',`invoices`.`CustomerName`) AS `Notes`,`invoices`.`OutletID` AS `OutletID`,`invoices`.`EmployeeID` AS `EmployeeID` from ((`invoices` join `serviceinvdetails` on((`invoices`.`InvoiceID` = `serviceinvdetails`.`InvoiceID`))) left join `assets` on((`serviceinvdetails`.`Asset` = `assets`.`AssetID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vshop` AS select `products`.`ProductID` AS `ProductID`,`outlet`.`ShopStock` AS `ShopStock`,`outlet`.`Shopactlstock` AS `Shopactlstock`,`outlet`.`Shopstkcntdate` AS `Shopstkcntdate`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`xbarcodes` AS `xbarcodes`,`products`.`UnitPrice` AS `UnitPrice`,`products`.`Discontinued` AS `Discontinued` from (`products` join `outlet` on((`products`.`ProductID` = `outlet`.`ProductID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vshoptransfers` AS select `shop_transfers`.`transfer_id` AS `transfer_id`,`shop_transfers`.`ProductID` AS `ProductID`,`shop_transfers`.`UnitsInStock` AS `UnitsInStock`,`shop_transfers`.`Units` AS `Units`,`shop_transfers`.`ProductName` AS `ProductName`,`shop_transfers`.`SerialNumber` AS `SerialNumber`,`shop_transfers`.`serials` AS `serials`,`products`.`FullName` AS `FullName`,`vrequisitions`.`RequisitID` AS `RequisitID`,`vrequisitions`.`Outletout` AS `Outletout`,`vrequisitions`.`Outletin` AS `Outletin`,`vrequisitions`.`transfertype` AS `transfertype`,`vrequisitions`.`RequestedBy` AS `RequestedBy`,`vrequisitions`.`GivenBy` AS `GivenBy`,`vrequisitions`.`RequestDate` AS `RequestDate`,`vrequisitions`.`DateGiven` AS `DateGiven`,`vrequisitions`.`Transfered` AS `Transfered`,`vrequisitions`.`ShipTo` AS `ShipTo`,`vrequisitions`.`Notes` AS `Notes`,`vrequisitions`.`ReqBy` AS `ReqBy`,`vrequisitions`.`GivBy` AS `GivBy`,`vrequisitions`.`Transfer` AS `Transfer`,`vrequisitions`.`CategoryID` AS `CategoryID`,`vrequisitions`.`reID` AS `reID`,`vrequisitions`.`givID` AS `givID`,`vrequisitions`.`FromOutlet` AS `FromOutlet`,`vrequisitions`.`ToOutlet` AS `ToOutlet` from (`products` join (`shop_transfers` join `vrequisitions` on((`shop_transfers`.`RequisitID` = `vrequisitions`.`RequisitID`))) on((`products`.`ProductID` = `shop_transfers`.`ProductID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vstockdetails` AS select `orderdetails`.`OrderDetailID` AS `OrderDetailID`,`orderdetails`.`OrderID` AS `OrderID`,`orderdetails`.`ProductID` AS `ProductID`,`orderdetails`.`ProductName` AS `ProductName`,`orderdetails`.`SerialNumber` AS `SerialNumber`,`orderdetails`.`serials` AS `serials`,`orderdetails`.`delserials` AS `delserials`,`orderdetails`.`addserials` AS `addserials`,`orderdetails`.`Quantity` AS `Quantity`,`orderdetails`.`unitsinpack` AS `unitsinpack`,`orderdetails`.`UnitPrice` AS `UnitPrice`,`orderdetails`.`Dscnt` AS `Dscnt`,`orderdetails`.`Discount` AS `Discount`,`orderdetails`.`SalePrice` AS `SalePrice`,`orderdetails`.`SalesTax` AS `SalesTax`,`orderdetails`.`Margin` AS `Margin`,`orderdetails`.`LineTotal` AS `LineTotal`,`orderdetails`.`calcost` AS `calcost`,`orderdetails`.`sugsell` AS `sugsell`,`orderdetails`.`oldsell` AS `oldsell`,`orderdetails`.`currentstock` AS `currentstock`,`orderdetails`.`ExpiryDate` AS `ExpiryDate`,`orderdetails`.`Expires` AS `Expires`,`orderdetails`.`Cleared` AS `Cleared`,`orderdetails`.`QtyinStock` AS `QtyinStock`,`orderdetails`.`Received` AS `Received`,`orders`.`ShipDate` AS `ShipDate`,`orders`.`OrderDate` AS `OrderDate`,`orders`.`Locked` AS `Locked`,`suppliers`.`CompanyName` AS `CompanyName`,`currencies`.`currencyname` AS `currencyname` from ((`currencies` join (`suppliers` join `orders` on((`suppliers`.`VendorID` = `orders`.`SupplierID`))) on((`currencies`.`cur_id` = `orders`.`Currency`))) join `orderdetails` on((`orders`.`OrderID` = `orderdetails`.`OrderID`)));
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vstockvalue` AS select `products`.`ProductID` AS `ProductID`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`FullName` AS `FullName`,`products`.`category` AS `category`,`products`.`Classification` AS `Classification`,`orderdetails`.`QtyinStock` AS `QtyinStock`,`products`.`UnitPrice` AS `UnitPrice`,((`orderdetails`.`SalePrice` * `orders`.`ExchangeTo`) / `orders`.`ExchangeFrom`) AS `SalePrice`,`orderdetails`.`calcost` AS `calcost`,(`orderdetails`.`QtyinStock` * `orderdetails`.`calcost`) AS `TotVal`,`orderdetails`.`OrderDetailID` AS `OrderDetailID` from (`products` join (`orders` join `orderdetails` on((`orders`.`OrderID` = `orderdetails`.`OrderID`))) on((`products`.`ProductID` = `orderdetails`.`ProductID`))) where (`orderdetails`.`QtyinStock` > 0);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vstore` AS select `products`.`ProductID` AS `ProductID`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`products`.`Brand` AS `Brand`,`products`.`ProductDescription` AS `ProductDescription`,`products`.`UnitsInStock` AS `UnitsInStock`,`products`.`colour` AS `colour`,`products`.`colorvalue` AS `colorvalue`,`products`.`Picture` AS `Picture`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`xbarcodes` AS `xbarcodes`,`products`.`UnitPrice` AS `UnitPrice`,`products`.`Discontinued` AS `Discontinued`,`products`.`status` AS `status`,`products`.`exoodshop` AS `exoodshop` from `products` where (`products`.`Discontinued` = 0);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vstorestock` AS select 0 AS `OutletID`,'Store' AS `OutletName`,`products`.`ProductID` AS `ProductID`,`products`.`ProductName` AS `ProductName`,`products`.`FullName` AS `FullName`,`products`.`SerialNumber` AS `SerialNumber`,`products`.`UnitPrice` AS `UnitPrice`,`products`.`UnitsInStock` AS `UnitsInStock`,`products`.`unitsinpack` AS `unitsinpack`,`products`.`serialized` AS `serialized`,`products`.`serials` AS `serials` from `products` where (`products`.`Discontinued` = 0);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vsupplierid` AS select `vendors`.`VendorID` AS `VendorID`,concat(`vendors`.`ContactTitle`,' ',`vendors`.`ContactFirstName`,' ',`vendors`.`ContactMidName`,' ',`vendors`.`ContactLastName`,' (',`vendors`.`CompanyName`,')') AS `VendorName`,`vendors`.`VendorType` AS `VendorType`,`vendors`.`InUse` AS `InUse`,`vendors`.`currency` AS `currency`,`vendors`.`credit` AS `credit`,`vendors`.`cheque` AS `cheque`,`vendors`.`amtbal` AS `amtbal`,`vendors`.`creditlimit` AS `creditlimit`,`vendors`.`Discount` AS `Discount`,`currencies`.`currencyname` AS `currencyname`,`currencies`.`unitname` AS `unitname`,`currencies`.`fromrate` AS `fromrate`,`currencies`.`torate` AS `torate` from (`vendors` join `currencies` on((`vendors`.`currency` = `currencies`.`cur_id`))) where (`vendors`.`VendorType` = 2);

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Paging</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		var myList;
+		function doOnLoad() {
+			myList = new dhtmlXList({
+				container:"data_container",
+				template:"<span class='dhx_strong'>#Maintainer#</span>#Package# <span class='dhx_light'>#Version#</span>",
+				pager:{
+					container:"paging_here",
+					size:21,
+					group:8
+				}
+			});
+
+			myList.load("../common/data.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<h1>Paging</h1>
+	<p>All data is loaded at once</p>
+	<div id="data_container" style="border:1px solid #A4BED4; background-color:white; width:320px;height:392px;"></div><br>
+	<div id="paging_here" style="width:320px;height:36px;"></div>
+</body>
+</html>

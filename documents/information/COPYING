@@ -1,0 +1,26 @@
+PhpDig is a web spider and search engine written in PHP, using a MySQL database and 
+flat file support. PhpDig builds a glossary with words found in indexed pages. On a 
+search query, it displays a result page containing the search keys, ranked by occurrence.
+
+This program is provided WITHOUT warranty under the GNU/GPL license.
+See the LICENSE file for more information about the GNU/GPL license.
+
+    Copyright (C) 2001 - 2003, Antoine Bajolet, http://www.toiletoine.net/
+    Copyright (C) 2003 - current, Charter, http://www.phpdig.net/
+    Contributors hold Copyright (C) to their code submissions.
+    Contact at http://www.phpdig.net/forum/
+    Lastest version at http://www.phpdig.net/
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA

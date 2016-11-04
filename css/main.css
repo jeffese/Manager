@@ -1,0 +1,95 @@
+@charset "utf-8";
+html, body {
+    background-color: #5E0000;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Takes care of horizontal alignment in Internet Explorer */
+}
+
+.headerlogo {
+    background-image:url(/images/Exood-Manager.png);
+    background-repeat:no-repeat;
+    background-position:left;
+    height:100px;
+    width:350px;	
+}
+
+#content {
+    position: relative; /* Needed for Safari */
+    margin: auto; /* Takes care of horizontal alignment in standards compliant browsers */
+    text-align: center;
+}
+#newcompany {
+    position: relative; /* Needed for Safari */
+    margin: auto; /* Takes care of horizontal alignment in standards compliant browsers */
+    text-align: center;
+}
+.frametop {
+    background-image: url(/images/frame_top.png);
+    background-repeat: repeat-x;
+}
+.framebot {
+    background-image: url(/images/frame_bot.png);
+    background-repeat: repeat-x;
+}
+.frameleft {
+    background-image: url(/images/frame_left.png);
+    background-repeat: repeat-y;
+}
+.frameright {
+    background-image: url(/images/frame_right.png);
+    background-repeat: repeat-y;
+}
+.frametopleft {
+    background-image: url(/images/frame_topleft.png);
+    background-repeat: no-repeat;
+    width:39px;
+    height:37px;
+}
+.frametopright {
+    background-image: url(/images/frame_topright.png);
+    background-repeat: no-repeat;
+}
+.framebotleft {
+    background-image: url(/images/frame_botleft.png);
+    background-repeat: no-repeat;
+}
+.framebotright {
+    background-image: url(/images/frame_botright.png);
+    background-repeat: no-repeat;
+    width:37px;
+    height:39px;
+}
+.top_cap {
+    background-image: url(/images/top_cap_drop.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+.sheetside {
+    background-image: url(/images/bg_drop.png);
+    background-position: center;
+}
+.sheet_bot {
+    background-image: url(/images/bottom_cap_drop.png);
+    background-position: center;
+}
+h1, p {
+    margin: 0;
+    padding: 1em;
+}
+h1 {
+    font-size: 12px;
+    line-height: 1.5em;
+}
+
+.errorbox {
+    border:1px #FF0000 solid;
+    background-color:#ECF29F;
+    height:50px;
+    vertical-align:middle;
+    text-align:center;
+    color:#FF0000;
+}		

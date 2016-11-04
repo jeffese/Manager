@@ -1,0 +1,31 @@
+SELECT SrvSchedID, startdate, enddate, endLic, `ProdName`, `sched`.`Status`, status.Category, `invoicedetails`.ProductID,
+    `assets`.*, colorname, tags, `auto_categories`.category_name, `AssStatus`.Category AS assStat, `license`,
+    `category_name` AS `vtype`, CONCAT(`AssetName`, ' ', `licenceno`) AS `AssetName`, `invoices`.InvoiceID, CONCAT(IF(`vendors`.`ClientType`=2, `vendors`.`CompanyName`, 
+                CONCAT_WS(' ', `vendors`.`ContactLastName`, `vendors`.`ContactMidName`, `vendors`.`ContactFirstName`, 
+                IF(LENGTH(`vendors`.`ContactTitle`)>0, CONCAT('(',`vendors`.`ContactTitle`,')'), '')))) AS VendorName,
+    CONCAT(`BillingAddress`, ' ', `City`, ' ', `StateOrProvince`) AS `addr`
+        FROM (
+    SELECT SrvSchedID, DATE_FORMAT(startdate, '%e/%c/%Y') AS startdate, DATE_FORMAT(enddate, '%e/%c/%Y') AS enddate, 
+    UPPER(DATE_FORMAT(enddate, '%b %Y')) AS endLic, `invoicedetails`.InvoiceID,
+    `AssetID`, `items_srv_sched`.`Status` FROM `exood_coy1`.`items_srv_sched`
+    INNER JOIN `exood_coy1`.`invoicedetails`      ON `items_srv_sched`.InvoiceDetailID=`invoicedetails`.`InvoiceDetailID`
+    INNER JOIN `exood_coy1`.`items_srv`           ON `invoicedetails`.ProductID=`items_srv`.`ServiceID`
+    WHERE `SrvSchedID`=1002
+        UNION
+    SELECT SrvSchedID, DATE_FORMAT(startdate, '%e/%c/%Y') AS startdate, DATE_FORMAT(enddate, '%e/%c/%Y') AS enddate, 
+    UPPER(DATE_FORMAT(enddate, '%b %Y')) AS endLic, `invoicedetails`.InvoiceID,
+    `AssetID`, `items_srv_sched`.`Status` FROM `exood_coy1`.`items_srv_sched`
+    INNER JOIN `exood_coy1`.`invoicedetails`      ON `items_srv_sched`.InvoiceDetailID=`invoicedetails`.`InvoiceDetailID`
+    INNER JOIN `exood_coy1`.`items_pkgs_itms`     ON `items_srv_sched`.PackItemID=`items_pkgs_itms`.`PackItemID`
+    INNER JOIN `exood_coy1`.`items_srv`           ON `items_pkgs_itms`.ProductID=`items_srv`.`ServiceID`
+    WHERE `SrvSchedID`=1002
+        ) AS `sched` 
+    INNER JOIN `exood_coy1`.`items`               ON `items_srv`.ProductID=`items`.ItemID
+    INNER JOIN `exood_coy1`.`invoices`            ON `sched`.InvoiceID=`invoices`.`InvoiceID`
+    INNER JOIN `exood_coy1`.`vendors`             ON `invoices`.VendorID=`vendors`.VendorID
+    INNER JOIN `exood_coy1`.`assets`              ON `sched`.AssetID=`assets`.AssetID
+    LEFT JOIN `exood_coy1`.`status` `AssStatus`   ON `assets`.Status=`AssStatus`.CategoryID
+    LEFT JOIN `exood_coy1`.`colors`               ON `assets`.colour=`colors`.colorid
+    LEFT JOIN `exood_coy1`.`licenses`             ON `assets`.`desgtype`=`licenses`.`lic_typ`
+    LEFT JOIN `exood_coy1`.`auto_categories`      ON `assets`.`SalvageValue`=`auto_categories`.`CatID`
+    LEFT JOIN `exood_coy1`.`status`               ON `sched`.Status=status.CategoryID

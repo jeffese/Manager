@@ -1,0 +1,8 @@
+zip -rq exood exood
+zip -rq fpostoff fpostoff
+zip -rq newspapers newspapers
+zip -rq talk talkmysqldump [OPTIONS] --databases [OPTIONS] exood fpostoff newspapers talkmysqldump --opt talk > talk.sql
+mysqldump talk < talk.sql -u admin -pmysqldump -u admin -p --opt talk | mysql --host=69.64.34.33 -C talkmysqldump -u admin -p talk | ssh root@69.64.34.33 mysql -u admin -p talkmysqldump -u admin -B talk -p | mysql -h 69.64.34.33 -u admin -pmysqldump -u admin -B talk -p > talk.sql
+mysqldump -u admin -B exood -p > exood.sql
+mysqldump -u admin -B fpostoff -p > fpostoff.sql
+mysqldump -u admin -B newspapers -p > newspapers.sqlmysql -u admin -p < talk.sql

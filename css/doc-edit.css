@@ -1,0 +1,13 @@
+
+.img[editable="1"] {
+    cursor: pointer;
+}
+
+[req="1"], .jqte[req="1"] {
+    border-color:#E70000;
+    box-shadow:0 0 10px #FF0000; -webkit-box-shadow:0 0 10px #FF0000; -moz-box-shadow:0 0 10px #FF0000;
+}
+
+.jqte_focused[req="1"] {
+    border-color:#00AAE7;
+}

@@ -1,0 +1,162 @@
+<table border="0" cellspacing="4" cellpadding="1" style="float:left; padding:4px" id="tab_<?php echo $m ?>">
+                        <tr>
+                          <td class="bl_tl"></td>
+                          <td class="bl_tp"></td>
+                          <td class="bl_tr"></td>
+                        </tr>
+                        <tr>
+                          <td rowspan="2" class="bl_lf"></td>
+    <td class="bl_title"><?php echo $Net_det['nickname'], ' {', $eth, '}' ?>
+                            <input name="eth<?php echo $m ?>" type="hidden" id="eth<?php echo $m ?>" value="<?php echo $eth ?>" />
+                            <div style="float:right">
+                              <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="20">&nbsp;</td>
+                                  <td>Delete </td>
+                                  <td><input type="checkbox" name="del<?php echo $m ?>" id="del<?php echo $m ?>" onclick="if (this.checked) {$('#bx_set<?php echo $m ?>').hide(); $('#hide_set<?php echo $m ?>').hide(); $('#show_set<?php echo $m ?>').hide(); } else {$('#show_set<?php echo $m ?>').show()}" /></td>
+                                  <td width="20">&nbsp;</td>
+                                  <td><a href="javascript: void(0)" onclick="hideshow('set', 1, <?php echo $m ?>)"><img src="/images/bt_show.png" alt="" name="show_type" width="60" height="16" id="show_set<?php echo $m ?>" /></a><a href="javascript: void(0)" onclick="hideshow('set', 0, <?php echo $m ?>)"><img src="../images/bt_hide.png" alt="" width="60" height="16" id="hide_set<?php echo $m ?>" style="display:none" /></a></td>
+                                </tr>
+                              </table>
+                            </div></td>
+                          <td rowspan="2" class="bl_rt"></td>
+                        </tr>
+                        <tr>
+                          <td class="bl_center"><table id="bx_set<?php echo $m ?>" style="display:none" border="0" cellspacing="2" cellpadding="2">
+                              <tr>
+                                <td align="right" bgcolor="#104DBE" class="boldwhite1">NickName:</td>
+                                <td><input name="nickname<?php echo $m ?>" type="text" id="nickname<?php echo $m ?>" value="<?php echo $Net_det['nickname'] ?>" /></td>
+                              </tr>
+                              <tr>
+          <td width="80" align="right" bgcolor="#104DBE" class="boldwhite1">Active:</td>
+                <td><input type="checkbox" name="active<?php echo $m ?>" id="active<?php echo $m ?>" <?php if ($ifcfg['active'] == 1) { echo "checked=\"checked\""; } ?> /></td>
+        </tr>
+        <tr>
+                                <td align="right" bgcolor="#2363A9" class="boldwhite1">IP (4):</td>
+                                <td><input name="ip<?php echo $m ?>" type="text" id="ip<?php echo $m ?>" value="<?php echo $ifcfg['ip'] ?>" <?php if ($ifcfg['dhcp'] == 1) { echo "disabled=\"disabled\""; } ?> /></td>
+                              </tr>
+                              <tr>
+                                <td align="right" nowrap="nowrap" bgcolor="#2363A9" class="boldwhite1">Subnet Mask:</td>
+                                <td><input name="mask<?php echo $m ?>" type="text" id="mask<?php echo $m ?>" value="<?php echo $ifcfg['mask'] ?>" <?php if ($ifcfg['dhcp'] == 1) { echo "disabled=\"disabled\""; } ?> /></td>
+                              </tr>
+                              <tr>
+                                <td align="right" bgcolor="#2363A9" class="boldwhite1">Gateway:</td>
+                                <td><input name="gw<?php echo $m ?>" type="text" id="gw<?php echo $m ?>" value="<?php echo $ifcfg['gw'] ?>" <?php if ($ifcfg['dhcp'] == 1 || $Net_det['local'] == 1) { echo "disabled=\"disabled\""; } ?> /></td>
+                              </tr>
+                              <tr>
+                                <td height="4"></td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td align="right" bgcolor="#4EB1FC" class="boldwhite1">IP (6):</td>
+                                <td><input name="ip6<?php echo $m ?>" type="text" id="ip6<?php echo $m ?>" value="<?php echo $ifcfg['ip6'] ?>" size="40" <?php if ($ifcfg['dhcp'] == 1) { echo "disabled=\"disabled\""; } ?> /></td>
+                              </tr>
+                              <tr>
+                                <td height="4"></td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2"><table border="0" cellspacing="2" cellpadding="2">
+                                    <tr>
+                                      <td colspan="2" class="h1"> Gateway Settings</td>
+                                    </tr>
+                                    <tr>
+                                      <td width="60" align="right" bgcolor="#333333" class="boldwhite1">Local:</td>
+                                      <td width="147" bgcolor="#333333"><input type="checkbox" name="gateway<?php echo $m ?>" id="gateway<?php echo $m ?>" <?php echo $Net_det['local'] == 1 ? "checked=\"checked\"" : ""; ?> onclick="setGW(<?php echo $m ?>)" title="Set to make this device a Gateway for your Local Network where LAN Computers connect to..." /></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" class="boldwhite1"><table border="0" cellspacing="2" cellpadding="2" id="gwbox<?php echo $m ?>" style="display:<?php echo $Net_det['local'] == 1 ? "none" : "block" ?>">
+                                          <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">Provider:</td>
+                            <td><input name="network<?php echo $m ?>" type="text" id="network<?php echo $m ?>" value="<?php echo $Net_det['network'] ?>" title="The Internet Service Provider." /></td>
+                    </tr>
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">Type:</td>
+                            <td><select name="backup<?php echo $m ?>" id="backup<?php echo $m ?>" title="Set this Port as 
+1] Not automatically set, but can be used in routing policies
+2] Default Gateway {Include it in the multi-route Gateway process}
+3] Failover-only-Gateway {it should only be used if the Main Gateway(s) are down}">
+                                <option value="-1" <?php if ($Net_det['backup'] == "-1") { echo "selected=\"selected\""; } ?>></option>
+                                <option value="0" <?php if ($Net_det['backup'] == "0") { echo "selected=\"selected\""; } ?>>Default Route</option>
+                                <option value="1" <?php if ($Net_det['backup'] == "1") { echo "selected=\"selected\""; } ?>>Backup Route</option>
+                        </select></td>
+                    </tr>
+                    <?php if ($ike > 0) { ?>
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">IKE Port:</td>
+                            <td><input name="ike<?php echo $m ?>" type="text" id="ike<?php echo $m ?>" value="<?php echo $Net_det['ike'] ?>" size="10" onchange="this.value = setintnum(this.value)" /></td>
+                    </tr>
+                    <?php } ?>
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">Tunnel:</td>
+                      <td><table border="0" cellspacing="2" cellpadding="2">
+                          <tr>
+                                  <td><input type="radio" name="proxy<?php echo $m ?>" value="0" id="proxy_0<?php echo $m ?>" <?php echo $Net_det['proxy'] == 0 ? "checked=\"checked\"" : ""; ?> title="Use Mediator Server to initiate Direct Tunnel" /></td>
+                            <td class="blue-normal">Mediated</td>
+                          </tr>
+                          <tr>
+                                  <td><input type="radio" name="proxy<?php echo $m ?>" value="1" id="proxy_1<?php echo $m ?>" <?php echo $Net_det['proxy'] == 1 ? "checked=\"checked\"" : ""; ?> title="Tunnel through Mediator Server as a Proxy Server" /></td>
+                            <td class="blue-normal">Proxy</td>
+                          </tr>
+                          <tr>
+                                  <td><input type="radio" name="proxy<?php echo $m ?>" value="2" id="proxy_2<?php echo $m ?>" <?php echo $Net_det['proxy'] == 2 ? "checked=\"checked\"" : ""; ?> title="Direct Tunnel" /></td>
+                            <td class="blue-normal">Direct</td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                                            <td align="right" bgcolor="#333333" class="boldwhite1">Weight:</td>
+                                            <td><input name="weight<?php echo $m ?>" type="text" id="weight<?php echo $m ?>" value="<?php echo $Net_det['weight']; ?>" maxlength="1" style="width:20px" title="Set the ratio of traffic that will be sent through this gateway. Default is 1" /></td>
+                                          </tr>
+                                          <tr>
+                                            <td align="right" nowrap="nowrap" bgcolor="#333333" class="boldwhite1">Probe IP:</td>
+                                            <td><input name="probe<?php echo $m ?>" type="text" id="probe<?php echo $m ?>" value="<?php echo $Net_det['probe'] ?>" title="The IP Address that will be pinged to test that this gateway is active." /></td>
+                                          </tr>
+                                        </table></td>
+                                    </tr>
+                                  </table>
+                                  <table id="client<?php echo $m ?>" border="0" cellspacing="2" cellpadding="2" style="display:<?php echo $Net_det['local'] == 0 ? "none" : "block" ?>">
+                                    <tr>
+                      <td colspan="2" align="center" class="h1"><strong>VPN Subnet NAT Exclusion</strong></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><table border="0" cellspacing="2" cellpadding="2">
+                          <tr>
+                            <td><input name="dnat<?php echo $m ?>" type="text" id="dnat<?php echo $m ?>" value="<?php echo $Net_det['dnat'] ?>" style="width:120px" /></td>
+                            <td class="red-normal"><strong>/</strong></td>
+                            <td><input name="dfx<?php echo $m ?>" type="text" id="dfx<?php echo $m ?>" value="<?php echo $Net_det['dfx'] ?>" style="width:20px" /></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                                      <td colspan="2" align="center" class="h1">Clients</td>
+                                    </tr>
+                                    <tr>
+                                      <td width="40" align="right" bgcolor="#006633" class="boldwhite1">DHCP:</td>
+                                      <td width="147"><input type="checkbox" name="dhcl<?php echo $m ?>" id="dhcl<?php echo $m ?>" <?php if ($Net_det['dhcl'] == 1) { echo "checked=\"checked\""; } ?> onclick="setDHCL(<?php echo $m ?>)" title="Enable DHCP Server on this device to give automatic IPs on the LAN." /></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" align="right" class="boldwhite1"><table id="dhcl_bx<?php echo $m ?>" border="0" cellspacing="2" cellpadding="2" style="display:<?php echo $Net_det['dhcl'] == 0 ? "none" : "block" ?>">
+                                          <tr>
+                                            <td align="right" bgcolor="#006633" class="boldwhite1">Start:</td>
+                                            <td><input name="start<?php echo $m ?>" type="text" id="start<?php echo $m ?>" value="<?php echo $Net_det['start'] ?>" /></td>
+                                          </tr>
+                                          <tr>
+                                            <td align="right" bgcolor="#006633" class="boldwhite1">End:</td>
+                                            <td><input name="end<?php echo $m ?>" type="text" id="end<?php echo $m ?>" value="<?php echo $Net_det['end'] ?>" /></td>
+                                          </tr>
+                                        </table></td>
+                                    </tr>
+                                  </table></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                        <tr>
+                          <td class="bl_bl"></td>
+                          <td class="bl_bt"></td>
+                          <td class="bl_br"></td>
+                        </tr>
+                      </table>

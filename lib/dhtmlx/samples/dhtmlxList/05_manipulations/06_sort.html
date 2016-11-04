@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sort items</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		var myList;
+		function doOnLoad() {
+			myList = new dhtmlXList({
+				container:"data_container",
+				template:"#Package# : #Version#<br/>#Maintainer#"
+			});
+			myList.load("../common/data.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<h1>Sort items</h1>
+	<div id="data_container" style="border:1px solid #A4BED4; background-color:white;width:320px;height:396px;"></div><br>
+	<input type="button" value="sort asc" onclick="myList.sort('#Package#', 'asc')"/>
+	<input type="button" value="sort desc" onclick="myList.sort('#Package#', 'desc')"/>
+</body>
+</html>

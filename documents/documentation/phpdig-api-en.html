@@ -1,0 +1,1263 @@
+<html>
+<head>
+<title>PhpDig.net - PhpDig API</title>
+<style type="text/css">
+<!--
+body, td {
+	background-color: #EEEEEE;
+	color: #000000;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 10px 10px 10px 10px;
+	padding: 0px;
+}
+a:link {
+	color: #006699;
+}
+a:visited {
+	color: #336699;
+}
+a:hover, a:active {
+	color: #C00000;
+}
+.cdtext {
+	color: #008000;
+	font: 10pt courier, 'courier new', monospace;
+}
+-->
+</style>
+</head>
+<body>
+
+<strong><a href="http://www.phpdig.net/index.php">PhpDig.net</a> - API</strong>
+
+<blockquote>
+<p><i>Last update : 2005-01-16</i>
+</p>
+</blockquote>
+
+<a name="toc"></a>
+<table border="0"><tr><td valign="top">
+<blockquote><ul>
+<li><a href="#toc1"><u>1. phpdigAddLog</u></a></li>
+<li><a href="#toc2"><u>2. phpdigAuth</u></a></li>
+<li><a href="#toc3"><u>3. phpdigByLength</u></a></li>
+<li><a href="#toc4"><u>4. phpdigCheckTables</u></a></li>
+<li><a href="#toc5"><u>5. phpdigCleanHtml</u></a></li>
+<li><a href="#toc6"><u>6. phpdigCompareDomains</u></a></li>
+<li><a href="#toc7"><u>7. phpdigComWords</u></a></li>
+<li><a href="#toc8"><u>8. phpdigCreateSubstArrays</u></a></li>
+<li><a href="#toc9"><u>9. phpdigDelSpiderRow</u></a></li>
+<li><a href="#toc10"><u>10. phpdigDelText</u></a></li>
+<li><a href="#toc11"><u>11. phpdigDetectDir</u></a></li>
+<li><a href="#toc12"><u>12. phpdigDspTable</u></a></li>
+<li><a href="#toc13"><u>13. phpdigEpureText</u></a></li>
+<li><a href="#toc14"><u>14. phpdigExplore</u></a></li>
+<li><a href="#toc15"><u>15. phpdigFormatMetaTags</u></a></li>
+<li><a href="#toc16"><u>16. phpdigFtpClose</u></a></li>
+<li><a href="#toc17"><u>17. phpdigFtpConnect</u></a></li>
+<li><a href="#toc18"><u>18. phpdigFtpKeepAlive</u></a></li>
+<li><a href="#toc19"><u>19. phpdigGetHttpEquiv</u></a></li>
+<li><a href="#toc20"><u>20. phpdigGetLogs</u></a></li>
+</ul></blockquote>
+</td><td valign="top">
+<blockquote><ul>
+<li><a href="#toc21"><u>21. phpdigGetSiteFromUrl</u></a></li>
+<li><a href="#toc22"><u>22. phpdigGetSpiderRow</u></a></li>
+<li><a href="#toc23"><u>23. phpdigGetUrl</u></a></li>
+<li><a href="#toc24"><u>24. phpdigHighlight</u></a></li>
+<li><a href="#toc25"><u>25. phpdigHttpVars</u></a></li>
+<li><a href="#toc26"><u>26. phpdigIndexFile</u></a></li>
+<li><a href="#toc27"><u>27. phpdigMakeCookies</u></a></li>
+<li><a href="#toc28"><u>28. phpdigMakeForm</u></a></li>
+<li><a href="#toc29"><u>29. phpdigMsg</u></a></li>
+<li><a href="#toc30"><u>30. phpdigMySelect</u></a></li>
+<li><a href="#toc31"><u>31. phpdigParseTemplate</u></a></li>
+<li><a href="#toc32"><u>32. phpdigPregQuotes</u></a></li>
+<li><a href="#toc33"><u>33. phpdigPrnMsg</u></a></li>
+<li><a href="#toc34"><u>34. phpdigReadHttpDate</u></a></li>
+<li><a href="#toc35"><u>35. phpdigReadRobots</u></a></li>
+<li><a href="#toc36"><u>36. phpdigReadRobotsTags</u></a></li>
+<li><a href="#toc37"><u>37. phpdigReadRobotsTxt</u></a></li>
+<li><a href="#toc38"><u>38. phpdigRevisitAfter</u></a></li>
+<li><a href="#toc39"><u>39. phpdigRewriteUrl</u></a></li>
+<li><a href="#toc40"><u>40. phpdigSearch</u></a></li>
+</ul></blockquote>
+</td><td valign="top">
+<blockquote><ul>
+<li><a href="#toc41"><u>41. phpdigSessionRemove</u></a></li>
+<li><a href="#toc42"><u>42. phpdigSessionRemoveIt</u></a></li>
+<li><a href="#toc43"><u>43. phpdigSetHeaders</u></a></li>
+<li><a href="#toc44"><u>44. phpdigSpanReplace</u></a></li>
+<li><a href="#toc45"><u>45. phpdigSpiderAddSite</u></a></li>
+<li><a href="#toc46"><u>46. phpdigStripAccents</u></a></li>
+<li><a href="#toc47"><u>47. phpdigTempFile</u></a></li>
+<li><a href="#toc48"><u>48. phpdigTestDouble</u></a></li>
+<li><a href="#toc49"><u>49. phpdigTestUrl</u></a></li>
+<li><a href="#toc50"><u>50. phpdigTimer</u></a></li>
+<li><a href="#toc51"><u>51. phpdigUpdSpiderRow</u></a></li>
+<li><a href="#toc52"><u>52. phpdigWriteText</u></a></li>
+</ul></blockquote>
+<blockquote><ul>
+<li><a href="#toc100"><u>Functions by Files</u></a></li>
+</ul></blockquote>
+</td></tr></table><br>
+
+<a name="toc1"></a><b>1. phpdigAddLog</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>1.1. Description :</b></p>
+
+<p>
+Insert an entry in logs<br>
+
+</p>
+<p><b>1.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$option :	'start'
+	$includes :	array()
+	$excludes :	array()
+	$num_results
+	$time
+</pre>
+<p><b>1.3. In file :</b></p>
+<p>
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc2"></a><b>2. phpdigAuth</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>2.1. Description :</b></p>
+<p>
+HTTP authentication method<br>
+Replaced by cookie based auth.php file
+
+</p>
+<p><b>2.2. In file :</b></p>
+<p>
+
+authold.php
+</p>
+</blockquote>
+
+<a name="toc3"></a><b>3. phpdigByLength</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>3.1. Description :</b></p>
+<p>
+Sort arrary elements<br>
+Initially named by_length<br>
+
+</p>
+<p><b>3.2. Parameters :</b></p>
+<pre class="cdtext">
+	$a
+	$b
+</pre>
+<p><b>3.3. In file :</b></p>
+<p>
+search_function.php
+</p>
+</blockquote>
+
+<a name="toc4"></a><b>4. phpdigCheckTables</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>4.1. Description :</b></p>
+<p>
+Verify phpdig_tables<br>
+
+</p>
+<p><b>4.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$tables :	array()
+</pre>
+<p><b>4.3. In file :</b></p>
+<p>
+
+mysql_functions.php
+</p>
+</blockquote>
+
+<a name="toc5"></a><b>5. phpdigCleanHtml</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>5.1. Description :</b></p>
+<p>
+Advanced striptags function<br>
+Returns text and title<br>
+
+</p>
+<p><b>5.2. Parameters :</b></p>
+<pre class="cdtext">
+	$text
+</pre>
+<p><b>5.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc6"></a><b>6. phpdigCompareDomains</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>6.1. Description :</b></p>
+<p>
+Find if an url is same domain than another<br>
+
+</p>
+<p><b>6.2. Parameters :</b></p>
+<pre class="cdtext">
+	$url1
+	$url2
+</pre>
+<p><b>6.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc7"></a><b>7. phpdigComWords</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>7.1. Description :</b></p>
+<p>
+Load the common words in an array<br>
+
+</p>
+
+<p><b>7.2. Parameters :</b></p>
+<pre class="cdtext">
+	$file
+</pre>
+<p><b>7.3. In file :</b></p>
+<p>
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc8"></a><b>8. phpdigCreateSubstArrays</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>8.1. Description :</b></p>
+<p>
+Create Useful arrays for different encodings<br>
+
+</p>
+<p><b>8.2. Parameters :</b></p>
+<pre class="cdtext">
+	$subststrings
+</pre>
+<p><b>8.3. In file :</b></p>
+<p>
+
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc9"></a><b>9. phpdigDelSpiderRow</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>9.1. Description :</b></p>
+<p>
+Delete a spider reccord and content file<br>
+
+</p>
+
+<p><b>9.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$spider_id
+	$ftp_id
+</pre>
+<p><b>9.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc10"></a><b>10. phpdigDelText</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>10.1. Description :</b></p>
+<p>
+Delete a content_text from a spider_id<br>
+
+</p>
+<p><b>10.2. Parameters :</b></p>
+<pre class="cdtext">
+	$relative_script_path
+	$spider_id
+	$ftp_id
+</pre>
+<p><b>10.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc11"></a><b>11. phpdigDetectDir</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>11.1. Description :</b></p>
+<p>
+Test a link, search if is a file or dir, exclude robots.txt directives<br>
+
+</p>
+
+<p><b>11.2. Parameters :</b></p>
+<pre class="cdtext">
+	$link
+	$exclude
+	$cookies :	array()
+	$site_id
+	$id_connect
+</pre>
+<p><b>11.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc12"></a><b>12. phpdigDspTable</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>12.1. Description :</b></p>
+<p>
+Debug via display table<br>
+
+</p>
+<p><b>12.2. Parameters :</b></p>
+<pre class="cdtext">
+	$datas
+</pre>
+<p><b>12.3. In file :</b></p>
+<p>
+
+debug_functions.php
+</p>
+</blockquote>
+
+<a name="toc13"></a><b>13. phpdigEpureText</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>13.1. Description :</b></p>
+<p>
+Epure a string from all non alnum words (words can contain certain characters)<br>
+
+</p>
+
+<p><b>13.2. Parameters :</b></p>
+<pre class="cdtext">
+	$text
+	$min_word_length
+	$encoding
+</pre>
+<p><b>13.3. In file :</b></p>
+<p>
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc14"></a><b>14. phpdigExplore</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>14.1. Description :</b></p>
+<p>
+Retrieve links from a file<br>
+
+</p>
+<p><b>14.2. Parameters :</b></p>
+<pre class="cdtext">
+	$tempfile
+	$url
+	$path
+	$file
+</pre>
+<p><b>14.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc15"></a><b>15. phpdigFormatMetaTags</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>15.1. Description :</b></p>
+<p>
+Metatags in lowercase<br>
+
+</p>
+
+<p><b>15.2. Parameters :</b></p>
+<pre class="cdtext">
+	$file
+</pre>
+<p><b>15.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc16"></a><b>16. phpdigFtpClose</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>16.1. Description :</b></p>
+<p>
+Close the ftp if exists<br>
+
+</p>
+<p><b>16.2. Parameters :</b></p>
+<pre class="cdtext">
+	$ftp_id
+</pre>
+<p><b>16.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc17"></a><b>17. phpdigFtpConnect</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>17.1. Description :</b></p>
+<p>
+Connect to the ftp if the ftp is on and the connection ok<br>
+The content files are stored locally and could be uploaded<br>
+
+Manually later<br>
+
+</p>
+<p><b>17.2. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc18"></a><b>18. phpdigFtpKeepAlive</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+
+<p><b>18.1. Description :</b></p>
+<p>
+Reconnect to ftp if the connexion fails or in case of timout<br>
+
+</p>
+<p><b>18.2. Parameters :</b></p>
+<pre class="cdtext">
+	$ftp_id
+	$relative_script_path
+</pre>
+<p><b>18.3. In file :</b></p>
+<p>
+robot_functions.php
+
+</p>
+</blockquote>
+
+<a name="toc19"></a><b>19. phpdigGetHttpEquiv</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>19.1. Description :</b></p>
+<p>
+Read meta http-equiv<br>
+
+</p>
+<p><b>19.2. Parameters :</b></p>
+
+<pre class="cdtext">
+	$file
+</pre>
+<p><b>19.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc20"></a><b>20. phpdigGetLogs</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+
+<p><b>20.1. Description :</b></p>
+<p>
+Returns a table of 30 lines of logs<br>
+Type is the type of logs in mostkeys, mostpages, lastqueries,<br>
+&nbsp;&nbsp;&nbsp;&nbsp; mostterms, largestresults, mostempty, lastqueries, responsebyhour<br>
+
+</p>
+<p><b>20.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$type :	'lastqueries'
+
+</pre>
+<p><b>20.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc21"></a><b>21. phpdigGetSiteFromUrl</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>21.1. Description :</b></p>
+<p>
+
+Add or retrieve a site from an URI<br>
+Returns array($site_id,$exclude,$new_site)<br>
+
+</p>
+<p><b>21.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$url
+	$linksper
+	$linksper_flag
+	$limit
+	$limit_flag
+	$usetable
+</pre>
+<p><b>21.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+
+</blockquote>
+
+<a name="toc22"></a><b>22. phpdigGetSpiderRow</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>22.1. Description :</b></p>
+<p>
+List a spider reccord<br>
+
+</p>
+<p><b>22.2. Parameters :</b></p>
+
+<pre class="cdtext">
+	$id_connect
+	$site_id
+	$path
+	$file
+</pre>
+<p><b>22.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc23"></a><b>23. phpdigGetUrl</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+
+<p><b>23.1. Description :</b></p>
+<p>
+Get url content<br>
+
+</p>
+<p><b>23.2. Parameters :</b></p>
+<pre class="cdtext">
+	$url
+	$cookies :	array()
+</pre>
+<p><b>23.3. In file :</b></p>
+<p>
+robot_functions.php
+
+</p>
+</blockquote>
+
+<a name="toc24"></a><b>24. phpdigHighlight</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>24.1. Description :</b></p>
+<p>
+Highlight a string part<br>
+
+</p>
+<p><b>24.2. Parameters :</b></p>
+
+<pre class="cdtext">
+	$ereg
+	$string
+</pre>
+<p><b>24.3. In file :</b></p>
+<p>
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc25"></a><b>25. phpdigHttpVars</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+
+<p><b>25.1. Description :</b></p>
+<p>
+Extract _POST or _GET variables from a list varname =&gt; vartype<br>
+Useful for error_reporting E_ALL too, init variables<br>
+Usage in script : extract(phpdigHttpVars(array('foobar'=&gt;'string')));<br>
+
+</p>
+<p><b>25.2. Parameters :</b></p>
+<pre class="cdtext">
+
+	$varray :	array()
+</pre>
+<p><b>25.3. In file :</b></p>
+<p>
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc26"></a><b>26. phpdigIndexFile</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>26.1. Description :</b></p>
+
+<p>
+Index a file and returns a spider_id<br>
+
+</p>
+<p><b>26.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$tempfile
+	$tempfilesize
+	$site_id
+	$origine
+	$localdomain
+	$path
+	$file
+	$content_type
+	$upddate
+	$last_modified
+	$tags
+	$ftp_id
+</pre>
+<p><b>26.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc27"></a><b>27. phpdigMakeCookies</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>27.1. Description :</b></p>
+<p>
+Makes a string for cookies<br>
+Initially named phpDigMakeCookies
+
+</p>
+<p><b>27.2. Parameters :</b></p>
+<pre class="cdtext">
+
+	$cookiesToSend
+	$path
+</pre>
+<p><b>27.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc28"></a><b>28. phpdigMakeForm</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>28.1. Description :</b></p>
+
+<p>
+Form for the search query<br>
+$query_string is the previous query if exists<br>
+$option is search option<br>
+$limite is the num results per page<br>
+$result_page is path to the search.php script<br>
+$site is the site to limit the results<br>
+$path as the same purpose<br>
+$mode is template formation<br>
+
+$template_demo is template name<br>
+$num_tot is num of results<br>
+$refine is refine search<br>
+
+</p>
+<p><b>28.2. Parameters :</b></p>
+<pre class="cdtext">
+	$query_string
+	$option :	"start"
+	$limite
+	$result_page :	"search.php"
+	$site
+	$path
+	$mode :	'classic'
+	$template_demo
+	$num_tot
+	$refine
+</pre>
+<p><b>28.3. In file :</b></p>
+<p>
+
+function_phpdig_form.php
+</p>
+</blockquote>
+
+<a name="toc29"></a><b>29. phpdigMsg</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>29.1. Description :</b></p>
+<p>
+Returns a localized string<br>
+
+</p>
+
+<p><b>29.2. Parameters :</b></p>
+<pre class="cdtext">
+	$string
+</pre>
+<p><b>29.3. In file :</b></p>
+<p>
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc30"></a><b>30. phpdigMySelect</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>30.1. Description :</b></p>
+<p>
+Executes a select and returns a whole resultset<br>
+
+</p>
+<p><b>30.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$query_select
+</pre>
+<p><b>30.3. In file :</b></p>
+<p>
+
+mysql_functions.php
+</p>
+</blockquote>
+
+<a name="toc31"></a><b>31. phpdigParseTemplate</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>31.1. Description :</b></p>
+<p>
+Parse a phpdig template<br>
+
+</p>
+
+<p><b>31.2. Parameters :</b></p>
+<pre class="cdtext">
+	$template
+	$t_strings
+	$table_results
+</pre>
+<p><b>31.3. In file :</b></p>
+<p>
+function_phpdig_form.php
+</p>
+</blockquote>
+
+<a name="toc32"></a><b>32. phpdigPregQuotes</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>32.1. Description :</b></p>
+<p>
+Create a ereg for highlighting<br>
+
+</p>
+<p><b>32.2. Parameters :</b></p>
+<pre class="cdtext">
+	$chaine
+	$encoding
+</pre>
+<p><b>32.3. In file :</b></p>
+<p>
+
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc33"></a><b>33. phpdigPrnMsg</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>33.1. Description :</b></p>
+<p>
+Print a localized string<br>
+
+</p>
+
+<p><b>33.2. Parameters :</b></p>
+<pre class="cdtext">
+	$string
+</pre>
+<p><b>33.3. In file :</b></p>
+<p>
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc34"></a><b>34. phpdigReadHttpDate</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>34.1. Description :</b></p>
+<p>
+Converts an iso date to a mysql date<br>
+
+</p>
+<p><b>34.2. Parameters :</b></p>
+<pre class="cdtext">
+	$date
+</pre>
+<p><b>34.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc35"></a><b>35. phpdigReadRobots</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>35.1. Description :</b></p>
+<p>
+Parse if path is in exclude<br>
+
+</p>
+
+<p><b>35.2. Parameters :</b></p>
+<pre class="cdtext">
+	$exclude
+	$path
+</pre>
+<p><b>35.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc36"></a><b>36. phpdigReadRobotsTags</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>36.1. Description :</b></p>
+<p>
+Parse result of getmetatags to extract those concerning Robots<br>
+
+</p>
+<p><b>36.2. Parameters :</b></p>
+<pre class="cdtext">
+	$tags
+</pre>
+<p><b>36.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc37"></a><b>37. phpdigReadRobotsTxt</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>37.1. Description :</b></p>
+<p>
+Search robots.txt in a site<br>
+
+</p>
+
+<p><b>37.2. Parameters :</b></p>
+<pre class="cdtext">
+	$site
+</pre>
+<p><b>37.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc38"></a><b>38. phpdigRevisitAfter</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>38.1. Description :</b></p>
+<p>
+Parse the revisit-after tag<br>
+
+</p>
+<p><b>38.2. Parameters :</b></p>
+<pre class="cdtext">
+	$revisit_after
+	$limit_days
+</pre>
+<p><b>38.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc39"></a><b>39. phpdigRewriteUrl</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>39.1. Description :</b></p>
+<p>
+Purify urls from relative components like ./ or ../ and return an array<br>
+
+</p>
+
+<p><b>39.2. Parameters :</b></p>
+<pre class="cdtext">
+	$eval
+</pre>
+<p><b>39.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc40"></a><b>40. phpdigSearch</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>40.1. Description :</b></p>
+<p>
+Do the search and display the results<br>
+Can be called in any page<br>
+
+</p>
+<p><b>40.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$query_string
+	$option :	'start'
+	$refine
+	$refine_url
+	$lim_start
+	$limite
+	$browse
+	$site
+	$path
+	$relative_script_path :	'.'
+	$template
+	$adlog_flag
+	$rssdf
+	$template_demo
+</pre>
+<p><b>40.3. In file :</b></p>
+
+<p>
+search_function.php
+</p>
+</blockquote>
+
+<a name="toc41"></a><b>41. phpdigSessionRemove</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>41.1. Description :</b></p>
+<p>
+Prepare for removal of query string vars<br>
+
+</p>
+<p><b>41.2. Parameters :</b></p>
+<pre class="cdtext">
+	$eval
+</pre>
+<p><b>41.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc42"></a><b>42. phpdigSessionRemoveIt</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>42.1. Description :</b></p>
+<p>
+Perform removal of query string vars<br>
+
+</p>
+<p><b>42.2. Parameters :</b></p>
+<pre class="cdtext">
+	$what
+	$eval
+</pre>
+<p><b>42.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc43"></a><b>43. phpdigSetHeaders</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>43.1. Description :</b></p>
+<p>
+Set headers for a cookie<br>
+Initially named phpDigSetHeaders<br>
+
+</p>
+<p><b>43.2. Parameters :</b></p>
+<pre class="cdtext">
+	$cookiesToSend :	array()
+	$path
+</pre>
+<p><b>43.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc44"></a><b>44. phpdigSpanReplace</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>44.1. Description :</b></p>
+<p>
+Replace html entities with chars for highlight<br>
+
+</p>
+<p><b>44.2. Parameters :</b></p>
+<pre class="cdtext">
+	$text
+</pre>
+<p><b>44.3. In file :</b></p>
+<p>
+
+search_function.php
+</p>
+</blockquote>
+
+<a name="toc45"></a><b>45. phpdigSpiderAddSite</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>45.1. Description :</b></p>
+<p>
+Add a site while spidering and returns an array<br>
+With information of $list_sites array<br>
+
+</p>
+<p><b>45.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$url
+	$linksper
+	$linksper_flag
+	$limit
+	$limit_flag
+	$usetable
+</pre>
+<p><b>45.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc46"></a><b>46. phpdigStripAccents</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>46.1. Description :</b></p>
+<p>
+Replace all characters with an accent<br>
+
+</p>
+<p><b>46.2. Parameters :</b></p>
+<pre class="cdtext">
+	$chaine
+	$encoding
+</pre>
+<p><b>46.3. In file :</b></p>
+<p>
+
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc47"></a><b>47. phpdigTempFile</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>47.1. Description :</b></p>
+<p>
+Retrieves an url and returns temp file parameters<br>
+
+</p>
+
+<p><b>47.2. Parameters :</b></p>
+<pre class="cdtext">
+	$uri
+	$result_test
+	$prefix :	'temp/'
+	$suffix1 :	'1.tmp'
+	$suffix2 :	'2.tmp'
+</pre>
+<p><b>47.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc48"></a><b>48. phpdigTestDouble</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>48.1. Description :</b></p>
+<p>
+Tests if the reccord of spider_id is a double<br>
+
+</p>
+<p><b>48.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$site_id
+	$md5
+	$new_upddate
+	$last_modified
+</pre>
+<p><b>48.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc49"></a><b>49. phpdigTestUrl</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>49.1. Description :</b></p>
+<p>
+Test presence and type of an url<br>
+
+</p>
+
+<p><b>49.2. Parameters :</b></p>
+<pre class="cdtext">
+	$url
+	$mode :	'simple'
+	$cookies :	array()
+</pre>
+<p><b>49.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc50"></a><b>50. phpdigTimer</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>50.1. Description :</b></p>
+<p>
+Timer for profiling<br>
+
+</p>
+<p><b>50.2. Parameters :</b></p>
+<pre class="cdtext">
+	$mode :	'html'
+</pre>
+<p><b>50.3. In file :</b></p>
+<p>
+
+phpdig_functions.php
+</p>
+</blockquote>
+
+<a name="toc51"></a><b>51. phpdigUpdSpiderRow</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<p><b>51.1. Description :</b></p>
+<p>
+Update a spider row<br>
+
+</p>
+
+<p><b>51.2. Parameters :</b></p>
+<pre class="cdtext">
+	$id_connect
+	$site_id
+	$path
+	$file
+	$first_words
+	$upddate
+	$md5
+	$lastmodified
+	$num_words
+	$filesize
+</pre>
+<p><b>51.3. In file :</b></p>
+<p>
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc52"></a><b>52. phpdigWriteText</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+
+<blockquote>
+<p><b>52.1. Description :</b></p>
+<p>
+Store a content_text from a spider_id<br>
+
+</p>
+<p><b>52.2. Parameters :</b></p>
+<pre class="cdtext">
+	$relative_script_path
+	$spider_id
+	$text
+	$ftp_id
+</pre>
+<p><b>52.3. In file :</b></p>
+<p>
+
+robot_functions.php
+</p>
+</blockquote>
+
+<a name="toc100"></a><b>Functions by Files</b> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#toc">[top]</a>
+<blockquote>
+<pre class="cdtext">
+file authold.php : function phpdigAuth()
+
+file debug_functions.php : function phpdigDspTable($datas)
+
+file function_phpdig_form.php : function phpdigMakeForm($query_string="",$option="start",$limite=10,
+	$result_page="search.php",$site="",$path="",$mode='classic',$template_demo="",$num_tot=0,
+	$refine=0)
+file function_phpdig_form.php : function phpdigParseTemplate($template,$t_strings,$table_results)
+
+file mysql_functions.php : function phpdigCheckTables($id_connect,$tables=array())
+file mysql_functions.php : function phpdigMySelect($id_connect,$query_select)
+
+file phpdig_functions.php : function phpdigAddLog ($id_connect,$option='start',$includes=array(),
+	$excludes=array(),$num_results=0,$time=0)
+file phpdig_functions.php : function phpdigComWords($file='')
+file phpdig_functions.php : function phpdigCreateSubstArrays($subststrings)
+file phpdig_functions.php : function phpdigEpureText($text,$min_word_length=2,$encoding=PHPDIG_ENCODING)
+file phpdig_functions.php : function phpdigHighlight($ereg='',$string='')
+file phpdig_functions.php : function phpdigHttpVars($varray=array())
+file phpdig_functions.php : function phpdigMsg($string='')
+file phpdig_functions.php : function phpdigPregQuotes($chaine,$encoding=PHPDIG_ENCODING)
+file phpdig_functions.php : function phpdigPrnMsg($string='')
+file phpdig_functions.php : function phpdigStripAccents($chaine,$encoding=PHPDIG_ENCODING)
+file phpdig_functions.php : function phpdigTimer($mode='html')
+
+file robot_functions.php : function phpdigCleanHtml($text)
+file robot_functions.php : function phpdigCompareDomains($url1,$url2)
+file robot_functions.php : function phpdigDelSpiderRow($id_connect,$spider_id,$ftp_id='')
+file robot_functions.php : function phpdigDelText($relative_script_path,$spider_id,$ftp_id='')
+file robot_functions.php : function phpdigDetectDir($link,$exclude='',$cookies=array(),$site_id='',
+	$id_connect='')
+file robot_functions.php : function phpdigExplore($tempfile,$url,$path="",$file ="")
+file robot_functions.php : function phpdigFormatMetaTags($file)
+file robot_functions.php : function phpdigFtpClose($ftp_id)
+file robot_functions.php : function phpdigFtpConnect()
+file robot_functions.php : function phpdigFtpKeepAlive($ftp_id,$relative_script_path=false)
+file robot_functions.php : function phpdigGetHttpEquiv($file)
+file robot_functions.php : function phpdigGetLogs($id_connect,$type='lastqueries')
+file robot_functions.php : function phpdigGetSiteFromUrl($id_connect,$url,$linksper,$linksper_flag,
+	$limit,$limit_flag,$usetable)
+file robot_functions.php : function phpdigGetSpiderRow($id_connect,$site_id,$path,$file)
+file robot_functions.php : function phpdigGetUrl($url,$cookies=array())
+file robot_functions.php : function phpdigIndexFile($id_connect,$tempfile,$tempfilesize,$site_id,
+	$origine,$localdomain,$path,$file,$content_type,$upddate,$last_modified,$tags,$ftp_id='')
+file robot_functions.php : function phpdigMakeCookies($cookiesToSend,$path)
+file robot_functions.php : function phpdigReadHttpDate($date)
+file robot_functions.php : function phpdigReadRobots($exclude,$path)
+file robot_functions.php : function phpdigReadRobotsTags($tags)
+file robot_functions.php : function phpdigReadRobotsTxt($site)
+file robot_functions.php : function phpdigRevisitAfter($revisit_after,$limit_days=0)
+file robot_functions.php : function phpdigRewriteUrl($eval)
+file robot_functions.php : function phpdigSessionRemove($eval)
+file robot_functions.php : function phpdigSessionRemoveIt($what,$eval)
+file robot_functions.php : function phpdigSetHeaders($cookiesToSend=array(),$path='')
+file robot_functions.php : function phpdigSpiderAddSite($id_connect,$url,$linksper,$linksper_flag,
+	$limit,$limit_flag,$usetable)
+file robot_functions.php : function phpdigTempFile($uri,$result_test,$prefix='temp/',$suffix1='1.tmp',
+	$suffix2='2.tmp')
+file robot_functions.php : function phpdigTestDouble($id_connect,$site_id,$md5,$new_upddate,
+	$last_modified)
+file robot_functions.php : function phpdigTestUrl($url,$mode='simple',$cookies=array())
+file robot_functions.php : function phpdigUpdSpiderRow($id_connect,$site_id,$path,$file,$first_words,
+	$upddate,$md5,$lastmodified,$num_words,$filesize)
+file robot_functions.php : function phpdigWriteText($relative_script_path,$spider_id,$text,$ftp_id='')
+
+file search_function.php : function phpdigByLength($a, $b)
+file search_function.php : function phpdigSearch($id_connect, $query_string, $option='start', $refine=0,
+	$refine_url='', $lim_start=0, $limite=10, $browse=0,$site=0, $path='', $relative_script_path = '.', 
+	$template='', $adlog_flag=0, $rssdf='', $template_demo='')
+file search_function.php : function phpdigSpanReplace($text)
+</pre>
+</blockquote>
+
+<div align="center"><br />Copyright &copy; 2001 - 2005, PhpDig.net, ThinkDing LLC. All Rights Reserved.</div>
+</body>
+</html>

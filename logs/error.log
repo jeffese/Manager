@@ -1,0 +1,611 @@
+[20-Sep-2016 11:18:43 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 5
+[20-Sep-2016 11:18:43 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:18:43 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:18:43 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 6
+[20-Sep-2016 11:18:43 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:18:43 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:19:06 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 5
+[20-Sep-2016 11:19:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:19:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:19:06 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 6
+[20-Sep-2016 11:19:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:19:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 5
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 6
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP Notice:  Undefined index:  in C:\wamp\Manager\scripts\functions\user_methods.php on line 408
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP   2. vetAccess($mod = 'Clients', $sub = NULL, $key = 'Add', $die = *uninitialized*) C:\wamp\Manager\custom\KIRS\biz.php:6
+[20-Sep-2016 11:19:28 Africa/Lagos] PHP   3. canAccess($mod = 'Clients', $sub = NULL, $key = 'Add') C:\wamp\Manager\scripts\functions\user_methods.php:397
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 5
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Notice:  Undefined index: Add in C:\wamp\Manager\custom\KIRS\biz.php on line 9
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 135
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 136
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 138
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 156
+[20-Sep-2016 11:20:06 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Notice:  Undefined variable: vpth in C:\wamp\Manager\custom\KIRS\biz.php on line 173
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Notice:  Undefined variable: vpth in C:\wamp\Manager\custom\KIRS\biz.php on line 176
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 266
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 267
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 268
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 269
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 294
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP Stack trace:
+[20-Sep-2016 11:20:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:16 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 5
+[21-Sep-2016 06:41:16 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:16 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:16 Africa/Lagos] PHP Notice:  Undefined index: Add in C:\wamp\Manager\custom\KIRS\biz.php on line 9
+[21-Sep-2016 06:41:16 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:16 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 135
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 136
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 138
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 156
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vpth in C:\wamp\Manager\custom\KIRS\biz.php on line 173
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vpth in C:\wamp\Manager\custom\KIRS\biz.php on line 176
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 265
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 266
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 267
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 268
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 293
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:41:17 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vkey in C:\wamp\Manager\custom\KIRS\biz.php on line 5
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined index: Add in C:\wamp\Manager\custom\KIRS\biz.php on line 9
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 135
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 136
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 138
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 156
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vpth in C:\wamp\Manager\custom\KIRS\biz.php on line 173
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vpth in C:\wamp\Manager\custom\KIRS\biz.php on line 176
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 265
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 266
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 267
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 268
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Notice:  Undefined variable: vtype in C:\wamp\Manager\custom\KIRS\biz.php on line 293
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP Stack trace:
+[21-Sep-2016 06:51:38 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\custom\KIRS\biz.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: gndval in C:\wamp\Manager\clients\tmpl\sql.php on line 37
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: relval in C:\wamp\Manager\clients\tmpl\sql.php on line 38
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: relval in C:\wamp\Manager\clients\tmpl\sql.php on line 38
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: ag1val in C:\wamp\Manager\clients\tmpl\sql.php on line 39
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: ag1val in C:\wamp\Manager\clients\tmpl\sql.php on line 39
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: ag2val in C:\wamp\Manager\clients\tmpl\sql.php on line 40
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: ag2val in C:\wamp\Manager\clients\tmpl\sql.php on line 40
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Notice:  Undefined variable: natval in C:\wamp\Manager\clients\tmpl\sql.php on line 41
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:46 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: natval in C:\wamp\Manager\clients\tmpl\sql.php on line 41
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: typval in C:\wamp\Manager\clients\tmpl\sql.php on line 42
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: typval in C:\wamp\Manager\clients\tmpl\sql.php on line 42
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: catval in C:\wamp\Manager\clients\tmpl\sql.php on line 43
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: catval in C:\wamp\Manager\clients\tmpl\sql.php on line 43
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: ds1val in C:\wamp\Manager\clients\tmpl\sql.php on line 44
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: ds1val in C:\wamp\Manager\clients\tmpl\sql.php on line 44
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: ds2val in C:\wamp\Manager\clients\tmpl\sql.php on line 45
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: ds2val in C:\wamp\Manager\clients\tmpl\sql.php on line 45
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: cr1val in C:\wamp\Manager\clients\tmpl\sql.php on line 46
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Notice:  Undefined variable: cr1val in C:\wamp\Manager\clients\tmpl\sql.php on line 46
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:47 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: cr2val in C:\wamp\Manager\clients\tmpl\sql.php on line 47
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: cr2val in C:\wamp\Manager\clients\tmpl\sql.php on line 47
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: curval in C:\wamp\Manager\clients\tmpl\sql.php on line 48
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: curval in C:\wamp\Manager\clients\tmpl\sql.php on line 48
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: parval in C:\wamp\Manager\clients\tmpl\sql.php on line 49
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: parval in C:\wamp\Manager\clients\tmpl\sql.php on line 49
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: namval in C:\wamp\Manager\clients\tmpl\sql.php on line 54
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: namval in C:\wamp\Manager\clients\tmpl\sql.php on line 54
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: orgval in C:\wamp\Manager\clients\tmpl\sql.php on line 55
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: orgval in C:\wamp\Manager\clients\tmpl\sql.php on line 55
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Notice:  Undefined variable: addval in C:\wamp\Manager\clients\tmpl\sql.php on line 56
+[02-Oct-2016 16:07:48 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP Notice:  Undefined variable: addval in C:\wamp\Manager\clients\tmpl\sql.php on line 56
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP Notice:  Undefined variable: notval in C:\wamp\Manager\clients\tmpl\sql.php on line 57
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP Notice:  Undefined variable: notval in C:\wamp\Manager\clients\tmpl\sql.php on line 57
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\customers\index.php:0
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\customers\index.php:2
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\customers\tmpl.php:6
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:07:49 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:16:41 Africa/Lagos] PHP Notice:  Undefined index: newcompany in C:\wamp\Manager\admin\companies\add.php on line 4
+[02-Oct-2016 16:16:42 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:16:42 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\admin\companies\add.php:0
+[02-Oct-2016 16:20:09 Africa/Lagos] PHP Notice:  Undefined variable: TSup in C:\wamp\Manager\stock\products\find.php on line 256
+[02-Oct-2016 16:20:09 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:20:09 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\stock\products\find.php:0
+[02-Oct-2016 16:20:09 Africa/Lagos] PHP Warning:  Invalid argument supplied for foreach() in C:\wamp\Manager\stock\products\find.php on line 256
+[02-Oct-2016 16:20:09 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:20:09 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\stock\products\find.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: gndval in C:\wamp\Manager\clients\tmpl\sql.php on line 37
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: relval in C:\wamp\Manager\clients\tmpl\sql.php on line 38
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: relval in C:\wamp\Manager\clients\tmpl\sql.php on line 38
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: ag1val in C:\wamp\Manager\clients\tmpl\sql.php on line 39
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: ag1val in C:\wamp\Manager\clients\tmpl\sql.php on line 39
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: ag2val in C:\wamp\Manager\clients\tmpl\sql.php on line 40
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: ag2val in C:\wamp\Manager\clients\tmpl\sql.php on line 40
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: natval in C:\wamp\Manager\clients\tmpl\sql.php on line 41
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: natval in C:\wamp\Manager\clients\tmpl\sql.php on line 41
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Notice:  Undefined variable: typval in C:\wamp\Manager\clients\tmpl\sql.php on line 42
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:05 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: typval in C:\wamp\Manager\clients\tmpl\sql.php on line 42
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: catval in C:\wamp\Manager\clients\tmpl\sql.php on line 43
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: catval in C:\wamp\Manager\clients\tmpl\sql.php on line 43
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: ds1val in C:\wamp\Manager\clients\tmpl\sql.php on line 44
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: ds1val in C:\wamp\Manager\clients\tmpl\sql.php on line 44
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: ds2val in C:\wamp\Manager\clients\tmpl\sql.php on line 45
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: ds2val in C:\wamp\Manager\clients\tmpl\sql.php on line 45
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: cr1val in C:\wamp\Manager\clients\tmpl\sql.php on line 46
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: cr1val in C:\wamp\Manager\clients\tmpl\sql.php on line 46
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: cr2val in C:\wamp\Manager\clients\tmpl\sql.php on line 47
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Notice:  Undefined variable: cr2val in C:\wamp\Manager\clients\tmpl\sql.php on line 47
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:06 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: curval in C:\wamp\Manager\clients\tmpl\sql.php on line 48
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: curval in C:\wamp\Manager\clients\tmpl\sql.php on line 48
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: parval in C:\wamp\Manager\clients\tmpl\sql.php on line 49
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: parval in C:\wamp\Manager\clients\tmpl\sql.php on line 49
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: namval in C:\wamp\Manager\clients\tmpl\sql.php on line 54
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: namval in C:\wamp\Manager\clients\tmpl\sql.php on line 54
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: orgval in C:\wamp\Manager\clients\tmpl\sql.php on line 55
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: orgval in C:\wamp\Manager\clients\tmpl\sql.php on line 55
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: addval in C:\wamp\Manager\clients\tmpl\sql.php on line 56
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: addval in C:\wamp\Manager\clients\tmpl\sql.php on line 56
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Notice:  Undefined variable: notval in C:\wamp\Manager\clients\tmpl\sql.php on line 57
+[02-Oct-2016 16:30:07 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP Notice:  Undefined variable: notval in C:\wamp\Manager\clients\tmpl\sql.php on line 57
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP Stack trace:
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   1. {main}() C:\wamp\Manager\clients\cash\index.php:0
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   2. require_once() C:\wamp\Manager\clients\cash\index.php:2
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   3. require_once() C:\wamp\Manager\clients\cash\tmpl.php:6
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   4. qryfind($ses = 'client', $posts = array (0 => 'name')) C:\wamp\Manager\clients\tmpl\index.php:15
+[02-Oct-2016 16:30:08 Africa/Lagos] PHP   5. findRec() C:\wamp\Manager\scripts\functions\functions.php:542

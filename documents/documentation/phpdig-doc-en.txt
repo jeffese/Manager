@@ -1,0 +1,629 @@
+PhpDig.net - Documentation
+
+    Last update : 2005-01-16 - Read, read, read!
+
+Table of contents
+
+        * 1. Where to find the lastest version
+        * 2. PhpDig features
+        * 3. Installation
+        * 4. Configuration
+        * 5. Update PhpDig
+        * 6. Indexing with web interface
+        * 7. Indexing by command line interface
+        * 8. Templates
+        * 9. Insert PhpDig into a website
+        * 10. Getting help with PhpDig
+
+1. Where to find the lastest version
+
+    At this link: http://www.phpdig.net/
+
+2. PhpDig features
+
+    2.1. HTTP spidering      [top]
+
+    PhpDig follows HREF links as shown by any web browser to find the pages to index. Links can also be in AreaMap, frames, or simple like window.open() or window.location() JavaScript. PhpDig supports redirections and indexes by following links. PhpDig does not traverse directories or database tables to index content.
+
+    By default, PhpDig does not go outside of the domain you define for the indexing. Various index options are choosen by the user, including a parameter to extend indexing to subdomains and a parameter to limit the indexing to a specific directory.
+
+    You can limit indexing so that the maximum links found is ((X * Y) + 1) where X is links and Y is depth. Alternatively, you can index just one page, or you can set options to index a greater number of pages.
+
+    Any HTML content is indexed, for example from static HTML pages to dynamic HTML pages produced from say PHP scripts. PhpDig searches the Mime-Type of the document, and can be set to auto-index via a cron job.
+
+    2.2. Full-text indexing      [top]
+
+    PhpDig indexes all words of a document, but you can avoid common words by defining such words in a text file. Underscores and other characters can be part of a word. Words in the title can have a more important weight in ranking results.
+
+    Note that the MySQL FULLTEXT index is different from the PhpDig full-text indexing. The MySQL FULLTEXT index is a table index used with MyISAM tables. PhpDig does full-text indexing of page content but does not use the MySQL FULLTEXT index for searches.
+
+    2.3. Indexed file types      [top]
+
+    PhpDig indexes HTML and text files by itself. PhpDig could index PDF, MS-Word, MS-Excel, and MS-PowerPoint files if you install external binaries on the server for this purpose. PhpDig is configured to use catdoc, xls2csv, pstotext or pdftotext, and ppt2text programs.
+
+    - You can find catdoc and xls2csv at this link: http://www.45.free.net/~vitus/ice/catdoc/
+
+    - You can find pstotext at this link: http://research.compaq.com/SRC/virtualpaper/pstotext.html
+
+    - You can find pdftotext at this link: http://public.planetmirror.com/pub/xpdf/
+
+    - You can query for ppt2text at this link: http://www.google.com/search?q=ppt2text
+
+    The author of PhpDig does not offer support for the binary programs. Contact the authors of those programs if you have trouble with compiling and/or installing them.
+
+    Of course, you can use other binary programs to extract text from PDF, MS-Word, MS-Excel, and MS-PowerPoint files.
+
+    To demonstrate the external binaries feature, you can search Hamlet (tragedy, Shakespeare, from MS-Word format) or L'Avare (comedy, Molière, from PDF format).
+
+    2.4. Other features      [top]
+
+    PhpDig tries to read a robots.txt file at the server web root, and considers META robots tags too. The last-modified header value is stored in the database to avoid redundant indexing. Also, the META revisit-after tag is considered.
+
+    PhpDig can spider sites served on another port other than the default 80 but spidering 443 https:// may be met with limited success. Sites that are password protected with a .htaccess file can be indexed if you give the robot a valid username and password such as http://username:password@www.domain.com but be careful!
+
+    This .htaccess related feature could let an unauthorized user read protected information, and the username and password are sent in plain text. It is recommended that you create a specific instance of PhpDig, protected by the same credentials as the restricted site, and index within the protected area.
+
+    If desired, PhpDig can store textual content of indexed documents in files. In this case, relevant extracts from found pages are displayed in the search results with highlighted search keys. Otherwsie, a chunk of text as specified in the config file is stored in a database table.
+
+    2.5. Display templates      [top]
+
+    PhpDig comes with a template system that lets the search page fit into the look of an existing site. Making a template consists only of inserting a few XML-like tags into an HTML page. See the templates that came with PhpDig for examples. Also, see section 8 for further information about different templating options, and see section 9 for how to insert PhpDig into a website.
+
+    2.6. Limits      [top]
+
+    Because of the time consuming indexing process, PHP must not be safe_mode configured and the server that performs the index must not timeout. Also, the PHP allow_url_fopen option must be enabled. It doesn't matter for the search queries.
+
+    You can try to circumvent safe_mode, should it be enabled, by a) using distant indexing with MySQL TCP connection and FTP connection, or b) launching the indexing process in a shell command such as a cron job.
+
+    Spidering and indexing is a bit slow, as there is a decent amount of processing needed to index pages. On the other hand, search queries are fast enough, even in a somewhat extended context. You may find that, by indexing via shell using say cron, the process is somewhat faster.
+
+3. Installation
+
+    3.1. Prerequisites      [top]
+
+    PhpDig requires a web server (preferably Apache) with PHP (module or CGI) and a MySQL database. PHP is to have safe_mode set to off and allow_url_fopen set to on. Make sure your web server is not set to timeout quickly, as indexing can take some time. PhpDig can work in a shard hosting environment, but note that it can take a fair amount of CPU time so your host may kill the process or become unhappy with you.
+
+    PhpDig has reportedly worked with the following OS/setups:
+
+    Gentoo Linux, kernel/2.4.20, Apache/2.0.48, mod_php/4.3.3, MySQL/4.0.16
+    Linux, kernel/2.4.18, Apache/2.0.44, OpenSSL/0.9.6g, PHP/4.3.0
+    Linux, kernel/2.4.22, Apache/1.3.29, mod_ssl/2.8.16, OpenSSL/0.9.7b, PHP/4.3.4
+    Linux, kernel/2.4.3, Apache/1.3.23, mod_ssl/2.8.7, PHP/4.1.2
+    Linux Red Hat/9.0, Apache/2.0.48, PHP/4.3.4, MySQL/4.0.17
+    Mac OS X/10.3, Apache/1.3.28, PHP/4.3.2, MySQL/4.0.12
+    OpenBSD/3.4/Sparc64, Apache/1.3.29, mod_ssl/2.8.16-1.3.29, mod_perl/1.28, OpenSSL/0.9.7c, PHP/4.3.4
+    Windows 2000 Server, Apache/1.3.20, PHP/4.1.1
+    Windows 2000 Server, Apache/2.0.44, PHP/4.3.1
+    Windows 2003 Server, IIS/6, PHP/4.3.2, MySQL/4.0.15
+
+    Note that if your OS/setup is for example a CGI loadbalanced cluster of servers, it may not possible to index sites on the cluster as there cannot be a connection back to the loadbalanced address. Also note that PhpDig is a web spider and search engine, meaning that you may have to edit you hosts file with something like "127.0.0.1 www.domain.com" in order to get PhpDig to crawl on localhost.
+
+    3.2. Fresh install      [top]
+
+        1) Check your phpinfo page to make sure safe_mode is off and allow_url_fopen is on.
+
+            > What is a phpinfo page? Run this script: <?php phpinfo(); ?>
+            > PhpDig will not fully function if safe_mode is on or allow_url_fopen is off.
+
+        2) Unzip the archive and make a new directory on your web account to hold PhpDig.
+
+            > This new directory, whatever you called it, will be called [PHPDIG_DIR] here.
+            > If an open_basedir restriction is in place, make sure to create the directory in the correct place.
+            > An open_basedir restriction? Some PHP files are limited to within a directory. Check your phpinfo page.
+
+        3) Open config.php with a TEXT editor and set your username and password.
+
+        4) Upload the PhpDig folders and files to your [PHPDIG_DIR] directory.
+
+            > FTP the HTML, TXT, PHP, & SQL files in ASCII format.
+            > FTP the GIF, PNG, & JPG files in binary format.
+
+        5) CHMOD the following directories to 777, or rwxrwxrwx, permission if on a *nix server.
+
+            > [PHPDIG_DIR]/text_content   (this folder holds text files from index)
+            > [PHPDIG_DIR]/includes   (can be set to 755 after install completed)
+            > [PHPDIG_DIR]/admin/temp   (temp directory inside the admin directory)
+
+        6) Now access http://www.yourdomain.com/[PHPDIG_DIR]/admin/install.php
+
+        7) Fill in the form, and select Create Database or Create Tables Only for fresh install.
+
+            > Some hosts do not allow users to create databases, so then create tables instead.
+            > Tip: use "a_unique_prefix_" (without the quotes) as the prefix for your PhpDig tables.
+            > After installation is successfully completed, the PhpDig admin panel will be shown.
+
+        8) From the PhpDig admin panel, enter a URL in the text box to begin spidering a website.
+
+            > Please, DO NOT use PhpDig on phpdig.net (it may cost me money for bandwidth).
+
+        9) Go to http://www.yourdomain.com/[PHPDIG_DIR]/search.php to search.
+
+        10) Edit the config file as desired. Read on for further details.
+
+    3.3. Update version      [top]
+
+        1) Check to see if there were any database table changes and if so update the tables.
+
+            > You can find any table changes in the sql directory: no sql file, no changes.
+            > If you keep current on PhpDig, you can update the tables using the install script.
+            > Note that the install script will only update tables for the most recent changes.
+            > If you need to update further, you need to manually update the tables: read on.
+
+        2) Unzip the archive and FTP the new files to your web account, overwriting the old files.
+
+            > If you made any config file changes, edit the new config file before doing the FTP.
+            > Compare the new _connect file with the old connect file to look for possible changes.
+            > If _connect.php is different than connect.php, then copy _connect.php to connect.php.
+            > Make sure connect.php contains your database info, and then FTP the files to the server.
+
+        3) Go to http://www.yourdomain.com/[PHPDIG_DIR]/search.php to search.
+
+    3.4. MySQL tables      [top]
+
+    There are three ways to install or update the database tables.
+
+    - PhpDig Install Script: In your favorite browser, request the page http://www.yourdomain.com/[PHPDIG_DIR]/admin/install.php and choose if you want to create the entire database, create the tables only, update the exisitng database, or write the connection parameters to the connect.php file. Note that some hosts do not allow users to create databases, so then create tables instead. See sections 3.2, 3.3, and 5 for further information: go on, read them.
+
+    - Manual Installation: Decide whether you want to create a new database for the tables, create the tables in a current database, or update the tables. Note that some hosts do not allow users to create databases, so then create tables instead. Also decide if you want a table prefix. If so, then open the sql file and add your prefix to the beginning of every table name in the file. If you wish, and have permission, to create a new database for the tables, go to the shell prompt and login to MySQL. Otherwise, you can create or update the tables in an exisitng database from shell. Obviously, the capitalizations hereto represent your information.
+
+        * To manually create a database
+
+shell> mysql -h HOSTNAME -u USERNAME -p
+mysql> create database DBNAME;
+mysql> exit
+
+
+        * To manually install or update tables
+
+shell> mysql -u USERNAME -pPASSWD DBNAME < /FULL/PATH/TO/FILENAME.sql
+
+
+        * To manually verify presence of tables
+
+shell> mysql -h HOSTNAME -u USERNAME -p
+mysql> use DBNAME;
+mysql> show tables;
++-------------------+
+| Tables_in_DBNAME  |
++-------------------+
+| PREFIX_clicks     |
+| PREFIX_engine     |
+| PREFIX_excludes   |
+| PREFIX_includes   |
+| PREFIX_keywords   |
+| PREFIX_logs       |
+| PREFIX_site_page  |
+| PREFIX_sites      |
+| PREFIX_spider     |
+| PREFIX_tempspider |
++-------------------+
+10 rows in set (0.00 sec)
+
+mysql> exit
+
+
+    - Utilize phpMyAdmin: If this manual stuff freaks you out, you can use phpMyAdmin to install or update the tables and run queries. The author of PhpDig does not offer phpMyAdmin support. See the phpMyAdmin documentation and help files for further information.
+
+    As of PhpDig v.1.8.6 there are ten tables, but this may change in the future. You can count the number of tables in the current version by viewing the init_db.sql file. You should consider using a table prefix, because if there are two tables with the same name, you will get an error.
+
+    3.5. _connect.php versus connect.php      [top]
+
+    The _connect.php file comes with the PhpDig package and is used by the PhpDig install script to create or update the connect.php file. The connect.php file is the file PhpDig will use to connect to your database. Depending on what method of install or upgrade you choose, you may need to copy the "[PHPDIG_DIR]/includes/_connect.php" file to "[PHPDIG_DIR]/includes/connect.php" and edit the connect.php file by replacing the <host>, <user>, <pass>, and <database> values with you database information. Further, if you use a table prefix for the PhpDig tables, then replace <dbprefix> with the actual prefix. Otherwise, set <dbprefix> to nothing: two single quotes, no space inbetween. Note that < and > should not be present in these values when you are done. Do not put your database information in the _connect.php file.
+
+4. Configuration
+
+    After installation, PhpDig will work without modification to the config file. However, you may wish to make modifications to the config file depending on your needs. Do not say that PhpDig does not work until after you fully explore the config file and its options. In any case, remember to change your PhpDig admin panel username and password for login.
+
+    Note that the authentication method used in the auth.php file is cookie based. If you happen to use authold.php for authentication, it is http based. As such, authold.php does not work when PHP is CGI confirgured. If you use authold.php and CGI based PHP, then use a .htaccess file in order to protect the [PHPDIG_DIR]/admin directory.
+
+    Regardless of whether you use auth.php (the default) or authold.php for authentication, it would be a good idea to add a .htaccess file to the admin directory for an extra layer of protection. If you don't want to pass the username and password in plain text, use authold.php (file modifications needed) or use SSL.
+
+    All of the configuration parameters are in the "[PHPDIG_DIR]/include/config.php" file. Here is a list of each of them, followed by a comment explaining its purpose, taken from the config file where default values have already been set.
+
+    4.1. Configuring admin access      [top]
+
+define('PHPDIG_ADM_AUTH','1');     //Activates/deactivates the authentification functions
+define('PHPDIG_ADM_USER','admin'); //Username
+define('PHPDIG_ADM_PASS','admin'); //Password
+
+    4.2. Configuring paths      [top]
+
+    The $_SERVER array elements and CONFIG_CHECK constant in the config file are used to prevent full, direct access to the config file. Further, an ABSOLUTE_SCRIPT_PATH constant is set, and the $relative_script_path variable is checked, in the config file.
+
+    For users who want to run PhpDig from shell, set a cron job, or call the search page from other than the default location, it is important to read the top of the config file, as it gives details on how to add a path (relative or full) to the first IF statement in the config file.
+
+    If you try to access the spider via shell or cron from a directory not permitted, or if you move the search page out of its default location without any other modification, you will find yourself with nothing happening.
+
+    The top of the config file gives details on how to move the search page. Should you wish to run PhpDig from shell or set a cron job, define the ABSOLUTE_SCRIPT_PATH as your full path up to but not including admin directory, no end slash, and then read section 7 for further details.
+
+    4.3. Configuring robot and engine      [top]
+
+define('SPIDER_MAX_LIMIT',20);          //max recurse levels in spider
+define('RESPIDER_LIMIT',5);             //recurse respider limit for update
+define('LINKS_MAX_LIMIT',20);           //max links per each level
+define('RELINKS_LIMIT',5);              //recurse links limit for an update
+
+define('LIMIT_DAYS',0);                 //default days before reindex a page
+define('SMALL_WORDS_SIZE',2);           //words to not index - must be 2 or more
+define('MAX_WORDS_SIZE',30);            //max word size
+
+define('PHPDIG_EXCLUDE_COMMENT','<!-- phpdigExclude -->');  //comment to exclude a page part
+define('PHPDIG_INCLUDE_COMMENT','<!-- phpdigInclude -->');  //comment to include a page part
+                                                            // must be on own lines in HTML source
+                                                            // text within comments not indexed
+                                                            // links within comments still indexed
+
+define('PHPDIG_DEFAULT_INDEX',false);    //phpDig considers /index or /default
+                                         //html, htm, php, asp, phtml as the
+                                         //same as '/'
+
+define('PHPDIG_SESSID_REMOVE',true);        // remove SIDS or vars from indexed URLS
+define('PHPDIG_SESSID_VAR','PHPSESSID,s');  // name of SID or variable to remove
+                                            // can be 's' or comma delimited 's,id,var,foo,etc'
+
+define('APPEND_TITLE_META',false);       //append title and meta information to results
+define('TITLE_WEIGHT',3);                //relative title weight: APPEND_TITLE_META needs to be true
+
+define('CHUNK_SIZE',1024);               //chunk size for regex processing
+
+define('SUMMARY_LENGTH',500);            //length of results summary
+
+define('TEXT_CONTENT_PATH','text_content/'); //Text content files path
+define('CONTENT_TEXT',1);                    //Activates/deactivates the
+                                             //storage of text content.
+define('PHPDIG_IN_DOMAIN',false);            //allows phpdig jump hosts in the same
+                                             //domain. If the host is "www.mydomain.tld",
+                                             //domain is "mydomain.tld"
+
+//for limit to directory, URL format must either have file at end or ending slash at end
+//e.g., http://www.domain.com/dirs/ (WITH ending slash) or http://www.domain.com/dirs/dirs/index.php
+define('LIMIT_TO_DIRECTORY',true);      //limit index to given (sub)directory, no sub dirs of dirs 
+                                        //are indexed
+
+define("END_OF_LINE_MARKER","\r\n");             // End of line marker - keep double quotes
+
+define('PHPDIG_LOGS',true);               //write logs
+define('LOG_CLICKS',true);                //log clicks
+define('SILENCE_404S',true);              //silence 404 output
+
+define('TEMP_FILENAME_LENGTH',8);         //filename length of temp files
+// if using external tools with extension, use 4 for filename of length 8
+
+define('USE_RENICE_COMMAND','1');         //use renice for process priority
+
+// regular expression to ban useless external links in index
+define('BANNED','^ad\.|banner|doubleclick');
+
+// regexp forbidden extensions - return sometimes text/html mime-type !!!
+define('FORBIDDEN_EXTENSIONS','\.(rm|ico|cab|swf|css|gz|z|tar|zip|tgz|msi|
+	arj|zoo|rar|r[0-9]+|exe|bin|pkg|rpm|deb|bz2)$');
+
+    The BANNED constant means to ban external links in index, meaning that those links do not show up as keys in search results. The FORBIDDEN_EXTENSIONS constant means to ban certain links from being indexed. Don't let the name fool you. A regex can be set in the FORBIDDEN_EXTENSIONS constant to ban various types of links from even being indexed. Again, BANNED is to ban keys from search results, and FORBIDDEN_EXTENSIONS is to ban the index of links.
+
+    There is also a $allowed_link_chars variable for creating a class of characters to allow in links, a $spec array for translating from HTML entity to character, month names are set in the $month_names array, and the $apache_indexes array is used to help prevent the spider from crawling different orderings of directory listings. Certainly, you may also modify the $allowed_link_chars, $spec, $month_names array, and $apache_indexes settings to suit your fancy.
+
+    4.4. Configure PhpDig encoding      [top]
+
+    PhpDig does not support multiple or multi-byte encodings. The choosen encoding applies to all indexed documents and the admin interface. Choose one encoding per installation and stick with it.
+
+define('PHPDIG_ENCODING','iso-8859-1');  // encoding for interface, search and indexing.
+                                         // iso-8859-1, iso-8859-2, iso-8859-7, tis-620,
+                                         // and windows-1251 supported in this version.
+
+    If you want PhpDig to support another encoding, you have to add array indexes to the following variables, taking examples from existing ones. See the config file for examples.
+
+$phpdig_string_subst['iso-8859-1']
+$phpdig_string_subst['iso-8859-2']
+...
+
+$phpdig_words_chars['iso-8859-1']
+$phpdig_words_chars['iso-8859-2']
+...
+
+    If your encoding is not available, you can try the following, where NAME represents your encoding name, so change NAME to that encoding. Also, remove the line breaks. Note, this is a generic encoding so it may or may not work.
+
+define('PHPDIG_ENCODING','NAME');
+
+$phpdig_string_subst['NAME'] = 
+	'à:À,á:Á,â:Â,ã:Ã,ä:Ä,å:Å,æ:Æ,ç:Ç,è:È,é:É,ê:Ê,ë:Ë,ì:Ì,í:Í,î:Î,ï:Ï,ð:Ð,ñ:Ñ,
+	ò:Ò,ó:Ó,ô:Ô,õ:Õ,ö:Ö,÷:×,ø:Ø,ù:Ù,ú:Ú,û:Û,ü:Ü,ý:Ý,þ:Þ,ÿ:ß';
+
+$phpdig_words_chars['NAME'] = '[:alnum:]ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß
+	àáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ';
+
+
+    You may need to run the query "alter table keywords modify keyword varchar(64) binary;" for certain encodings.
+
+    4.5. Configuring external binaries      [top]
+
+    External binaries are programs that you may use in conjunction with PhpDig to extract text from Word, PDF, Excel, or PowerPoint files. If you do not want to index Word, PDF, Excel, or PowerPoint files, then you do not have to edit these constants.
+
+    Each external tool is defined by three constants
+    - INDEX (true or false) : Activate this file type indexing
+    - PARSE (path) : Executable path location
+    - OPTION (options) : Options of the program
+    - EXTENSION : File extension if not STDOUT
+
+define('PHPDIG_INDEX_MSWORD',false);
+define('PHPDIG_PARSE_MSWORD','/usr/local/bin/catdoc');
+define('PHPDIG_OPTION_MSWORD','-s 8859-1');
+
+define('PHPDIG_INDEX_PDF',false);
+define('PHPDIG_PARSE_PDF','/usr/local/bin/pstotext');
+define('PHPDIG_OPTION_PDF','-cork');
+
+define('PHPDIG_INDEX_MSEXCEL',false);
+define('PHPDIG_PARSE_MSEXCEL','/usr/local/bin/xls2csv');
+define('PHPDIG_OPTION_MSEXCEL','');
+
+define('PHPDIG_INDEX_MSPOWERPOINT',false);
+define('PHPDIG_PARSE_MSPOWERPOINT','/usr/local/bin/ppt2text');
+define('PHPDIG_OPTION_MSPOWERPOINT','');
+
+// if external binary is not STDOUT or different extension is needed
+// for example, use '.txt' if external binary writes to filename.txt
+define('PHPDIG_MSWORD_EXTENSION','');
+define('PHPDIG_PDF_EXTENSION','');
+define('PHPDIG_MSEXCEL_EXTENSION','');
+define('PHPDIG_MSPOWERPOINT_EXTENSION','');
+
+// if set to true is_executable used - set to '0' if is_executable is undefined
+define('USE_IS_EXECUTABLE_COMMAND','1'); //use is_executable for external binaries
+
+    If you have problems configuring PhpDig to work with external binaries, make sure to read this link: http://www.phpdig.net/forum/showthread.php?t=799
+
+    4.6. Configuring templates      [top]
+
+$phpdig_language = "en"; // ca, cs, da, de, en, es, fr, gr, it, nl, no, pt
+
+// $template = "$relative_script_path/templates/phpdig.html";
+
+    See the config file for further details about the $template variable and its relation to the $template_demo variable.
+
+define('HIGHLIGHT_BACKGROUND','#FFBB00');        //Highlighting background color
+                                                 //Only for classic mode
+define('HIGHLIGHT_COLOR','#000000');             //Highlighting text color
+                                                 //Only for classic mode
+
+define('LINK_TARGET','_blank');                  //Target for result links
+define('WEIGHT_IMGSRC','./tpl_img/weight.gif');  //Baragraph image path
+define('WEIGHT_HEIGHT','5');                     //Baragraph height
+define('WEIGHT_WIDTH','50');                     //Max baragraph width
+
+define('SEARCH_PAGE','search.php');              //The name of the search page
+define('DISPLAY_DROPDOWN',true);                 //Display dropdown on search page
+define('DROPDOWN_URLS',true);                    //Always URLs in dropdown: DISPLAY_DROPDOWN 
+                                                 //needs to be true
+
+define('SUMMARY_DISPLAY_LENGTH',150);            //Max chars displayed in summary
+define('SNIPPET_DISPLAY_LENGTH',150);            //Max chars displayed in each snippet
+
+define('DISPLAY_SNIPPETS',true);                 //Display text snippets
+define('DISPLAY_SNIPPETS_NUM',4);                //Max snippets to display
+define('DISPLAY_SUMMARY',false);                 //Display description
+
+define('PHPDIG_DATE_FORMAT','\1-\2-\3');         // Date format for last update
+                                                 // \1 is year, \2 month and \3 day
+                                                 // if using rss, use date format \1-\2-\3
+
+define('SEARCH_BOX_SIZE',15);                    // Search box size
+define('SEARCH_BOX_MAXLENGTH',50);               // Search box maxlength
+
+define('SEARCH_DEFAULT_LIMIT',10);      //results per page
+
+// start is AND OPERATOR, exact is EXACT PHRASE, and any is OR OPERATOR
+define('SEARCH_DEFAULT_MODE','start');  // default search mode (start|exact|any)
+// in language pack make the appropriate changes to 'w_begin', 'w_whole', and 'w_part'
+// 'w_begin' => 'and operator', 'w_whole' => 'exact phrase', 'w_part' => 'or operator'
+
+define('NUMBER_OF_RESULTS_PER_SITE',-1);  //max number of results per site
+                                          // use -1 to display all results
+
+    Last but not least, the PhpDig version number is defined in the config file.
+
+    4.7. RSS and List configuration      [top]
+
+    You can config PhpDig to create an RSS feed of results with a link to the ouput from the search page.
+
+define('ALLOW_RSS_FEED',false);                       // Do RSS and display link - if true, 
+                                                      // set rss dir to 777
+$theenc = PHPDIG_ENCODING;                            // needs to be same encoding used in index
+$theurl = "http://www.phpdig.net/";                   // site offering the RSS feed
+$thetitle = "PhpDig.net";                             // title for site offering the RSS feed
+$thedesc = "PhpDig :: Web Spider and Search Engine";  // description of site offering the RSS feed
+$thedir = "./rss";                                    // the rss directory name, no ending slash
+$thefile = "search.rss";                              // used in rss filenames
+
+    You can config PhpDig to create a list of previous search queries with links to the search page.
+
+define('LIST_ENABLE',true);             //do listing of past queries
+define('LIST_PAGE','list.php');         //the name of the list page
+define('LIST_NEW_WINDOW',1);            //open queries in new window
+define('LIST_SHOW_ZEROS',0);            //show queries with zero results
+define('LIST_DEFAULT_LIMIT',20);        //listings per page - positive integer of ten - 10,20,30,...
+define('LIST_META_TAG','<meta name="robots" content="noindex,nofollow">'); //meta tag for list page
+
+    4.8. FTP configuration (if necessary)      [top]
+
+    PhpDig does not index FTP sites. It follows links as can be seen via a web browser, but can be an intensive process. Many PhpDig users install PhpDig on shared hosting accounts, and on such accounts, PHP is often configured with safe_mode activated. On these accounts, access to the crontab is usually not allowed.
+
+    If this is the case for you, and should your host permit you to connect to your MySQL database through TCP/IP, you may wish to try the FTP indexing option, as it sends textual content of indexed documents to the proper directory on a remote server. For instance, you could run an instance of PHP on a cable connection "server" to perform the update process.
+
+    If you deactivate the FTP function (in case of low bandwidth connections), then only the summary stored in the database, and not the exact document, is displayed on the results page. The FTP parameters are as follows.
+
+define('FTP_ENABLE',0);//enable ftp content for distant PhpDig
+define('FTP_HOST','<ftp host>'); //if distant PhpDig, ftp host;
+define('FTP_PORT',21); //ftp port
+define('FTP_PASV',1); //passive mode
+define('FTP_PATH','<path to phpdig directory>'); //distant path from the ftp root
+define('FTP_TEXT_PATH','text_content');//ftp path to text-content directory
+define('FTP_USER','<ftp usename>');
+define('FTP_PASS','<ftp password>');
+
+    4.9. Configuring cron      [top]
+
+    You can config PhpDig to automatically create a cron file that you can use to run a cron job.
+
+define('CRON_ENABLE',false);
+define('CRON_EXEC_FILE','/usr/bin/crontab');
+define('CRON_CONFIG_FILE',ABSOLUTE_SCRIPT_PATH.'/admin/temp/cronfile.txt');
+define('PHPEXEC','/usr/local/bin/php');
+// NOTE: make sure ABSOLUTE_SCRIPT_PATH is the full path up to but not including the 
+	//admin dir, no ending slash
+// NOTE: CRON_ENABLE set to true writes a file at CRON_CONFIG_FILE containing the cron 
+	//job information
+// The CRON_CONFIG_FILE must be 777 permissions if applicable to your OS/setup
+// You still need to call the CRON_CONFIG_FILE to run the cron job!!!
+// From shell: crontab CRON_CONFIG_FILE to set the cron job: replace CRON_CONFIG_FILE 
+	//with actual file
+// From shell: crontab -l to list and crontab -d to delete
+
+    If you need a cron job tutorial or would rather manually create a cron file, see this link: http://www.phpdig.net/forum/showthread.php?t=323
+
+5. Update PhpDig
+
+    5.1. Update tables      [top]
+
+    The [PHPDIG_DIR]/sql/update_db_to_[VERSION].sql files contain all required SQL instructions to update your existing install of PhpDig. The [PHPDIG_DIR]/sql/update_db.sql file contains the most recent changes to the database tables for use with the install.php script, and the [PHPDIG_DIR]/sql/init_db.sql is for a fresh install of the tables. If there is no SQL update file for a particular version, then there were no updates to the database tables for that version.
+
+    If you keep current on PhpDig, you can update the tables using the install script by choosing the update exisitng database option. Note, however, that this option will only update the tables with the most recent changes, meaning from the release right before the new release to the new release. If you need to update PhpDig from versions further back, then you need to manually update the database tables. Do read sections 3.3 and 3.4 for further information on how to update database tables.
+
+    5.2. Update files      [top]
+
+    After the database tables have been updated, if there were updates to be done, it's time to update the files so unzip the archive and, if you made previous changes to the config file, edit the new config file before doing the FTP. Also, compare the new _connect.php file in the archive with the old connect.php file on the server to see if there were any changes. If the new _connect.php file is different, copy the new _connect.php file to connect.php and put your database information this connect.php file. Do not put your database information in the _connect.php file. Read section 3.5 for more information on the _connect.php and connect.php files.
+
+    Once the config.php and connect.php files have been set, FTP the HTML, TXT, PHP, & SQL files in ASCII format, overwriting existing files, and FTP the GIF, PNG, & JPG files in binary format. Note that on rare occasion an FTP does not overwrite the exisitng files on the server. To ensure that the new files overwrite the old files, you might want to delete the old files from the server and then FTP the new files to the server. The graphic files have not been changed in a while, not to say they won't be changed someday, so you can usually get away with just FTPing the text files. After any tables changes are made and the new files are on the server, the update is complete.
+
+6. Indexing with web interface
+
+    6.1. Index a new host      [top]
+
+    Open the PhpDig admin panel with your browser by visiting http://www.yourdomain.com/[PHPDIG_DIR]/admin/index.php and enter the username and password you set in the config file. In the admin panel, enter one link per line in the text box. Each link can be as simple as a URI (e.g., http://www.domain.com) or can include path and file information (e.g., http://www.domain.com/dir/ or http://www.domain.com/dir/file.ext or http://www.domain.com/dir/file.ext?foo=bar).
+
+    The "update sites" page contains information as to how PhpDig should go about indexing a URI. Pretend that the "update sites" page contains the following information (you will not see the "days" column if CRON_ENABLE is set to false in the config file):
+
+ID  URL              Days   Links  Depth
+1   www.domain1.com  [ 0 ]  [ 1 ]  [ 2 ]
+2   www.domain2.com  [   ]  [   ]  [   ]
+3   www.domain3.com  [   ]  [   ]  [   ]
+
+    Now in the admin panel, if you select "yes" then PhpDig will use the "update sites" values for www.domain1.com and use the "search depth" and "links per" for both www.domain2.com and www.domain3.com. If you select "no" then Phpdig will use the "search depth" and "links per" for www.domain1.com, www.domain2.com, and www.domain3.com. Basically, selecting "yes" means to use the "update sites" values if present and use "search depth" and "links per" otherwise, and selecting "no" means to use "search depth" and "links per" regardless of the "update sites" values.
+
+    The "search depth" option tells PhpDig how deep into a URI to index. The URI you enter into the text box has a depth of zero (it's the start page for index), the links from the start page to another page are of depth one, the links from the links from the start page are of depth two, and so forth. The "links per" option tells PhpDig how many links per each depth to index, meaning if a page has ten links but you set "links per" to five, then at most only five of the ten links will be followed. In toto, the maximun number of links found is ((links_per * search_depth) + 1) when "links per" is greater than zero. Setting "search depth" to zero means to index just one page regardless of the "links per" value.
+
+    Once you set your options, click the "dig this" button, and PhpDig will be off and indexing. PhpDig reconizes if the URI is a new host or an existing host and will index accordingly. You should check the config file for various settings prior to indexing, as LIMIT_TO_DIRECTORY, PHPDIG_IN_DOMAIN, *_MAX_LIMIT, and *_LIMIT are the most common settings to affect the way PhpDig indexes a site. If the config settings are set one way, but you want to index another way, you know what to do, meaning change the config settings.
+
+    Once PhpDig starts to index, it will try to open a new webpage to show you its progress. Note that while PhpDig attempts to flush output to the browser window, not all OS/setups abide by this. Assmuning you see the new page, you will get a listing that shows what link PhpDig is currently working on, as well as "+" symbols indicating that PhpDig found a link in the current page for possible index at the next level. If you do not see the new page, then you will likely have to wait to see it until PhpDig has done its work and completed the indexing process.
+
+    You need to take note that, if you are going to index a lot of content, some browsers may timeout. If you run into this problem, you might try using Firefox (http://www.mozilla.org/products/firefox/) as your browser. Also when indexing a lot of content, you are more susceptible to having your MySQL connection drop, having some server somewhere timeout, having your host kill the process, etcetera. None of these things have anything to do with the PhpDig code itself, as in it's not a bug. You need to have a decent server with the right privileges to run PhpDig.
+
+    That said, you really should plan on how to index. Setting things to levels allowing for the maximum index is not always the right or fastest way to go about getting things done. Think about the different options discussed herein and plan accordingly. For example, you may find that you can index adequate content in a shorter amount of time if you index a site from several locations and use lower levels. Be kind to another person's resources! It really isn't necessary to index every single page of another person's site, really!
+
+    6.2. Update an existing host      [top]
+
+    From the PhpDig admin panel, you can reach the PhpDig update page by choosing a site and clicking on the update button. Once on the update page, a two-part inteface appears. On the left side of the screen is the folder structure of the site with four options: 1) the red no-way icon (admin/deny.gif) deletes the folder and excludes it from future index, 2) the red cross icon (admin/no.gif) deletes the folder without excluding it from future index, 3) the green check icon (admin/yes.gif) reindexes the pages in that directory only, and 4) the blue arrow (admin/details.gif) shows you what pages are in that specific directory.
+
+    Should you click the blue arrow, content will appear on the right side for that directory with two options: 1) the the red cross icon (admin/no.gif) deletes that page from the index and 2) the green check icon (admin/yes.gif) reindexes that page only. Note that when you click a green check icon, whether on the left or right side of the screen, only that particular content is reindexed. If you wish to reindex a site, use the textbox on the index page of the PhpDig admin panel. Should you delete any content, you should run the various "clean" options from the PhpDig admin panel to shore up the engine.
+
+    The PhpDig update page also has an option to unlock a site should it remain locked. Note that you should not unlock a site that is currently being indexed. Also on the PhpDig update page, you will find the ability to change the username and password for a .htaccess protected site. If you are indexing something that is not .htaccess protected, you do not need to enter anything in the username and password fields.
+
+    6.3. Index maintenance      [top]
+
+    There are four scripts available from the admin panel to delete useless data from PhpDig.
+
+            * Clean index - deletes content containing invalid values or not linked to a page.
+            * Clean dictionary - deletes words no longer used such as when a site is deleted.
+            * Clean common words - deletes words that appear in the common_words.txt file.
+            * Clean dashes - deletes content that duplicates an index page to prevent copies.
+
+    You should run the "clean" scripts periodically to keep the engine up-to-date!
+
+7. Indexing by command line interface (shell)
+
+    7.1. Run PhpDig from shell and log results      [top]
+
+    Should you have access to shell and PHP is configured to run from shell, you can run the [PHPDIG_DIR]/admin/spider.php script from shell rather than from a web browser. If you are able to run PHP from shell and want to launch the spider from shell, make sure ABSOLUTE_SCRIPT_PATH is correctly set in the config file and then use one of the following commands, editing the full paths as needed:
+
+/full/path/to/php -f /full/path/to/admin/spider.php http://www.domain.com >> /full/path/to/spider.log
+/full/path/to/php -f /full/path/to/admin/spider.php /full/path/to/list.txt >> /full/path/to/spider.log
+/full/path/to/php -f /full/path/to/admin/spider.php all >> /full/path/to/spider.log
+/full/path/to/php -f /full/path/to/admin/spider.php forceall >> /full/path/to/spider.log
+
+    Note that you may use one of the following options after "/full/path/to/admin/spider.php" in the command:
+
+    - all (default) : update all hosts
+    - forceall : force update all hosts
+    - http://www.domain.com : add or update the site
+    - path/file : add or update all sites listed in the given file
+
+    Use "http://www.domain.com" (without quotes) to spider that domain. If you use /full/path/to/list.txt then the list.txt file is to contain a list of full URLs (e.g., http://www.domain.com) with one URL per line. The "all" option is to reindex all sites currently in the database. Note that the all, domain, and file options index according to the LIMIT_DAYS and META tags timeframe, whereas the "forceall" option does a forced reindex. Also, an index may be affected by the *_LIMIT values in the config file or by the values in the site_page table.
+
+    If you want to run the spider in the background, then append " &" (that's space shift-7 without quotes) to the command. If you wish to watch the spider.log live, then type on one line "tail -f /full/path/to/spider.log" (without quotes). Alternatively, you may remove " >> /full/path/to/spider.log" from the command, but then the shell window will be busy until the process is complete.
+
+    7.2. Run PhpDig from cron and log results      [top]
+
+    Should you have access to shell, including the crontab program, you can run the [PHPDIG_DIR]/admin/spider.php script via cron job. If you have access to crontab via shell and want to launch the spider from a cron job, make sure ABSOLUTE_SCRIPT_PATH is correctly set in the config file and then read the cron tutorial that is provided at this link: http://www.phpdig.net/forum/showthread.php?t=323
+
+    Note that a spider.log file gets automatically created at /full/path/to/spider.log so you can view the spider info. The ">>" means to append to the file. You could replace ">>" with ">" (without quotes) so that the spider.log is overwritten each time. You may wish to check the size of the spider.log file when not indexing and delete spider.log as necessary.
+
+8. Templates
+
+    The PhpDig templates are HTML files containing XML-like tags that are auto replaced with the dynamic PhpDig search results. You can set the template that you would like to use in the config file. The XML-like tags take the form of <phpdig:[NAME]/> except for the <phpdig:results> (indicates the start of the rsearch results) and </phpdig:results> (indicates the end of the search results) tags. See the template files for examples. Note that if you do not want the list of templates at the top of the search page, simply remove the <phpdig:templates_links/> tag from the template. If you do not like the look of the templates, it is easy enough to make your own custom template. PhpDig offers three different templating options, and you set your template option via the $template variable in the config file.
+
+    8.1. Results using $template set to "$relative_script_path/templates/[TEMPLATE].html"      [top]
+
+    You can make your own templates/[TEMPLATE].html file by following the same outline as can be found in the various PhpDig template files. You need to realize that all of the templates/[TEMPLATE].html files are static. You cannot include dynamic content in the templates/[TEMPLATE].html files by simply editing the HTML files. However, it is possible to get dynamic content in the static templates. For a tutorial on how to do this, see this link: http://www.phpdig.net/forum/showthread.php?t=348. Be sure to read the entire thread. Alternatively, consider setting $template to "array" for more control.
+
+    8.2. Results using $template set to "classic"      [top]
+
+    This option sets a generic PhpDig template for search results. Note that the HIGHLIGHT_BACKGROUND and HIGHLIGHT_COLOR options in the config file are the only options that can affect the look of the classic template, unless you go into the PhpDig code itself and make changes. Other than that, there is no file to edit in order to change the look of the output.
+
+    8.3. Results using $template set to "array"      [top]
+
+    You can have PhpDig return an array with elements from the search results by setting $template = "array"; in the config file and prior to v.1.8.7 you needed to edit search.php by setting phpdigSearch(...); to a variable named say $arrayout and print_r($arrayout); the array elements like so:
+
+$arrayout = phpdigSearch($id_connect, $query_string, $option, $refine,
+              $refine_url, $lim_start, $limite, $browse, $site, $path, 
+              $relative_script_path, $template, $adlog_flag, $rssdf, $template_demo);
+print_r($arrayout);
+
+    If using a version prior to v.1.8.7, simply view the HTML source of the search page via a browser to see a nice format of the array elements available for use in a custon search page. If using v.1.8.7+ then simply edit the custom_search.php file to your desire, as the file contains code to output the various array elements.
+
+    Note that, if you wish to set $template to "array" to create your own custom page, you should be somewhat familiar with PHP itself. Otherwise, don't use this option unless you want to learn. Should you use the "array" option, you will need to write PHP code to format the output to your preference. You can find a somewhat dated but still applicable outline of how to utilize $template = "array"; at this link: http://www.phpdig.net/forum/showpost.php?p=3379
+
+9. Insert PhpDig into a website
+
+    9.1. Using the search.php script      [top]
+
+    You are able to place the search.php page wherever you'd like by following these instructions:
+
+/***** Example
+* PhpDig installed at: http://www.domain.com/phpdig/
+* Want search page at: http://www.domain.com/search.php
+* Copy http://www.domain.com/phpdig/search.php to http://www.domain.com/search.php
+* Copy http://www.domain.com/phpdig/clickstats.php to http://www.domain.com/clickstats.php
+* Set $relative_script_path = './phpdig'; in search.php, clickstats.php, and function_phpdig_form.php
+* Add ($relative_script_path != "./phpdig") && to if statement
+*****/
+
+    See section 4.2 and the config file for futher details.
+
+    9.2. Using a simple HTML form      [top]
+
+    You can add a search box to any webpage using the following HTML form:
+
+<form action="http://www.YOURDOMAIN.COM/DIR/search.php" method="post">
+<input type="text" name="query_string" value="">
+<input type="submit" name="search" value="Go">
+</form>
+
+    Note that you have to set the "action" element to your search link. If you want something more elaborate for your HTML form, then view the HTML source of a page on this site with a form, copy the HTML, and edit accordingly.
+
+10. Getting help with PhpDig
+
+    A messageboard dedicated to PhpDig can be found at this link: http://www.phpdig.net/
+
+    Ask there any questions you have about this script.
+
+
+Copyright © 2001 - 2005, PhpDig.net, ThinkDing LLC. All Rights Reserved.

@@ -1,0 +1,93 @@
+PhpDig is a web spider and search engine written in PHP, using a MySQL database and 
+flat file support. PhpDig builds a glossary with words found in indexed pages. On a 
+search query, it displays a result page containing the search keys, ranked by occurrence.
+
+This program is provided WITHOUT warranty under the GNU/GPL license.
+See the LICENSE file for more information about the GNU/GPL license.
+
+Version :  1.8.8 (Stable)
+Update  :  2005-11-06
+
+CURRENT DEVELOPER
+
+Copyright (C) 2003 - current, Charter, http://www.phpdig.net/
+
+ORIGINAL DEVELOPER
+
+Copyright (C) 2001 - 2003, Antoine Bajolet, http://www.toiletoine.net/
+
+OTHER COPYRIGHT
+
+Contributors hold Copyright (C) to their code submissions.
+
+CODE CONTRIBUTIONS
+
+- xhtml compliancy, complete localization
+Eric Chauvin - fr
+
+- Cache and Templates system concepts :
+Florian Perrichot - fr
+
+- iso-8859-2 support :
+Jan Kincl - cs
+
+- iso-8859-7 support :
+Nikos - gr
+
+- See the forums for other available modifications
+
+LOCALIZATION FILES, DOCUMENTATION
+
+- English locales & first documentation translation :
+Brien Louque - en
+
+- Corrections on documentation :
+John Zastrow
+
+- Languages locales :
+Xavier de Pedro - ca
+Dan Barta, Jan Kincl - cs
+Søren Thing Pedersen - da
+Gregor Mucha, Matthias Strohmaier, Roland Sippel, Daniel Hahler - de
+Antoine Bajolet, Brien Louque - en
+Geffrey Velásquez, Manuel Talens - es
+Antoine Bajolet - fr
+Sofoklis Magoulas - gr
+Mirko Maischberger, Simone Capra - it
+Lecompte Pieter - nl
+Martin Kristiansen - no
+Carlos Serrão - pt
+
+- Common words :
+Roland Sippel - de_en_fr
+Simone Capra - it
+
+OTHER CONTRIBUTIONS
+
+- Good Feedbacks and bug reports :
+Bruno Manach - fr
+David Debono
+Søren Thing Pedersen - da
+Michael Chapman
+
+- Suggests :
+Loic Anterroches
+
+- See the forums for other feedback, bug reports, suggests
+
+FOREIGN CODE
+
+- Authentification script :
+Nicolat Biot - fr
+
+- Limit update script :
+JÿGius³, alivin70 - it
+
+THANKS
+
+Thanks to the people who have given feedback, offered changes, etcetera.
+Also see the forums, CHANGELOG, and README files for various contributions.
+
+-------------------
+Someone forgotten ?
+Remember me at http://www.phpdig.net/forum/

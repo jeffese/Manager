@@ -1,0 +1,397 @@
+<link href="/css/text.css" rel="stylesheet" type="text/css">
+
+<div id="tab"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="5" class="h1">Table Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Width</td>
+    <td><input name="width" type="text" id="width" style="width:50px"/></td>
+    <td>&nbsp;</td>
+    <td class="titles">Height</td>
+    <td><input name="height" type="text" id="height" style="width:50px"/></td>
+  </tr>
+  <tr>
+    <td class="titles">Cell spacing</td>
+    <td><input name="cellspacing" type="text" id="cellspacing" style="width:20px"/></td>
+    <td>&nbsp;</td>
+    <td class="titles">Cell padding</td>
+    <td><input name="cellpadding" type="text" id="cellpadding" style="width:20px"/></td>
+  </tr>
+  <tr>
+    <td class="titles">Alignment</td>
+    <td><select name="align" id="align">
+        <option selected value="">Default</option>
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+      </select></td>
+    <td>&nbsp;</td>
+    <td class="titles">Background color</td>
+    <td><input name="bgcolor" type="text" id="bgcolor" class="color_pick"/></td>
+  </tr>
+  <tr>
+    <td class="titles">Border</td>
+    <td><input name="border" type="text" id="border" style="width:20px"/></td>
+    <td>&nbsp;</td>
+    <td class="titles">Border color</td>
+    <td><input name="bordercolor" type="text" id="bordercolor" class="color_pick"/></td>
+  </tr>
+  <tr>
+    <td class="titles">Add Rows</td>
+    <td colspan="4"><input name="addrow" type="checkbox" id="addrow" /></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td colspan="4"><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+        </tr>
+      </table></td>
+  </tr>
+</table></div>
+<div id="cell"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="5" class="h1">Cell Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Width</td>
+    <td><input name="width" type="text" id="width" style="width:50px"/></td>
+    <td>&nbsp;</td>
+    <td class="titles">Height</td>
+    <td><input name="height" type="text" id="height" style="width:50px"/></td>
+  </tr>
+  <tr>
+    <td class="titles">H. Alignment</td>
+    <td><select name="align" id="align">
+      <option value="" selected>Default</option>
+      <option value="left">Left</option>
+      <option value="center">Center</option>
+      <option value="right">Right</option>
+    </select></td>
+    <td>&nbsp;</td>
+    <td class="titles">V. Alignment</td>
+    <td><select name="valign" id="valign">
+      <option value="" selected>Default</option>
+      <option value="top">Top</option>
+      <option value="middle">Middle</option>
+      <option value="bottom">Bottom</option>
+      <option value="baseline">Basline</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td class="titles">Border color</td>
+    <td><input name="bordercolor" type="text" id="bordercolor" class="color_pick"/></td>
+    <td>&nbsp;</td>
+    <td class="titles">Background color</td>
+    <td><input name="bgcolor" type="text" id="bgcolor" class="color_pick"/></td>
+  </tr>
+  <tr>
+    <td class="titles">No Wrap</td>
+    <td colspan="4"><input name="nowrap" type="checkbox" id="nowrap" /></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td colspan="4"><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="txt"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="2" class="h1">Text Field Properties</td>
+    </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req"></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="tar"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="8" class="h1">Text Area Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req"></td>
+    <td>&nbsp;</td>
+    <td nowrap="nowrap" class="titles">Rich Text</td>
+    <td><input type="checkbox" name="rich" id="rich" /></td>
+    <td>&nbsp;</td>
+    <td class="titles">Lines</td>
+    <td><input name="rows" type="text" id="rows" style="width:20px" value="3"/></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td colspan="7"><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td colspan="7" align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="cmb"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="2" class="h1">Drop Down Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req"></td>
+  </tr>
+  <tr>
+    <td class="titles">List</td>
+    <td><textarea name="list" id="list" style="width:250px" rows="5"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="fil"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="5" class="h1">File Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req"></td>
+    <td>&nbsp;</td>
+    <td class="titles">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="titles">Max. Files</td>
+    <td><input name="max_files" type="text" id="max_files" style="width:20px"/></td>
+    <td>&nbsp;</td>
+    <td class="titles">Max. File Size</td>
+    <td class="blue-normal"><input name="max_file_size" type="text" id="max_file_size" style="width:70px"/><strong>MB</strong></td>
+  </tr>
+  <tr>
+    <td class="titles">Allowed Types</td>
+    <td colspan="4" align="center" class="tinytxt"><input name="allowedTypes" type="text" id="allowedTypes" style="width:250px"/>
+      <br />
+      e.g. jpg,png,gif or * (for all types)</td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+        </tr>
+      </table></td>
+  </tr>
+</table></div>
+<div id="img"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="5" class="h1">Image Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req" /></td>
+    <td>&nbsp;</td>
+    <td class="titles">Editable</td>
+    <td><input type="checkbox" name="editable" id="editable" /></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td colspan="4"><div id="fileuploader">Upload</div><div id="eventsmessage" class="tinytxt"></div></td>
+  </tr>
+  <tr>
+    <td class="titles">Src:</td>
+    <td colspan="4"><input name="src" type="text" id="src" style="width:250px" class="lbl" disabled="disabled"/></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td colspan="4"><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="chk"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="2" class="h1">Check Box Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req"></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="rad"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="5" class="h1">Radio Button Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req"></td>
+    <td>&nbsp;</td>
+    <td><span class="titles">Group</span></td>
+    <td><input name="name" type="text" id="name"/></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td colspan="4"><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="hor"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="2" class="h1">Horizontal Line Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req"></td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="lbl"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="2" class="h1">Label Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Style</td>
+    <td><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+<div id="doc"><table border="0" cellspacing="2" cellpadding="4">
+  <tr>
+    <td colspan="2" class="h1">Document Link Properties</td>
+  </tr>
+  <tr>
+    <td class="titles">Required</td>
+    <td><input type="checkbox" name="req" id="req" /></td>
+  </tr>
+  <tr>
+    <td class="titles">&nbsp;</td>
+    <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="/images/check.png" width="16" height="16" class="saveProp"></td>
+        <td width="20">&nbsp;</td>
+        <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp"></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</div>
+<div id="dbf">
+    <table border="0" cellspacing="2" cellpadding="4">
+      <tr>
+        <td colspan="2" class="h1">Database Field Properties</td>
+      </tr>
+      <tr>
+        <td class="titles">Required</td>
+        <td><input type="checkbox" name="req" id="req" /></td>
+      </tr>
+      <tr>
+        <td class="titles">Style</td>
+        <td><textarea name="style" rows="3" id="style" style="width:250px"></textarea></td>
+      </tr>
+      <tr>
+        <td class="titles">&nbsp;</td>
+        <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="/images/check.png" width="16" height="16" class="saveProp" /></td>
+            <td width="20">&nbsp;</td>
+            <td><img src="/images/cancel_.png" width="16" height="16" class="cancelProp" /></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+</div>

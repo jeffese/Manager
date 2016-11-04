@@ -1,0 +1,15 @@
+menuentry 'CentOS Linux, with Linux 3.10.0-123.el7.x86_64' --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-123.el7.x86_64-advanced-ac9e46e0-6de5-4e6f-baf2-cca39dffe49b' {
+    load_video
+    set gfxpayload=keep
+    insmod gzio
+    insmod part_msdos
+    insmod ext2
+    set root='hd0,msdos1'
+    if [ x$feature_platform_search_hint = xy ]; then
+      search --no-floppy --fs-uuid --set=root --hint='hd0,msdos1'  ac9e46e0-6de5-4e6f-baf2-cca39dffe49b
+    else
+      search --no-floppy --fs-uuid --set=root ac9e46e0-6de5-4e6f-baf2-cca39dffe49b
+    fi
+    linux16 /vmlinuz-3.10.0-123.el7.x86_64 root=UUID=ac9e46e0-6de5-4e6f-baf2-cca39dffe49b ro vconsole.keymap=us crashkernel=auto  vconsole.font=latarcyrheb-sun16 rhgb quiet LANG=en_US.UTF-8
+    initrd16 /initramfs-3.10.0-123.el7.x86_64.img
+}

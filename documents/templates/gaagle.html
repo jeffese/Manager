@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<phpdig:listmetatag/>
+<title><phpdig:title_message/></title>
+<style type="text/css" title="cssPhpDig" media="all">
+<!--
+body,td,div,.p,a { font-family: arial,sans-serif; font-size :11px; }
+div,td { color:#000; }
+a.phpdig { font-size: 12px; }
+#annuaire { display: block; }
+#navigation { text-align: center; text-size: 15px; }
+.bas { text-size: 15px; color: black; }
+#footer { text-align: center; background-color: #CFF; border-top: 1px solid blue; border-bottom: 1px solid blue; padding-top: 1em; margin-top: 2em; }
+.phpdigHighlight { font-weight: bolder; }
+table .result { border-top: 1px solid blue; }
+a:link { color: #00c; }
+a:visited { color: #551a8b; }
+a:active { color: #f00; }
+.g { color: grey; font-size: small; padding-bottom: 1em; }
+a.v { color: green; text-decoration: none; }
+.e { font-weight: bolder; }
+a.e { font-size: 12px; }
+.l { font-size: x-small; }
+.l a.phpdig { font-size: x-small; }
+.t { padding-top: 0.5em; line-height: 1em; font-size: small; }
+div#messages { text-align: right; font-size: 11px; font-weight: bold; margin-bottom: 2em; padding-bottom: 2em; border-top: 1px solid blue; background-color: #CFF; padding-right: 100px; }
+.color_table_outline {
+	background-color: #cccccc;
+	color: #000000;
+	border: 1px solid #000000;
+}
+.color_top_bottom {
+	background-color: #eeeeee;
+	color: #000000;
+}
+.color_sub_top_bottom {
+	background-color: #dddddd;
+	color: #000000;
+}
+.color_table_cells {
+	background-color: #ffffff;
+	color: #000000;
+}
+-->
+</style>
+<phpdig:js_for_clicks/>
+</head>
+<body>
+<p><phpdig:templates_links/></p>
+<div id="header">
+  <phpdig:form_head/>
+<div class="formhaut">
+<phpdig:form_title/>
+<phpdig:form_field/>
+<phpdig:form_button/>
+</div>
+<div class="formbas">
+<phpdig:form_select/>
+<phpdig:form_radio/>
+<phpdig:form_dropdown/>
+</div>
+<phpdig:form_foot/>
+</div>
+<div id="messages">
+<phpdig:result_message/>
+<phpdig:ignore_message/>
+<phpdig:ignore_commess/>
+</div>
+<div class="resultats">
+<table class="result">
+ <phpdig:results>
+  <tr>
+    <td class="e"><phpdig:page_link/><span class="l">&nbsp;(<phpdig:filesize/> kb) Relevance : <phpdig:weight/> %&nbsp;</span><phpdig:img_tag/>
+<div class="l"><phpdig:limit_links/></div></td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr >
+    <td class="t">
+<phpdig:text/></td><td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="g">
+<a href="<phpdig:complete_path/>" title="go to <phpdig:complete_path/>" class="v"><phpdig:complete_path/></a> - last update : <phpdig:update_date/></td>
+  </tr>
+  </phpdig:results>
+</table>
+</div>
+<div id="navigation">
+<div class="bas">
+<phpdig:listing/>
+<phpdig:previous_link src='./tpl_img/left.gif'/><phpdig:pages_bar/><phpdig:next_link src='./tpl_img/right.gif'/>
+</div>
+</div>
+<div id="footer">
+<phpdig:form_head/>
+<phpdig:form_field/><phpdig:form_button/><br/>
+<phpdig:form_select/>
+<phpdig:form_radio/>
+<phpdig:form_dropdown/>
+<phpdig:form_foot/>
+</div>
+</body>
+</html>

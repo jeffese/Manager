@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteBase /EDMS/templates/
+
+RewriteRule ^([0-9]+)/(.+)$ /documents/archive/shelf/EDMS/templates/$1/$2
+RewriteRule ^(tmp-[0-9]+)/(.+)$ /documents/archive/shelf/EDMS/templates/$1/$2

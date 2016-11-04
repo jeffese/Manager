@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows parent="44">
+    <row id="46" xmlkids="1">
+        <cell>Fuel Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="73" xmlkids="1">
+        <cell>Public Relation</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="74" xmlkids="1">
+        <cell>Insurance Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="75" xmlkids="1">
+        <cell>Repair & Maintenence</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="76" xmlkids="1">
+        <cell>Legal & Professional Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="77" xmlkids="1">
+        <cell>Audit Fees</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="78" xmlkids="1">
+        <cell>Advertisement Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="79" xmlkids="1">
+        <cell>Commission</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="80" xmlkids="1">
+        <cell>Gratuity</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="81" xmlkids="1">
+        <cell>Printing & Stationary</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="82" xmlkids="1">
+        <cell>Rental Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="65" xmlkids="1">
+        <cell>Office Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="83" xmlkids="1">
+        <cell>Phone & data Recharge</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="85" xmlkids="1">
+        <cell>Salary Advance</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="87" xmlkids="1">
+        <cell>Import Charges Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="88" xmlkids="1">
+        <cell>purchase expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="90" xmlkids="1">
+        <cell>freight expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="92" xmlkids="1">
+        <cell>Consultancy Service</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="95" xmlkids="1">
+        <cell>Furniture & Fittings</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="96" xmlkids="1">
+        <cell>Chairman Residence Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="97" xmlkids="1">
+        <cell>Wages & Salaries</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="98" xmlkids="1">
+        <cell>Licence Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="66" xmlkids="1">
+        <cell>Electricity & Water</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="99" xmlkids="1">
+        <cell>Installation Charges</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="100" xmlkids="1">
+        <cell>Decoration Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="101" xmlkids="1">
+        <cell>Miscellaneous  Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="102" xmlkids="1">
+        <cell>General Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="103" xmlkids="1">
+        <cell>Service Charges</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="105" xmlkids="1">
+        <cell>Office Accessories</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="106" xmlkids="1">
+        <cell>Guest House Maintenance</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="109" xmlkids="1">
+        <cell>Spare Part Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="110" xmlkids="1">
+        <cell>Office Repairs & Maintenance</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="111" xmlkids="1">
+        <cell>Deposit  Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="67" xmlkids="1">
+        <cell>Transport & Travelling Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="114" xmlkids="1">
+        <cell>Bank Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="115" xmlkids="1">
+        <cell>Internet Charges</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="68" xmlkids="1">
+        <cell>Medical Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="69" xmlkids="1">
+        <cell>Hotel Accomodation</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="70" xmlkids="1">
+        <cell>Immigration Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="71" xmlkids="1">
+        <cell>Entertainment Expenses</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+    <row id="72" xmlkids="1">
+        <cell>Donation & Subscription</cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell>0.00</cell>
+        <cell>0.00</cell>
+    </row>
+</rows>

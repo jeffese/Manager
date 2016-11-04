@@ -1,0 +1,565 @@
+DHTMLX v.2.5 build 91111
+==========================
+
+
+dhtmlxTree
+
++ setSkin during object initialization
++ oninit property added for the init tree from html
++ d-n-d updated to provide initial drag timeout
++ child attribute is serialized in case of full serialization in dyn. loading mode
+
+- incorrect F2 key handling in Opera
+- incorrect rendering in case of IE6-standard after item moving out of the tree
+- fixed incorrect selection after offset-top settings
+- unwanted selection in Safari (#533)
+- incorrect edit operations for ID = -1 
+- tree rendering in safari is fixed ( without images )
+- position of context menu in scrolled page is fixed
+- icons for dhx_skyblue is updated , size is corrected
+- issue with incorrect position of drag marker in sibling mode is fixed
+- selection jumping in IE is fixed
+- selection jumping in FF is fixed
+- ignoring first element during findItem in srnd mode is fixed
+
+
+dhtmlxGrid
+
+- incorrect processing of edit operation for dhxCalendar excell type is fixed
+- fixed problem with native context menu in FF
+- fixed problem with onRightClick event in FF
+- fixed issue with incorrect positioning of dhxCalendarA
+- conflict between block selection and paging is fixed
+- memory leak related to the ch column of a dhtmlxgrid is fixed
+- incorrect position of h-menu in IE-standard
+- serialization of long col-spans in CSV
+- hidden footers in printView for IE
+- ron and complex math incompatibility
+- incorrect multiline header sizing in split mode in Safari
+- incorrect edit start in treegrid, when clicking expand icon , is fixed
+- missing scroll in no-data state is fixed
+- sizing in IE6 is fixed
+- fixed issue with resize of grid in split-mode in IE6
+- fixed issue with split-grid-resize in auto-width mode
+- split scroll not-syncing after row adding
+- fixed issue with unwanted gap for x-scroll in case of complex sizing modes
+- incorrect date format from xml
+- incorrect row height in case of split+paging+multiline
+- functionality of setColVAlign is restored
+- access keymap in paging mode
+- fixed issue with resize of splitted grid inside the layout
+- incorrect behavior of coro column type in case of excel keymap is fixed
+- incorrect groupBy structure after filtering is fixed
+- double onCellChanged call for co column type is fixed
+- resize in split in Opera
+- navigation in Safari
+- split in groupBy mode is restored
+- fixed issue with incorrect tab order in case of setExternalTabOrder
+- incorrect paging sub-skin for bricks mode
+- regression in ra_str cell type is fixed
+- validateCell method is fixed ( not removing markers for valid cells ) 
+- double onSubRowOpen call is fixed
+- path to the db filling text is fixed
+- fixed unnecessary sorting while column moving 
+- fixed issue with incorrect filter size in IE
+- fixed issue with edit operation in grouped grid, when some group has an empty group label
+- problem with dyn. switching of enableRowsHover is fixed 
+- fixed issue with incorrect custom title of img cell type in split mode
+
+
++ setCheckedRows check ALL rows in the grid
++ master_checkbox will check ALL rows in the grid
++ when initialized from XML, comma in header name is processed in the correct way
++ collapsed columns extension is added
++ count of results for findCell can be specified 
++ d-n-d updated to provide initial drag timeout
+
+
+dhtmlxTabbar 
+
++ ability to detach to specified parent added
++ showInnerScroll is added
++ after loading data by ajax, inline scripts are evaluated
+
+- fixed issue with sizing of tabbar in not closed container
+- right border in case of multi-line for dhx_skyblue skin
+- issue with ie6 and auto-height mode
+- rendering in IE6 for right and bottom orientation
+- incorrect tab size detection
+- incorrect scrollers in IE6
+- fixed issue with incorrect tabbar styling in case of compiled dhtmlx
+- incorrect scroll after editor in IE6 (#677)
+- issue with scrollTo command and incorrect dhx_skyblue rendering is fixed
+- incorrect auto-size for dhx_skyblue skin is fixed
+- unwanted scrolls in IE is fixed
+- unnecessary reloading in iframe mode is fixed
+- fixed issue with attaching elements to non-active tabs
+- regression in forceLoad method is fixed
+- auto-scroll to the selected tab is restored
+- ajax mode in tabbar is restored
+- close button in dhx_blue skin is restored
+- tabWindow is fixed
+- incorrect removeTab processing is fixed
+- incorrect getLabel processing is fixed
+- regression with "iframe" loading mode is fixed
+
+
+dhtmlxToolbar
+
+- button input's selection fixed
++ autodetect of visible area added (open selects to top if no space at bottom)
+
+
+dhtmlxMenu
+
+- context menu opening fixed
++ checkboxes/radios improved in IE
++ look'n'feel (skin) improved
+
+
+dhtmlxAccordion
+
+- isOpened method fixed
+
+
+
+dhtmlxLayout
+
+- show/hide header fix in case of tabbar attached
++ onContentLoaded added
++ collapsed text added
++ onResizeFinish restored
++ menu/toobar/status unloading moved to container
++ resizing performance improved in IE
+
+
+dhtmlxWindows
+
++ min/max + parked window behaviour fixed/improved
++ performance improved
++ show/hide header improved
+- mouseover over disabled input fixed
+- windows closing with attached url fixed
++ attachURL improved
+
+
+dhtmlxContainer
+
++/- minor fixed/improves
++ detachObject — ability to detach object to specified parent
++ resizing improved in FF
+
+dhtmlxSlider
+
+- Fixed issue with NaN value when no value input.
+- Fixed incorrect position for negative value 
+- Fixed bug with incorrect comparison of string values against integer.
+
+dhtmlxColorpicker:
+
+- Fixed issue with HEX color changing.
+
+dhtmlxCalendar
+
+- Fixed CSS issues  
+- Fixed bug in setFormatedDate method. Incorrect parsing of dates with "space" delimiter.
+- Fixed issue with incorrect date for Brasilia timezone.
+- Fixed problem with prototype library and autohide functionality compatibility
+
+
+
+
+DHTMLX v.2.5 
+======================================
+
+
+dhtmlxTree
++ changed flag added to onEdit event of dhtmlxTree
+- fixed setChildCalcMode("childrec")
+- fixed issue with usage of auto-search and edit in same time
+* zIndex of drag element increased to work correctly inside dhtmlxWindows
+- fixed incorrect usage of imgPath instead of iconPath during initial loading
+
+dhtmlxGrid
+* ability to define cell type from json
+* added ability to auto-detect row on which sort img need to be placed
+* dec excell updated to use correct data setters
+* default value of edn excell changed to empty one
+* dyn excell can accept empty value ( fixes issue with excell keymap , #299 )
+* fixed issue with scrolling in splitted grid in dyn. srnd mode (rare)
+* getChangedRows updated to provide info about added rows in split mode
+* incorrect JSON error introduced for json loading type
+* onCalendarShow event added for dhtmlxCalendar in grid
+* predefined css styles assigned to each header row inside print view
+* script not fail in case of incorrect incoming JSON
++ support of clist in split mode
+- fixed attachToObject method against grid in split mode
+- fixed behavior of radio|checkbox column in light-navigation mode
+- fixed error with filtering and grouBy in case, when grid grouped by first column
+- fixed incorrect hovering over filler rows in srnd mode
+- fixed incorrect processing of getStateOfView when skin not defined for the grid
+- fixed issue with block-selection and IE8
+- fixed issue with by-key edit mode ( excel keymap ) and price field (#299)
+- fixed issue with clist during column moving
+- fixed issue with d-n-d from grid to tree in complex mode
+- fixed issue with d-n-d in chrome
+- fixed issue with getChangedRows in case of complex data layout in split mode
+- fixed issue with incorrect dyn. excell logic in case of excel keymap
+- fixed issue with incorrect navigation in splited grid after data reloading
+- fixed issue with incorrect up-key navigation, in case of grid in groupBy mode
+- fixed issue with loadSizeFromCookie in split mode
+- fixed issue with lost focus after Enter key in grid with excell keymap
+- fixed issue with math operation in groupBy mode when hidden columns used in grid
+- fixed issue with printView call against grid in srnd+split mode
+- fixed issue with srnd+cntr in IE
+- fixed issue with usage of HTML objects in attachHeader command
+- fixed problem with auto-height+auto-width in grid with footer during column resize
+- fixed problem with paste from clipboard in FF, when clipboard is empty
+- fixed problem with rowspans in multiline headers in split mode ( Opera )
+- fixed regression in wasChanged flag updating after edit operations with dhxCalendarA excell
+- fixed setColumnLabel in split mode
+- incorrectXML error in case of json data provides incorrect pointer to master object
+- issue with incorrect cell size after row selection in IE8 fixed
+- issue with srnd in treegrid and no-header mode fixed
+- onEditCell returns correct old value for "grid" column type
+- onRowSelect event doesn't occur for ctrl-deselect actions
+
+dhtmlxCombo
+- fixed issue with positioning in IE8-strict ( incorrect scroll calculation )
+- fixed incorrect result of setSize command for combo with custom options
++ added: the onCheck event
+
+dhtmlxTreeGrid
+* fixed empty image, for empty branches in dyn. treegrid with lines enabled
+* way of sorting type detection changed to method-checking based 
+- fixed behavior of unique_level flag of alter-css in treegrid mode
+- fixed issue with addRowAfter in case of plain grid
+- fixed issue with date sorting in dhtmlxtreegrid ( dhxCalendar excell type ) 
+- fixed issue with edit in filtered state in treegrid
+- fixed issue with un-filtering in treegrid ( switching back from empty to opened state ) 
+- fixed performance issue with collapseAll command
+
+dhtmlxTabbar
++ common container functionality added
+* changes in the way of scrollers rendering 
+* count of used images decreased
+
+
+dhtmlxMenu
+* setTopText, text in case of usual menubar on the top level
+* clearAll, ability reload menu with xml
+* CAS State, ctrl,alt,shift states in onlick
+* SetAlign, ability to place top-level items on the right side
+* setRTL, right-to-left menu mode (maybe not work in IE)
+* Hrefs, using menu items as links
+* Separators, top-level separators rendering added
+* HideAll Mode, hide all opened context menu polygons on mouseout
+* Context, positioning of context menu with scrolls updated
+* autodetect of visible area
+* toplevel hotkeys for context menu
+* adding checkbox/radio button as first node to polygon
+* overflow for dynamic content
+* onShow/onHide event handlers
+* unload
+* ability to detach/hide in layout, window, accordion
+
+dhtmlxToolbar
+* new engine
+* unload
+* rtl
+* case insensitive events
+* little bug fix
+* ability to detach/hide in layout, window, accordion
+
+dhtmlxLayout
+* new engine
+* progressOn/Off added
+* onDblClick (header double click)
+* setSizes() for outer static container
+* top/bottom margins
+* ability to show/hide menu,toolbar,statusbar
+* detaching objects
+
+dhtmlxWindows
+* new engine
+* progressOn/Off
+* center in viewport
+* menu/toolbar/status upgrade
+* showHeader/hideHeader
+* attachURL - window bringOnTop functionality added (iframe event)
+* top-bar resize added for headerless window
+* ability to show/hide menu,toolbar,statusbar
+* detaching objects
+
+dhtmlxAccordion
+* new engine
+* isOpened
+* MultiMode
+* removeItem
+* unload
+* ability to show/hide menu,toolbar,statusbar
+* detaching objects
+
+
+
+****** Previous Versions **********************************************************************
+
+
+dhtmlxGrid v.2.1 
+===============================
+
+build 90316:
+
+- fixed issue wth rendering of treegrid in paging+slit mode
+- fixed issue with auto-size and grid after destructor
+- fixed issue with attachToObject call in Opera and FF3 ( #252 )
+- fixed issue with cell selecting in paging mode and tab navigation in paging mode
+- fixed problem with image-in-header functionality
+- fixed size of grid, when it initialized directly inside TD cell of table without layout-fixed
+- fixed issue with incorrect percent based size assigning
+- fixed issue with incorrect math link update after ID changing
+- fixed issue with image header in sorting mode and complex domain name
+
+build 90226:
+
++ textmode parameter added to csv serialization
++ added optional auto-ID generation for xmlA and xmlB data types
++ IE8 support
+
+* onBeforeDrag provides column index as second parameter
+* event names are not case-sesitive
+* dhx_globalImgPath added as default source for image path
+* getChangedRows can work in dyn. loading mode
+* getCheckedRows returns correct results in paging and srnd modes
+* logic of branch opening for dnd in treegrid corrected
+* select_filter_strict can work with co|coro column types
+* sorting in group mode generate correct events
+* added ability to block validation during d-n-d ( _drag_validate flag )
+* attachHeader and attachFooter can use array of HTML objects instead of html strings
+* resize can be active over grid borders
+* debug version of dhtmlxcommon.js updated
+
+- fixed hardcoded "cell" tag name, now can be defined dynamically
+- fixed issue with combo lost his value in case of grid in split mode
+- fixed issue with hiding part of colspaned(in header) column
+- fixed issue with stat_average calculated incorrectly
+- fixed issue with usage of hidden columns in left part of splitted grid
+- fixed problem with headers in split with multiple commas
+- incorrect context menu position fixed
+- unnecessary scrolls for auto-height in safari fixed
+- fixed bug related to problems with FF rendering engine ( size of columns not reflected on table )
+- fixed incorrect auto-width limit processing in split mode
+- fixed issue with FF3.1 and split mode with multiline columns
+- fixed issue with incorrect data rendering in printView of grid with col or rowspans
+- fixed issue with incorrect header structure serialization when only few serializable columns defined
+- fixed issue with incorrect resize result in case of column resize in splitted grid ( decrease left size scenario )
+- fixed issue with setColumnHidden functionality when both grid and treegrid used on the same page
+- fixed issue with tooltip generation when while one grid still active mouse hovered over another grid. 
+- fixed issue with tooltips in columns added by insertColumn
+- fixed issue with using loadHiddenColumnsFromCookie in case of split mode
+- functionality of numeric filter for >= operation fixed
+- incorrect behavior during column moving and header menu resolved
+
+
+dhtmlxTreeGrid v.2.1 build 90226:
+==================================
+
++ IE8 support
+
+* filtering can be used with dyn. loading
+* added logic to preserve state of branch ( opened | close d ) during filtration 
+
+- fixed issue with all-level filtering in treegrid, when mult-column rules was applied not explictly
+- fixed incorrect after-filtering rendering in case of filter-by-all mode
+- fixed issue with filter filling after column moving in case of treegrid
+- fixed issue with included _lines extension of treegrid, corrupting possible view
+- fixed issue with multiple data loading in same time in case of dyn. loading
+- incorrect parameter of onXLE event in case of treegrid fixed
+- fixed getItemText and setItemText methods, so they use common data access ways.
+- fixed issue when filtering in dyn. treegrid cause closed branch icon lost
+- fixed issue with incorrect image manipulation with tree column items while treegrid in filtered state
+- fixed url building function for dyn. loading in treegrid, when url path changed in onDynXLS event 
+
+
+
+dhtmlxTree v.2.1 build 90226:
+==================================
+
++ IE8 support
+
+* look of editor in tree slightly improved
+* dhx_globalImgPath added as default source for image path
+* in path generation encodeURI changed to encodeURIcomponent 
+* fixed behavior of call attribute, now it only call related event and not change selection in grid
+* point of onOpenEnd event for dyn. loading scenario changed, so it occurs after item in question really expanded
+
+- fixed situation when both text attribute and itemtext sub tag not specified for the item. 
+- fixed issue with loading flag and open all items functionality 
+- fixed error message in IE in case of HTTPS mode
+- fixed hasChildren method for dyn. loading cases
+- fixed issue caused by document.write usage, styles moved to default css file
+- getSubItems uses global delimeter instead of hardcoded one
+- fixed issue with incorrect context menu position
+- fixed issue with incorrect item adding for dyn. branches in standard edition
+- fixed issue with onXLE event missed after xml loading error
+- fixed size of editor
+- incorrect tree object reference fixed
+- fixed regression with incorrect itemId in integrated context menu
+- fixed issue with acessing nodes in smartXMLParsing mode while using json loading type
+- fixed issue with incorrect auto-scrolling after mouse click in keyboard navigation mode
+- fixed issue with using dyn. loading mode and "open" attribute in XML in same time
+
+
+
+dhtmlxTabbar v.2.1 build 90226:
+==================================
+
++ IE8 support
+
+* dhx_globalImgPath added as default source for image path
+* old event handlers changed to common attachEvent|callEvent
+
+- fixed issue which occurs when multiple tabbars created through layout
+- fixed minor issue with auto-size mode in IE
+
+
+dhtmlxCOmbo v.2.1 build 90226:
+==================================
+
++ IE8 support
++ onXLS , onXLE events added
+
+- fixed issue with missed focus for options with checkboxes
+- fixed issue with negative combo size
+- fixed issue with option with special chars selection
+- fixed issue with selection by both mouse and keyboard in the same time
+- fixed setChecked command processing for combo with checkboxes
+
+
+
+dhtmlxLayout v.2.1 build 90226:
+==================================
+
+- layout resize fixed in case on layout's cell-based init
+- critical layout resize bug fixed (when "resize" effect is enabled)
+- docking/undocking cell with attached editor fixed
+- setSizes fixed/improved
+- critical resize bug in IE in full-screened layout init fixed 
+- class for html, body autoadd for fullscreened init added
+- setSizes() for diffirenet init types improved
+- object-based init improved
+- popup window demo added
+- statusbar demo fixed in Safari
+- missed image fix
+
+
+dhtmlxWindows v.2.1 build 90226:
+==================================
+
+- window maximize fixed
+- extended init demo fixed
+- critical resize bug in setDimension fixed
+- critical ie closing bug fixed (infocusable inputs fter reopenig window)
+- critical ie attachURL() bug with loading fixed
+- center() and centerOnScreen() updated/improved
+- setDimension() fixed for parked window
+
+
+
+dhtmlxCalendar v.2.1 :
+==================================
+
+build 90316:
+
++ header support implemented.
++ method setHeader added. 
+- Fix. IE crashes with autodraw mode for dblCalendar.
+
+build 90226:
+
+- Fix. z-index for calendar parent in IE change from 10 to 100.
+- Fix. Fixed position of Irame for IE6.
+- Fix. fixed position of timePicker object.
+- Fix. Incorrect behavior of timePicker dropdown lists.
+* Change. added support for dhtmlXCalendarObject, dhtmlXDblCalendarObject alias.
+* Change. draw () method - render speed incressed.
+* Change. setSkin () method - changes for several modes of calendar (minimized, maximized, with timePicker)
+* Change. Some png files repalaced with gif.
++ New. added support for dhtmlxTimepicker.
++ New. Method setHeaderText added.
++ New. Added header support for all calendar skins.
++ New. Added hideSeconds() method to timePicker.
++ New. Added onClick () handler to timePicker.
+
+
+dhtmlxSlider v.2.1 build 90226:
+==================================
+
+- Fix. Bug with incorrect init value.
+- Fix. Bug with setValue/getValue.
+- Fix. Negative value of width.
+- Fix. Init value of slider.
+
+
+dhtmlxFolders v.2.1 build 90226:
+==================================
+
++ IE8 support
+
+* dhx_globalImgPath added as default source for image path
+* behavior of onXLE event corrected
+* onXLS event added
+
+- fixed issue with incorrect height detection after resize ( scrollHeight changed to offsetHeight )
+- fixed size of dhtmlxFolder in layout panel
+
+
+dhtmlxMenu v.2.1 build 90226:
+==================================
+
+- context menu fixed in opera (called by ctrl+click)
+- context menu hiding by body click fixed in case of manual showing
+- IE6 combo overlap fix for standard skin added
+- top-level image rendering fixed
+- critical bug with redistribing top level positions fixed
+- critical IE6 fix for xhtml doctype
+- setOverflowHeigth() with doctype fixed
+- body events improved (autoshow/autohide features are included)
+- positioning of context menu with scrolls updated
+- xml config: <item ... enabled="false"> to disable item from xml
+
+
+dhtmlxToolbar v.2.1 build 90226:
+==================================
+
+- change item state for pressed two-state button fixed
+- getTypeExt() added (return type of list option), minor demo fixes
+- buttonSelect behaviour fixed
+- obClick for button fixed
+- position detect improved in addItem()
+
+
+dhtmlxAjax v.2.1 build 90226:
+==================================
+
+- fixed issue with XSLT, when reult is not valid XML document
+
+
+dhtmlxAccordion v.2.1 build 90226:
+==================================
+
+- dock/undock with editor fixed
+- onBeforeActive event added (only for header click)
+- setSizes() on external event fixed
+- docking/undocking fixed (sizing of attached components)
+- attached tabbar bgcolor fixed
+
+
+dhtmlxEditor v.2.1 build 90226:
+==================================
+
+- fatal crash FF3 fixed
+- safari/chrome scroll fix
+
+
+

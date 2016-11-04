@@ -1,0 +1,555 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body {
+    font: 11px verdana, arial, helvetica, sans-serif;
+}
+.tinytxt {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #999999;
+}
+.tinymini {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    color: #999999;
+}
+.tinywhite {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    color: #CCCCCC;
+}
+.blacktxt {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #1F1A17;
+}
+.yellowtxt {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #F3C903;
+}
+.greytxt {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #969593;
+}
+.coytxt {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: #3333aa;
+    font-weight:bolder;
+}
+.coyrcpttxt {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #3333aa;
+    font-weight:bolder;
+}
+.bluetxt {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #332057;
+}
+.whitetxt {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #FFFFFF;
+}
+input[type=file] {
+    border: inset #CCCCCC 1px;
+}
+.textarea {
+    color: #333333;
+}
+img {
+    border:0px;
+}
+.hide {
+    display:none;
+}
+a {
+    text-decoration:inherit;
+    font-size:inherit;
+    font-weight:inherit
+}
+a:link {
+    text-decoration:inherit;
+}
+a:visited {
+    text-decoration:inherit;
+}
+a:hover {
+    text-decoration: inherit;
+}
+a:active {
+    text-decoration:inherit;
+}
+.boldwhite1 {
+    color:#FFFFFF;
+    font-size:10px;
+    font-weight:bold;
+}
+.darkgrey {
+    color:#666666;
+    font-size:10px;
+    font-weight:normal
+}
+.lightgrey {
+    color:#CCCCCC;
+    font-size:10px;
+    font-weight:normal
+}
+.blue-normal {
+    color:#0000AA;
+    font-size:10px;
+}
+.red-normal {
+    color:#E10C00;
+    font-size:10px;
+}
+.brown-normal {
+    color:#804011;
+    font-size:10px;
+}
+.black-normal {
+    color:#000000;
+    font-size:10px;
+}
+.Yellow-normal {
+    color:#FFFF00;
+    font-size:10px;
+}
+.brightgreen {
+    color:#00FF00;
+    font-size:10px;
+}
+.darkgreen {
+    color:#009900;
+    font-size:10px;
+}
+.shopitemdet {
+    color:#99CCCC;
+    font-size:10px;
+}
+.britepurple {
+    color:#FF00FF;
+    font-size:10px;
+}
+.darkpurple {
+    color:#620964;
+    font-size:10px;
+}
+.h1 {
+    font-size:11px;
+    font-weight:bolder;
+    color:#3967B3;
+    background-image:url(/images/box_bg.jpg);
+    background-repeat: repeat-x;
+    border: solid #c5c5c5 1px;
+    padding:2px;
+}
+.titles {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight:bold;
+    color: #333333;
+    text-align:right;
+}
+.frm_tl {
+    background-image:url(/images/xbox_tl.png);
+    background-repeat:no-repeat;
+    background-position:top left;
+    width:10px;
+    height:10px;
+}
+.frm_tr {
+    background-image:url(/images/xbox_tr.png);
+    background-repeat:no-repeat;
+    background-position:top right;
+    width:10px;
+    height:10px;
+}
+.frm_bl {
+    background-image:url(/images/xbox_bl.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+    width:10px;
+    height:10px;
+}
+.frm_br {
+    background-image:url(/images/xbox_br.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    width:10px;
+    height:10px;
+}
+.frm_tp {
+    background-image:url(/images/xbox_tp.png);
+    background-repeat:repeat-x;
+    background-position:top;
+    height:10px;
+}
+.frm_bt {
+    background-image:url(/images/xbox_bt.png);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    height:10px;
+}
+.frm_lf {
+    background-image:url(/images/xbox_lf.png);
+    background-repeat:repeat-y;
+    background-position:left;
+    width:10px;
+}
+.frm_rt {
+    background-image:url(/images/xbox_rt.png);
+    background-repeat:repeat-y;
+    background-position:right;
+    width:10px;
+}
+.bx_tl {
+    background-image:url(/images/box_red_tl.png);
+    background-repeat:no-repeat;
+    background-position:top left;
+    width:10px;
+    height:10px;
+}
+.bx_tr {
+    background-image:url(/images/box_red_tr.png);
+    background-repeat:no-repeat;
+    background-position:top right;
+    width:10px;
+    height:10px;
+}
+.bx_bl {
+    background-image:url(/images/box_red_bl.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+    width:10px;
+    height:10px;
+}
+.bx_br {
+    background-image:url(/images/box_red_br.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    width:10px;
+    height:10px;
+}
+.bx_tp {
+    background-image:url(/images/box_red_t.png);
+    background-repeat:repeat-x;
+    background-position:top;
+    height:10px;
+}
+.bx_bt {
+    background-image:url(/images/box_red_b.png);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    height:10px;
+}
+.bx_lf {
+    background-image:url(/images/box_red_l.png);
+    background-repeat:repeat-y;
+    background-position:left;
+    width:10px;
+}
+.bx_rt {
+    background-image:url(/images/box_red_r.png);
+    background-repeat:repeat-y;
+    background-position:right;
+    width:10px;
+}
+.bx_title {
+    background-image:url(/images/rd_rpt.gif);
+    background-repeat:repeat;
+    padding:2px;
+    color:#FFFFFF;
+    font-size:10px;
+    font-weight:bold;
+}
+.bx_center {
+    padding:1px;
+    background-color:#F9EEED;
+    vertical-align:top;
+}
+.bl_tl {
+    background-image:url(/images/box_blue_tl.png);
+    background-repeat:no-repeat;
+    background-position:top left;
+    width:10px;
+    height:10px;
+}
+.bl_tr {
+    background-image:url(/images/box_blue_tr.png);
+    background-repeat:no-repeat;
+    background-position:top right;
+    width:10px;
+    height:10px;
+}
+.bl_bl {
+    background-image:url(/images/box_blue_bl.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+    width:10px;
+    height:10px;
+}
+.bl_br {
+    background-image:url(/images/box_blue_br.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    width:10px;
+    height:10px;
+}
+.bl_tp {
+    background-image:url(/images/box_blue_t.png);
+    background-repeat:repeat-x;
+    background-position:top;
+    height:10px;
+}
+.bl_bt {
+    background-image:url(/images/box_blue_b.png);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    height:10px;
+}
+.bl_lf {
+    background-image:url(/images/box_blue_l.png);
+    background-repeat:repeat-y;
+    background-position:left;
+    width:10px;
+}
+.bl_rt {
+    background-image:url(/images/box_blue_r.png);
+    background-repeat:repeat-y;
+    background-position:right;
+    width:10px;
+}
+.bl_title {
+    background-image:url(/images/mbl_rpt.gif);
+    background-repeat:repeat;
+    padding:2px;
+    color:#FFFFFF;
+    font-size:10px;
+    font-weight:bold;
+}
+.bl_center {
+    padding:1px;
+    background-color:#E5EEFE;
+    vertical-align:top;
+}
+.bp_tl {
+    background-image:url(/images/box_purp_tl.png);
+    background-repeat:no-repeat;
+    background-position:top left;
+    width:10px;
+    height:10px;
+}
+.bp_tr {
+    background-image:url(/images/box_purp_tr.png);
+    background-repeat:no-repeat;
+    background-position:top right;
+    width:10px;
+    height:10px;
+}
+.bp_bl {
+    background-image:url(/images/box_purp_bl.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+    width:10px;
+    height:10px;
+}
+.bp_br {
+    background-image:url(/images/box_purp_br.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    width:10px;
+    height:10px;
+}
+.bp_tp {
+    background-image:url(/images/box_purp_t.png);
+    background-repeat:repeat-x;
+    background-position:top;
+    height:10px;
+}
+.bp_bt {
+    background-image:url(/images/box_purp_b.png);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    height:10px;
+}
+.bp_lf {
+    background-image:url(/images/box_purp_l.png);
+    background-repeat:repeat-y;
+    background-position:left;
+    width:10px;
+}
+.bp_rt {
+    background-image:url(/images/box_purp_r.png);
+    background-repeat:repeat-y;
+    background-position:right;
+    width:10px;
+}
+.bp_title {
+    background-image:url(/images/dpp_rpt.gif);
+    background-repeat:repeat;
+    padding:2px;
+    color:#FFFFFF;
+    font-size:10px;
+    font-weight:bold;
+}
+.bp_center {
+    padding:1px;
+    background-color:#FFEEFF;
+    vertical-align:top;
+}
+.bo_tl {
+    background-image:url(/images/box_or_tl.png);
+    background-repeat:no-repeat;
+    background-position:top left;
+    width:10px;
+    height:10px;
+}
+.bo_tr {
+    background-image:url(/images/box_or_tr.png);
+    background-repeat:no-repeat;
+    background-position:top right;
+    width:10px;
+    height:10px;
+}
+.bo_bl {
+    background-image:url(/images/box_or_bl.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+    width:10px;
+    height:10px;
+}
+.bo_br {
+    background-image:url(/images/box_or_br.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    width:10px;
+    height:10px;
+}
+.bo_tp {
+    background-image:url(/images/box_or_t.png);
+    background-repeat:repeat-x;
+    background-position:top;
+    height:10px;
+}
+.bo_bt {
+    background-image:url(/images/box_or_b.png);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    height:10px;
+}
+.bo_lf {
+    background-image:url(/images/box_or_l.png);
+    background-repeat:repeat-y;
+    background-position:left;
+    width:10px;
+}
+.bo_rt {
+    background-image:url(/images/box_or_r.png);
+    background-repeat:repeat-y;
+    background-position:right;
+    width:10px;
+}
+.bo_title {
+    background-image:url(/images/or_rpt.gif);
+    background-repeat:repeat;
+    padding:2px;
+    color:#FFFFFF;
+    font-size:10px;
+    font-weight:bold;
+}
+.bo_center {
+    padding:1px;
+    background-color:#FDEDD1;
+    vertical-align:top;
+}
+.rp_tl {
+    background-image:url(/images/report_tl.png);
+    background-repeat:no-repeat;
+    background-position:top left;
+    width:30px;
+    height:30px;
+}
+.rp_tr {
+    background-image:url(/images/report_tr.png);
+    background-repeat:no-repeat;
+    background-position:top right;
+}
+.rp_bl {
+    background-image:url(/images/report_bl.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+}
+.rp_btl {
+    background-image:url(/images/report_bl.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+}
+.rp_br {
+    background-image:url(/images/report_br.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    width:30px;
+    height:30px;
+}
+.rp_btr {
+    background-image:url(/images/report_br.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+}
+.rp_tp {
+    background-image:url(/images/report_tp.png);
+    background-repeat:repeat-x;
+    background-position:top;
+}
+.rp_bt {
+    background-image:url(/images/report_bt.png);
+    background-repeat:repeat-x;
+    background-position:bottom;
+}
+.rp_lf {
+    background-image:url(/images/report_lf.png);
+    background-repeat:repeat-y;
+    background-position:left;
+}
+.rp_rt {
+    background-image:url(/images/report_rt.png);
+    background-repeat:repeat-y;
+    background-position:right;
+}
+.rp_title {
+    background-image:url(/images/or_rpt.gif);
+    background-repeat:repeat;
+    padding:2px;
+    color:#FFFFFF;
+    font-size:10px;
+    font-weight:bold;
+}
+.rp_center {
+    padding:1px;
+    background-color:#FFF;
+    vertical-align:top;
+}
+.avatar {
+    background: url(/images/image-shadow.png) no-repeat center 99%;
+    padding-bottom: 8px;
+    cursor: pointer;
+}
+
+.picture_frame {
+    text-align:center;
+    background-color: #EFEDCB;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-left: #CCC 1px solid;
+    border-top: #CCC 1px solid;
+    border-right: #CCC 1px solid;
+}
+.ass_row{
+    border:#666 1px;
+}

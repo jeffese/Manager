@@ -1,0 +1,17 @@
+
+.cmpbox:hover {
+    border: 1px #999 dotted;
+}
+
+.tab[border="0"] {
+    border: thin cornflowerblue dotted;
+}
+
+.tab[border="0"] td {
+    border: thin cornflowerblue dotted;
+}
+
+.tab:hover .col {
+    visibility: visible;
+    display: table-cell;
+}

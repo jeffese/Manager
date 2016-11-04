@@ -1,0 +1,11 @@
+Hello %s,
+
+    The following document is awaiting your approval:
+
+    Title: %s
+    Created By: %s
+    Date Created: %s
+
+Please login to the Document Management System to vet and approve the document.
+
+This is a system auto-generated alert.

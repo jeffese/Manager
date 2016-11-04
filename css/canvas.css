@@ -1,0 +1,277 @@
+/* CSS Document */
+
+#canvas {
+    background: url(/images/greyzz.png);
+    width: 595px;
+    height: 842px;
+    border: dodgerblue ridge thick;
+}
+
+#cmp_list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.formtools {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    background-color: #CCC;
+    padding: 5px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+
+.cmpbox {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+td .cmpbox {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+.cmpbox:active {
+    background-color: #EEE;
+}
+
+.toolbox {
+    border-radius: 10px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.toolbox:hover {
+    background: #FC0;
+}
+
+.doclnk {
+    margin: 4px;
+    position: relative;
+    width: 250px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-table;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+}
+
+.doclnk div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+}
+
+.doclnk:hover {
+    background: cadetblue;
+}
+
+a:link{color:inherit}
+a:active{color:inherit}
+a:visited{color:inherit}
+a:hover{color:inherit}
+
+.ajax-file-upload-green div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+}
+
+.del_aprov {
+    margin: 0px 0px 0px 5px;
+}
+
+.tab_grow {
+    width: 0px;
+    height: 0px;
+    position: relative;
+    left: -32px;
+}
+
+.tab_grow {
+    width: 32px;
+}
+
+#seek_apprv {
+    padding: 2px;
+    margin: 5px;
+    width: 100px;
+}
+
+.showmnu {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display:inline-block;
+}
+
+.showmnu:hover + .mnu_ul {
+    display: block;
+}
+
+.mnu_ul {
+    position: absolute;
+    z-index: 900;
+    top: 20px;
+    display: none;
+    background-color: antiquewhite;
+    list-style: none;
+    padding: 2px;
+    margin: 0px;
+    border: #FC0 groove thin;
+}
+
+.mnu_ul:hover {
+    display: block;
+}
+
+.mnu_ul_li {  
+    display: inline-block;
+    white-space: nowrap;
+    widows: 100%;
+    text-align: left;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    color: #555;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 2px auto;
+    width: 90%;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+
+.mnu_ul_li:hover {
+    background: #FC0;
+}
+
+.mnu_ul_li_a {
+    display:block !important;
+}
+
+.context-menu-item.icon-addrow {
+    background-image: url(/lib/jQuery-contextMenu/images/add.png);
+}
+.context-menu-item.icon-delrow {
+    background-image: url(/lib/jQuery-contextMenu/images/delete.png);
+}
+.context-menu-item.icon-moveup {
+    background-image: url(/lib/jQuery-contextMenu/images/up.png);
+}
+.context-menu-item.icon-movedn {
+    background-image: url(/lib/jQuery-contextMenu/images/down.png);
+}
+.context-menu-item.icon-mergelft {
+    background-image: url(/lib/jQuery-contextMenu/images/merge_lft.png);
+}
+.context-menu-item.icon-addcol {
+    background-image: url(/lib/jQuery-contextMenu/images/add.png);
+}
+.context-menu-item.icon-delcol {
+    background-image: url(/lib/jQuery-contextMenu/images/delete.png);
+}
+.context-menu-item.icon-movelft {
+    background-image: url(/lib/jQuery-contextMenu/images/prev.png);
+}
+.context-menu-item.icon-movergt {
+    background-image: url(/lib/jQuery-contextMenu/images/next.png);
+}
+.context-menu-item.icon-mergeup {
+    background-image: url(/lib/jQuery-contextMenu/images/merge_up.png);
+}
+.context-menu-item.icon-pty {
+    background-image: url(/lib/jQuery-contextMenu/images/property.png);
+}
+.context-menu-item.icon-delcmp {
+    background-image: url(/lib/jQuery-contextMenu/images/remove.png);
+}
+
+.saveProp, .cancelProp, .del_doc_lnk, .addrow, .delrow {
+    cursor: pointer;
+}
+
+.col {
+    visibility: collapse;
+    display: none;
+}
+
+.txt {
+    padding: 4px;
+}
+
+.tar {
+    /*float: left;*/
+}
+
+.cmb {
+    padding: 4px;
+}
+
+.cmb option {
+    padding: 4px;
+}
+
+.doc_cmb {
+    margin: 5px;
+    padding: 4px;
+    display: inline-block;
+}
+
+.doc_cmb option {
+    padding: 4px;
+}
+
+.loader {
+    display: none;
+}
+
+.rad {
+    padding: 2px;
+}
+
+.chk {
+    /*float: left;*/
+}
+
+.lbl {
+    border: dotted thin #999;
+    background: transparent;
+}
+
+.img, .fil, .doc {
+    padding: 5px;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -ms-user-select: none;
+}
+
+.lineup {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.hor {
+    /*float: left;*/
+}

@@ -1,0 +1,21 @@
+RewriteEngine on
+Options +FollowSymlinks
+Options -Indexes
+RewriteBase /
+RewriteRule ^\.htaccess$ - [F]
+
+RewriteCond %{HTTP_USER_AGENT} ".*Safari.*" [OR]
+RewriteCond %{HTTP:Accept-Encoding} !gzip
+RewriteRule (.*)\.jgz$ $1\.js [L]
+
+AddType "text/javascript;charset=UTF-8" .jgz
+AddEncoding gzip .jgz
+
+#RewriteBase /
+
+RewriteRule ^new$ admin/companies/new.php
+
+# Rewrite to catch subdomain
+RewriteCond %{HTTP_HOST} !(www|manager|game|talk|gw).exood.com$ [NC]
+RewriteCond %{HTTP_HOST} ^(www.)?([a-z0-9-]+).exood.com [NC]
+RewriteRule (login.php.*) login.php?coy=%2 [L]

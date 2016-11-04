@@ -1,0 +1,11 @@
+Hello %s,
+
+    The following document has just been created in the EDMS:
+
+    Title: %s
+    Created By: %s
+    Date Created: %s
+
+Please login to the Document Management System to view this document.
+
+This is a system auto-generated alert.

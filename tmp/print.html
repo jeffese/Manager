@@ -1,0 +1,162 @@
+<table border="0" cellpadding="0" cellspacing="0" style="float:left; padding:4px" id="eth_'+m+'">
+  <tr>
+    <td class="bl_tl"></td>
+    <td class="bl_tp"></td>
+    <td class="bl_tr"></td>
+  </tr>
+  <tr>
+    <td rowspan="2" class="bl_lf"></td>
+    <td class="bl_title">'+eth+':?
+      <input name="eth'+m+'" type="hidden" id="eth'+m+'" value="'+eth+':?" />
+      <div style="float:right">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td>Delete</td>
+            <td><a style="float:right" href="javascript: void(0)" onclick="if (confirm(\'Are you sure you want to delete this Virtual NIC?\')) delETH(' + m + ')"> <img src="/images/b_drop.png" alt="Delete" title="Delete Tunnel" width="16" height="16" border="0" /></a></td>
+            <td width="20">&nbsp;</td>
+            <td><a href="javascript: void(0)" onclick="hideshow('+"'set'"+', 1, '+m+')"><img src="/images/bt_show.png" alt="" name="show_type" width="60" height="16" id="show_set'+m+'" /></a><a href="javascript: void(0)" onclick="hideshow('+"'set'"+', 0, '+m+')"><img src="../images/bt_hide.png" alt="" width="60" height="16" id="hide_set'+m+'" style="display:none" /></a></td>
+          </tr>
+        </table>
+      </div></td>
+    <td rowspan="2" class="bl_rt"></td>
+  </tr>
+  <tr>
+    <td class="bl_center"><table id="bx_set'+m+'" style="display:none" border="0" cellspacing="2" cellpadding="2">
+        <tr>
+          <td align="right" bgcolor="#104DBE" class="boldwhite1">NickName:</td>
+          <td><input name="nickname'+m+'" type="text" id="nickname'+m+'" /></td>
+        </tr>
+        <tr>
+          <td width="80" align="right" bgcolor="#104DBE" class="boldwhite1">Active:</td>
+          <td><input type="checkbox" name="active'+m+'" id="active'+m+'" /></td>
+        </tr>
+        <tr>
+          <td align="right" bgcolor="#2363A9" class="boldwhite1">IP (4):</td>
+          <td><input name="ip'+m+'" type="text" id="ip'+m+'" /></td>
+        </tr>
+        <tr>
+          <td align="right" nowrap="nowrap" bgcolor="#2363A9" class="boldwhite1">Subnet Mask:</td>
+          <td><input name="mask'+m+'" type="text" id="mask'+m+'" /></td>
+        </tr>
+        <tr>
+          <td align="right" bgcolor="#2363A9" class="boldwhite1">Gateway:</td>
+          <td><input name="gw'+m+'" type="text" id="gw'+m+'" /></td>
+        </tr>
+        <tr>
+          <td height="4"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="right" bgcolor="#4EB1FC" class="boldwhite1">IP (6):</td>
+          <td><input name="ip6'+m+'" type="text" id="ip6'+m+'" size="40" /></td>
+        </tr>
+        <tr>
+          <td height="4"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="2"><table border="0" cellspacing="2" cellpadding="2">
+              <tr>
+                <td colspan="2" class="h1"> Gateway Settings</td>
+              </tr>
+              <tr>
+                <td width="60" align="right" bgcolor="#333333" class="boldwhite1">Local:</td>
+                <td width="147" bgcolor="#333333"><input type="checkbox" name="gateway'+m+'" id="gateway'+m+'" onclick="setGW('+m+')" title="Set to make this device a Gateway for your Local Network where LAN Computers connect to..." /></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="boldwhite1"><table border="0" cellspacing="2" cellpadding="2" id="gwbox'+m+'">
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">Provider:</td>
+                      <td><input name="network'+m+'" type="text" id="network'+m+'" title="The Internet Service Provider." /></td>
+                    </tr>
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">Type:</td>
+                      <td><select name="backup'+m+'" id="backup'+m+'" title="Set this Port as 
+                                                        1] Not automatically set, but can be used in routing policies
+                                                        2] Default Gateway {Include it in the multi-route Gateway process}
+                                                        3] Failover-only-Gateway {it should only be used if the Main Gateway(s) are down}">
+                          <option value="-1"></option>
+                          <option value="0">Default Route</option>
+                          <option value="1">Backup Route</option>
+                        </select></td>
+                    </tr>
+                    <?php if ($ike > 0) { ?>
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">IKE Port:</td>
+                      <td><input name="ike'+m+'" type="text" id="ike'+m+'" size="10" onchange="this.value = setintnum(this.value)" /></td>
+                    </tr>
+                    <?php } ?>
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">Tunnel:</td>
+                      <td><table border="0" cellspacing="2" cellpadding="2">
+                          <tr>
+                            <td><input type="radio" name="proxy'+m+'" value="0" id="proxy_0'+m+'" title="Use Mediator Server to initiate Direct Tunnel" /></td>
+                            <td class="blue-normal">Mediated</td>
+                          </tr>
+                          <tr>
+                            <td><input type="radio" name="proxy'+m+'" value="1" id="proxy_1'+m+'" title="Tunnel through Mediator Server as a Proxy Server" /></td>
+                            <td class="blue-normal">Proxy</td>
+                          </tr>
+                          <tr>
+                            <td><input type="radio" name="proxy'+m+'" value="2" id="proxy_2'+m+'" title="Direct Tunnel" /></td>
+                            <td class="blue-normal">Direct</td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td align="right" bgcolor="#333333" class="boldwhite1">Weight:</td>
+                      <td><input name="weight'+m+'" type="text" id="weight'+m+'" maxlength="1" style="width:20px" title="Set the ratio of traffic that will be sent through this gateway. Default is 1" /></td>
+                    </tr>
+                    <tr>
+                      <td align="right" nowrap="nowrap" bgcolor="#333333" class="boldwhite1">Probe IP:</td>
+                      <td><input name="probe'+m+'" type="text" id="probe'+m+'" title="The IP Address that will be pinged to test that this gateway is active." /></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <table id="client" border="0" cellspacing="2" cellpadding="2" style="display:none">
+              <tr>
+                <td colspan="2" align="center" class="h1"><strong>VPN Subnet NAT Exclusion</strong></td>
+              </tr>
+              <tr>
+                <td colspan="2"><table border="0" cellspacing="2" cellpadding="2">
+                    <tr>
+                      <td><input name="dnat" type="text" id="dnat" value="" style="width:120px" /></td>
+                      <td class="red-normal"><strong>/</strong></td>
+                      <td><input name="dfx'+m+'" type="text" id="dfx'+m+'" value="" style="width:20px" /></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="h1">Clients</td>
+              </tr>
+              <tr>
+                <td width="40" align="right" bgcolor="#006633" class="boldwhite1">DHCP:</td>
+                <td width="147"><input type="checkbox" name="dhcl'+m+'" id="dhcl'+m+'" onclick="setDHCL('+m+')" title="Enable DHCP Server on this device to give automatic IPs on the LAN." /></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="right" class="boldwhite1"><table id="dhcl_bx'+m+'" border="0" cellspacing="2" cellpadding="2" style="display:none">
+                    <tr>
+                      <td align="right" bgcolor="#006633" class="boldwhite1">Start:</td>
+                      <td><input name="start'+m+'" type="text" id="start'+m+'" /></td>
+                    </tr>
+                    <tr>
+                      <td align="right" bgcolor="#006633" class="boldwhite1">End:</td>
+                      <td><input name="end'+m+'" type="text" id="end'+m+'" /></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td class="bl_bl"></td>
+    <td class="bl_bt"></td>
+    <td class="bl_br"></td>
+  </tr>
+</table>

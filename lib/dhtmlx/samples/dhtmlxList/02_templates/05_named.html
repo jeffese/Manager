@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Named templates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		dhtmlx.Type.add(dhtmlXList,{
+			name:"dataA",
+			template:"#Package# : #Version#<br/>#Maintainer#",
+			height:40,
+			padding:7,
+			margin:0
+		});
+		dhtmlx.Type.add(dhtmlXList,{
+			name:"dataB",
+			template:"#Package#",
+			height:24,
+			padding:7,
+			margin:0
+		});
+		var myList;
+		function doOnLoad() {
+			myList = new dhtmlXList({
+				container:"data_container",
+				type:"dataA"
+			});
+			myList.load("../common/data.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<h1>Named templates</h1>
+	<div id="data_container" style="border:1px solid #A4BED4; background-color:white;width:320px;height:396px;"></div>
+	<input type="button" name="" value="Template A" onclick="myList.define('type','dataA')">
+	<input type="button" name="" value="Template B" onclick="myList.define('type','dataB')"> 
+</body>
+</html>
